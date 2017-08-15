@@ -1,0 +1,26 @@
+/**
+ * Created by edo on 06/05/2017.
+ */
+import {NgModule} from "@angular/core";
+import {HomePageComponent} from "./component/home-page.component";
+import {SharedModule} from "../shared/shared.module";
+import {RouterModule} from "@angular/router";
+import {WelcomePageComponent} from "./component/welcome-page.component";
+
+@NgModule({
+    declarations: [
+        HomePageComponent,
+        WelcomePageComponent
+    ],
+    imports: [
+        SharedModule,
+        RouterModule
+    ],
+    exports: [
+        HomePageComponent,
+        WelcomePageComponent
+    ],
+    providers: []
+})
+export class HomeModule {
+}

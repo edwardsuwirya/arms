@@ -1,0 +1,59 @@
+<div class="page-header">
+    <h3>Registrasi Dokumen</h3>
+</div>
+<div class="pull-right">
+    <button type="button" class="btn btn-default"
+            id="documentRegistrationAdd" (click)="onAddDocumentRegistration()" style="margin-bottom: 10px;">
+        Tambah Dokumen
+    </button>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>No. Reg</th>
+        <th>No. Dokumen</th>
+        <th>Nama Dokumen</th>
+        <th>Deskripsi</th>
+        <th>Kata Kunci</th>
+        <th>Internal/Vendor</th>
+        <th>Kode Lokasi</th>
+        <th>No Box</th>
+        <th>Tanggal Simpan</th>
+        <th>Status Pinjam</th>
+        <th>Histori Pinjam</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="armsDocuments.length==0">
+        <td colspan="11">No Data</td>
+    </tr>
+    <tr *ngFor="let d of armsDocuments">
+        <td>{{d.registrationNo}}</td>
+        <td>{{d.documentNo}}</td>
+        <td>{{d.documentName}}</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+    </tr>
+    </tbody>
+</table>
+<div class="pull-right">
+    <button type="button" class="btn btn-default"
+            id="documentRegistrationConfirmation" (click)="onAddDocumentRegistration()"
+            style="margin-bottom: 10px;width: 200px;">
+        Konfirmasi Registrasi
+    </button>
+    <button type="button" class="btn btn-default"
+            id="documentRegistrationCancellation" (click)="onAddDocumentRegistration()"
+            style="margin-bottom: 10px;width: 200px;">
+        Batal
+    </button>
+</div>
+<arms-modal-document-registration [id]="'docReg'" (newRegistration)="onUpdateNewRegistration($event)"
+                                  #modalDocReg></arms-modal-document-registration>
