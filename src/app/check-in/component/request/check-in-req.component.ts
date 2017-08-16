@@ -10,12 +10,27 @@ import {Router} from "@angular/router";
 })
 export class CheckInRequestComponent implements OnInit,AfterViewInit {
 
-    constructor(private router: Router) {
+    listBox:string[] = ['514-01', '514-02', '514-03', '514-04', '514-05'];
+    listBoxToBeSend:string[] = [];
+
+    constructor(private router:Router) {
     }
 
-    ngOnInit(): void {
+    ngOnInit():void {
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit():void {
+    }
+
+    doSend(item:string){
+        this.listBoxToBeSend.push(item);
+        let selectedItemIdx = this.listBox.indexOf(item);
+        this.listBox.splice(selectedItemIdx,1);
+    }
+    doCancelSend(item:string){
+        this.listBox.push(item);
+        let selectedItemIdx = this.listBoxToBeSend.indexOf(item);
+        this.listBoxToBeSend.splice(selectedItemIdx,1);
+
     }
 }
