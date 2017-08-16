@@ -5,13 +5,15 @@ import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import {ModuleContainerComponent} from "./component/module-container/module-container.component";
 import {SpinnerComponent} from "./component/spinner/spinner.component";
+import {GoHomeComponent} from "./component/go-home/go-home.component";
 /**
  * Created by edo on 06/05/2017.
  */
 @NgModule({
     declarations: [
         ModuleContainerComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        GoHomeComponent
     ],
     imports: [
         CommonModule,
@@ -26,7 +28,8 @@ import {SpinnerComponent} from "./component/spinner/spinner.component";
         FormsModule,
         ReactiveFormsModule,
         ModuleContainerComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        GoHomeComponent
     ]
 })
 export class SharedModule {

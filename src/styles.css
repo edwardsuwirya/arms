@@ -1,6 +1,13 @@
 html, body {
     height: 100%;
     width: 100%;
-    background-color: #f8f8f8;
     color: grey;
+}
+
+.navbar{
+    margin-bottom: 0px !important;
+}
+
+.page-header {
+    margin: 25px 0 20px !important;
 }

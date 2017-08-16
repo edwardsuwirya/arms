@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit,AfterViewInit {
 
     ngAfterViewInit() {
         this.activeUser = 'Demo';
-        this.activeRole = 'Demo Role';
+        this.activeRole = 'Custody';
         this.appName = 'ARMS';
         this.appVersion = '1.0.0';
     }

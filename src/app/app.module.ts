@@ -8,6 +8,9 @@ import {APP_CONFIG, appConfig} from "./shared/model/application-properties";
 import {SharedModule} from "./shared/shared.module";
 import {HomeModule} from "./home/home.module";
 import {DocumentRegistrationModule} from "./document-registration/document-registration.module";
+import {ArmsMenuModule} from "./arms-menu/arms-menu.module";
+import {CheckInModule} from "./check-in/check-in.module";
+import {CheckOutModule} from "./check-out/check-out.module";
 // import {APP_BASE_HREF} from "@angular/common";
 
 @NgModule({
@@ -22,7 +25,9 @@ import {DocumentRegistrationModule} from "./document-registration/document-regis
         SharedModule.forRoot(),
         ReactiveFormsModule,
         HomeModule,
-        DocumentRegistrationModule
+        DocumentRegistrationModule,
+        CheckInModule,
+        CheckOutModule
     ],
     providers: [
         {provide: APP_CONFIG, useValue: appConfig},

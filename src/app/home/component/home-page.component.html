@@ -8,18 +8,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="../../../public/images/logo-company.png" class="logo"></a>
+            <span style="line-height: 70px">
+                <a class="navbar-brand" routerLink="/">
+                    <img src="../../../public/images/logo-company.png" class="logo">
+                </a>
+                <span style="font-size: 18px;font-weight: bold">A.R.M.S</span>
+            </span>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#" style="margin-top: 5px"><i class="fa fa-user-circle-o"></i> {{activeUser}}({{activeRole}})</a>
+                    <a href="#" style="margin-top: 5px"><i class="fa fa-user-circle-o"></i> {{activeUser}}
+                        ({{activeRole}})</a>
                 </li>
                 <li>
                     <button type="button" class="btn btn-default navbar-btn" (click)="doLogout()">
-                        <i class="fa fa-sign-out" style="line-height: 32px;"></i> {{'logout'}}</button>
+                        <i class="fa fa-sign-out" style="line-height: 32px;"></i> {{'logout'}}
+                    </button>
                 </li>
             </ul>
         </div>

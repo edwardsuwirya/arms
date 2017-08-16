@@ -1,6 +1,7 @@
 import {Component, OnInit, AfterViewInit, ViewChild} from "@angular/core";
 import {ModalDocumentRegistrationComponent} from "../modal-document-registration/modal-document-registration.component";
 import {ArmsDocument} from "../../model/arms-document";
+import {Router} from "@angular/router";
 /**
  * Created by 15050978 on 8/15/2017.
  */
@@ -15,7 +16,7 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
 
     armsDocuments: ArmsDocument[] = [];
 
-    constructor() {
+    constructor(private router:Router) {
     }
 
     ngOnInit(): void {
@@ -26,6 +27,10 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
 
     onAddDocumentRegistration() {
         this.modalDocumentRegistration.show();
+    }
+
+    onCancelDocumentRegistration() {
+        this.router.navigateByUrl('/home');
     }
 
     onUpdateNewRegistration(event: ArmsDocument) {

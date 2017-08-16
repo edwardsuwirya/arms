@@ -16,8 +16,11 @@ import {Component} from "@angular/core";
     styles: [`.moduleContainer{
                 padding: 10px 10px 30px 10px;
                }
+               @media (min-width: 1200px) {
+                    .container {
+                        width: 1270px !important;
+                    }
+                }
     `]
 })
-export class ModuleContainerComponent {
-
-}
+export class ModuleContainerComponent {}

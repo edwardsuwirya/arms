@@ -40,6 +40,7 @@ export class ModalDocumentRegistrationComponent implements OnInit,AfterViewInit 
         doc.documentNo = this.docNo;
         doc.documentName = this.docName;
         this.newRegistration.emit(doc);
+        $('#' + this.id).modal('hide');
     }
 
 }

@@ -7,6 +7,8 @@ import {HomePageComponent} from "../home/component/home-page.component";
 import {SharedModule} from "../shared/shared.module";
 import {WelcomePageComponent} from "../home/component/welcome-page.component";
 import {DOCUMENT_REGISTRATION_PATH} from "../document-registration/document-registration.module";
+import {CHECK_IN_PATH} from "../check-in/check-in.module";
+import {CHECK_OUT_PATH} from "../check-out/check-out.module";
 
 
 export const routes: Routes = [
@@ -21,6 +23,14 @@ export const routes: Routes = [
             {
                 path: 'documentRegistration',
                 children: DOCUMENT_REGISTRATION_PATH
+            },
+            {
+                path: 'checkIn',
+                children: CHECK_IN_PATH
+            },
+            {
+                path: 'checkOut',
+                children: CHECK_OUT_PATH
             },
         ]
     },

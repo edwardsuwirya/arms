@@ -22,17 +22,18 @@
         <th>Tanggal Simpan</th>
         <th>Status Pinjam</th>
         <th>Histori Pinjam</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
     <tr *ngIf="armsDocuments.length==0">
-        <td colspan="11">No Data</td>
+        <td colspan="12">No Data</td>
     </tr>
     <tr *ngFor="let d of armsDocuments">
         <td>{{d.registrationNo}}</td>
         <td>{{d.documentNo}}</td>
         <td>{{d.documentName}}</td>
-        <td>1</td>
+        <td>{{d.description}}</td>
         <td>2</td>
         <td>3</td>
         <td>4</td>
@@ -40,6 +41,12 @@
         <td>6</td>
         <td>7</td>
         <td>8</td>
+        <td>
+            <div style="display: inline-block">
+                <button class="btn btn-default"><i class="fa fa-retweet"></i></button>
+                <button class="btn btn-default"><i class="fa fa-close"></i></button>
+            </div>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -50,7 +57,7 @@
         Konfirmasi Registrasi
     </button>
     <button type="button" class="btn btn-default"
-            id="documentRegistrationCancellation" (click)="onAddDocumentRegistration()"
+            id="documentRegistrationCancellation" (click)="onCancelDocumentRegistration()"
             style="margin-bottom: 10px;width: 200px;">
         Batal
     </button>
