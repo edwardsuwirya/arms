@@ -1,11 +1,11 @@
 <div class="page-header">
     <h3>Registrasi Box Deposit</h3>
 </div>
-<div style="margin-bottom: 30px">
-    <form>
+<div style="margin-bottom: 250px">
+    <form [formGroup]="boxRegistrationFormGroup">
         <div class="form-group">
             <label for="idBox">ID Box</label>
-            <input type="text" class="form-control" id="idBox">
+            <input type="text" class="form-control" id="idBox" formControlName="idBox">
         </div>
         <div class="form-group">
             <label for="workingUnit">Unit Kerja</label>
@@ -13,67 +13,83 @@
         </div>
         <div class="form-group">
             <label for="boxDesc">Deskripsi Box</label>
-            <input type="text" class="form-control" id="boxDesc">
+            <input type="text" class="form-control" formControlName="boxDescription" id="boxDesc">
         </div>
         <div class="form-group">
             <label for="boxDesc">Ukuran Box</label>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="boxSize" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                    Silahkan Pilih
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="boxSize">
-                    <li><a href="#">Kecil</a></li>
-                    <li><a href="#">Sedang</a></li>
-                    <li><a href="#">Besar</a></li>
-                </ul>
+            <div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" formControlName="boxSize" id="optBoxSize1" value="S" checked>
+                        Kecil
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" formControlName="boxSize" id="optBoxSize2" value="M">
+                        Sedang
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" formControlName="boxSize" id="optBoxSize3" value="L">
+                        Besar
+                    </label>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label for="boxDesc">Tipe Penyimpanan</label>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="depositType" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                    Silahkan Pilih
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="depositType">
-                    <li><a href="#">Internal</a></li>
-                    <li><a href="#">Eksternal</a></li>
-                </ul>
+            <div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" formControlName="depositType" id="optDepositType1" value="I" checked>
+                        Internal
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" formControlName="depositType" id="optDepositType2" value="V">
+                        Vendor
+                    </label>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label for="depositLocation">Lokasi Penyimpanan</label>
-            <input type="text" class="form-control" id="depositLocation">
+            <div class="input-group">
+                <input type="text" class="form-control" id="depositLocation" readonly>
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="button">Pilih</button>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="depositRoom">Ruang Penyimpanan</label>
-            <input type="text" class="form-control" id="depositRoom">
+            <input type="text" class="form-control" formControlName="depositRoom" id="depositRoom">
         </div>
         <div class="form-group">
             <label for="depositShelf">Rak Penyimpanan</label>
-            <input type="text" class="form-control" id="depositShelf">
+            <input type="text" class="form-control" formControlName="depositShelf" id="depositShelf">
         </div>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Mulai Tanggal Berlaku</label>
-                    <arms-datepicker #startValidDate [id]="'startValidDate'"></arms-datepicker>
+                    <arms-datepicker #startValidDate (selectedDate)="doGetStartDate($event)" [id]="'startValidDate'"></arms-datepicker>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Akhir Tanggal berlaku</label>
-                    <arms-datepicker #endValidDate [id]="'endValidDate'"></arms-datepicker>
+                    <arms-datepicker #endValidDate (selectedDate)="doGetEndDate($event)" [id]="'endValidDate'"></arms-datepicker>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <button type="button" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-default">Reset</button>
+                <button type="button" class="btn btn-primary" (click)="doSave()">Save</button>
+                <button type="button" class="btn btn-default" (click)="doReset()">Reset</button>
             </div>
         </div>
     </form>
@@ -107,9 +123,10 @@
             <!--<td>{{box.depositShelf}}</td>-->
             <td>{{box.startValidDate}}-{{box.endValidDate}}</td>
             <td>
-                <button type="button" class="btn btn-link"><i class="fa fa-th-list" aria-hidden="true"></i></button>
-                <button type="button" class="btn btn-link"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                <button type="button" class="btn btn-link"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-link"><i class="fa fa-th-list" aria-hidden="true" (click)="doView(box)"></i></button>
+                <button type="button" class="btn btn-link"><i class="fa fa-pencil-square-o" aria-hidden="true" (click)="doUpdate(box)"></i>
+                </button>
+                <button type="button" class="btn btn-link"><i class="fa fa-times" aria-hidden="true" (click)="doDelete(box)"></i></button>
             </td>
         </tr>
         </tbody>
