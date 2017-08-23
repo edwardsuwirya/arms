@@ -1,3 +1,102 @@
 <div class="page-header">
     <h3>Permintaan Pickup Box</h3>
 </div>
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="pickupDate">Tanggal</label>
+                        <input type="text" class="form-control" name="pickupDate" id="pickupDate" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="pic">Nama PIC</label>
+                        <input type="text" class="form-control" name="pic" id="pic" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="telp">No. Telp</label>
+                        <input type="text" class="form-control" name="telp" id="telp" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="workingUnit">Unit Kerja</label>
+                        <input type="text" class="form-control" name="workingUnit" id="workingUnit" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="address">Alamat</label>
+                        <textarea type="text" rows="5" class="form-control" name="address" id="address"
+                                  placeholder=""></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="costCenter">Cost Center</label>
+                        <input type="text" class="form-control" name="costCenter" id="costCenter" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="well">
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Box Yang Dikelola</h5>
+            <ul class="list-group">
+                <li *ngFor="let item of listBox" class="list-group-item">
+                <span class="pull-right" style="margin-top: -5px">
+                    <a class="btn btn-link">Reg. Doc</a>
+                    <a class="btn btn-link" (click)="doSend(item)">Kirim</a>
+                </span>
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h5>Box Yang Akan Dikirm</h5>
+            <ul class="list-group">
+                <li *ngFor="let item of listBoxToBeSend" class="list-group-item">
+                <span class="pull-right" style="margin-top: -5px">
+                    <a class="btn btn-link" (click)="doCancelSend(item)">Batal</a>
+                </span>
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="text-align: right">
+            <button type="button" class="btn btn-default" routerLink="/" >Batal</button>
+            <button type="button" class="btn btn-primary" (click)="onAddDocumentRegistration()">Konfirmasi</button>
+        </div>
+    </div>
+</div>
