@@ -6,6 +6,8 @@ import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import {ModuleContainerComponent} from "./component/module-container/module-container.component";
 import {SpinnerComponent} from "./component/spinner/spinner.component";
 import {GoHomeComponent} from "./component/go-home/go-home.component";
+import {TimestampToDatePipe} from "./pipe/timestamp-to-date.pipe";
+import {DatePickerComponent} from "./component/date-picker/date-picker.component";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -13,7 +15,9 @@ import {GoHomeComponent} from "./component/go-home/go-home.component";
     declarations: [
         ModuleContainerComponent,
         SpinnerComponent,
-        GoHomeComponent
+        GoHomeComponent,
+        DatePickerComponent,
+        TimestampToDatePipe
     ],
     imports: [
         CommonModule,
@@ -29,15 +33,16 @@ import {GoHomeComponent} from "./component/go-home/go-home.component";
         ReactiveFormsModule,
         ModuleContainerComponent,
         SpinnerComponent,
-        GoHomeComponent
+        GoHomeComponent,
+        DatePickerComponent,
+        TimestampToDatePipe
     ]
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: SharedModule,
-            providers: [
-            ]
+            providers: []
         };
     }
 }

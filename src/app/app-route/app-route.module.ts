@@ -9,6 +9,7 @@ import {WelcomePageComponent} from "../home/component/welcome-page.component";
 import {DOCUMENT_REGISTRATION_PATH} from "../document-registration/document-registration.module";
 import {CHECK_IN_PATH} from "../check-in/check-in.module";
 import {CHECK_OUT_PATH} from "../check-out/check-out.module";
+import {BOX_REGISTRATION_PATH} from "../box-registration/box-registration.module";
 
 
 export const routes: Routes = [
@@ -19,6 +20,10 @@ export const routes: Routes = [
             {
                 path: '',
                 component: WelcomePageComponent,
+            },
+            {
+                path: 'boxRegistration',
+                children: BOX_REGISTRATION_PATH
             },
             {
                 path: 'documentRegistration',

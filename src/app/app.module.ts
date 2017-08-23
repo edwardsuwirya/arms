@@ -11,7 +11,8 @@ import {DocumentRegistrationModule} from "./document-registration/document-regis
 import {ArmsMenuModule} from "./arms-menu/arms-menu.module";
 import {CheckInModule} from "./check-in/check-in.module";
 import {CheckOutModule} from "./check-out/check-out.module";
-// import {APP_BASE_HREF} from "@angular/common";
+import {BoxRegistrationComponent} from "./box-registration/component/form/box-registration.component";
+import {BoxRegistrationModule} from "./box-registration/box-registration.module";
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import {CheckOutModule} from "./check-out/check-out.module";
         SharedModule.forRoot(),
         ReactiveFormsModule,
         HomeModule,
+        BoxRegistrationModule,
         DocumentRegistrationModule,
         CheckInModule,
         CheckOutModule

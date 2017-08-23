@@ -4,7 +4,7 @@ import {Component} from "@angular/core";
  */
 @Component({
     selector: 'arms-welcome-page',
-    template: '<div><arms-menu></arms-menu></div>',
+    template: '<div></div>',
     styles: []
 })
 export class WelcomePageComponent {}

@@ -14,9 +14,11 @@ import 'rxjs';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
+import 'pikaday/css/pikaday.css';
 
 import 'lodash';
 import 'jquery/src/jquery.js';
 import 'moment/moment.js';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'jwt-simple';
+import 'pikaday/pikaday.js';

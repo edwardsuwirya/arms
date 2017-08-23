@@ -1,93 +1,93 @@
-<div class="page-header">
-    <h3>Workflow</h3>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body" style="padding: 30px 40px 20px 40px">
-        <div class="row">
-            <arms-menu-item [icon]="'fa-tag'" [title]="'Registrasi Box'"
-                            [direction]="'/documentRegistration'"></arms-menu-item>
-            <arms-menu-item [icon]="'fa-tags'" [title]="'Registrasi Dokumen'"
-                            [direction]="'/documentRegistration'"></arms-menu-item>
-            <arms-menu-item [icon]="'fa-level-up'" [title]="'Check In Box'" [direction]="'/checkIn'"></arms-menu-item>
-            <arms-menu-item [icon]="'fa-level-down'" [title]="'Check Out Box'"
-                            [direction]="'/checkOut'"></arms-menu-item>
-            <arms-menu-item [icon]="'fa-refresh'" [title]="'Re Check In Box'"></arms-menu-item>
-        </div>
-    </div>
-</div>
-<div class="page-header">
-    <h3>Search</h3>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body" style="padding: 30px 40px 20px 40px">
-        <div class="row">
-            <div class="col-md-4">
-                <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Dokumen
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Kotak Arsip
-                </label>
+<div class="sidebar-nav">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                       aria-expanded="true" aria-controls="collapseOne">
+                        Registrasi
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                 aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <arms-menu-item [icon]="'fa-archive'" [title]="'Registrasi Box'"
+                                            [direction]="'/boxRegistration'"></arms-menu-item>
+                        </div>
+                        <div class="col-sm-6">
+                            <arms-menu-item [icon]="'fa-tags'" [title]="'Registrasi Dokumen'"
+                                            [direction]="'/documentRegistration'"></arms-menu-item>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 20px">
-            <div class="col-md-12">
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label for="searchCriteria">Kriteria&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" class="form-control" id="searchCriteria" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="searchCriteria1">kriteria1</label>
-                        <input type="text" class="form-control" id="searchCriteria1" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="searchCriteria2">kriteria2</label>
-                        <input type="text" class="form-control" id="searchCriteria2" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="searchCriteria3">kriteria3</label>
-                        <input type="text" class="form-control" id="searchCriteria3" placeholder="">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Pengiriman Box
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                 aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <arms-menu-item [icon]="'fa-level-up'" [title]="'Pick Up Box'"
+                                            [direction]="'/checkIn'"></arms-menu-item>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 10px">
-            <div class="col-md-12">
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label for="keyword">Kata Kunci</label>
-                        <input type="text" class="form-control" id="keyword" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="keyword1">keyword1</label>
-                        <input type="text" class="form-control" id="keyword1" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="keyword2">keyword2</label>
-                        <input type="text" class="form-control" id="keyword2" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="keyword3">keyword3</label>
-                        <input type="text" class="form-control" id="keyword3" placeholder="">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Informasi
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                 aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <arms-menu-item [icon]="'fa-binoculars'" [title]="'Pencarian Dokumen'"
+                                            [direction]="'/checkOut'"></arms-menu-item>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 15px">
-            <div class="col-md-6">
-                <button class="btn btn-default" style="width: 80px">Cari</button>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Pengembalian
+                    </a>
+                </h4>
             </div>
-        </div>
-    </div>
-</div>
-<div class="page-header">
-    <h3>Reporting</h3>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body" style="padding: 30px 40px 20px 40px">
-        <div class="row">
-            <arms-menu-item [icon]="'fa-file-text-o'" [title]="'Daftar Dokumen'"></arms-menu-item>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                 aria-labelledby="headingFour">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <arms-menu-item [icon]="'fa-level-down'" [title]="'Pengembalian Dokumen'"
+                                            [direction]="'/checkOut'"></arms-menu-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

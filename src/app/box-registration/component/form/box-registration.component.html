@@ -1,0 +1,117 @@
+<div class="page-header">
+    <h3>Registrasi Box Deposit</h3>
+</div>
+<div style="margin-bottom: 30px">
+    <form>
+        <div class="form-group">
+            <label for="idBox">ID Box</label>
+            <input type="text" class="form-control" id="idBox">
+        </div>
+        <div class="form-group">
+            <label for="workingUnit">Unit Kerja</label>
+            <input type="text" class="form-control" id="workingUnit" readonly>
+        </div>
+        <div class="form-group">
+            <label for="boxDesc">Deskripsi Box</label>
+            <input type="text" class="form-control" id="boxDesc">
+        </div>
+        <div class="form-group">
+            <label for="boxDesc">Ukuran Box</label>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="boxSize" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                    Silahkan Pilih
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="boxSize">
+                    <li><a href="#">Kecil</a></li>
+                    <li><a href="#">Sedang</a></li>
+                    <li><a href="#">Besar</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="boxDesc">Tipe Penyimpanan</label>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="depositType" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                    Silahkan Pilih
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="depositType">
+                    <li><a href="#">Internal</a></li>
+                    <li><a href="#">Eksternal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="depositLocation">Lokasi Penyimpanan</label>
+            <input type="text" class="form-control" id="depositLocation">
+        </div>
+        <div class="form-group">
+            <label for="depositRoom">Ruang Penyimpanan</label>
+            <input type="text" class="form-control" id="depositRoom">
+        </div>
+        <div class="form-group">
+            <label for="depositShelf">Rak Penyimpanan</label>
+            <input type="text" class="form-control" id="depositShelf">
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Mulai Tanggal Berlaku</label>
+                    <arms-datepicker #startValidDate [id]="'startValidDate'"></arms-datepicker>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Akhir Tanggal berlaku</label>
+                    <arms-datepicker #endValidDate [id]="'endValidDate'"></arms-datepicker>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default">Reset</button>
+            </div>
+        </div>
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>ID Box</th>
+            <th>Deskripsi Box</th>
+            <th>Tipe Penyimpanan</th>
+            <th>Lokasi Penyimpanan</th>
+            <th>Periode</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody *ngIf="!listBoxRegistrations">
+        <tr>
+            <td colspan="7">{{'No Data Found'}}</td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr *ngFor="let box of listBoxRegistrations;let i =index;">
+            <td></td>
+            <td>{{box.idBox}}</td>
+            <!--<td>{{box.workingUnit}}</td>-->
+            <td>{{box.boxDescription}}</td>
+            <!--<td>{{box.boxSize}}</td>-->
+            <td>{{box.depositType}}</td>
+            <td>{{box.depositLocation}}</td>
+            <!--<td>{{box.depositRoom}}</td>-->
+            <!--<td>{{box.depositShelf}}</td>-->
+            <td>{{box.startValidDate}}-{{box.endValidDate}}</td>
+            <td>
+                <button type="button" class="btn btn-link"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-link"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-link"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

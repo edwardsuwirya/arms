@@ -2,6 +2,7 @@ html, body {
     height: 100%;
     width: 100%;
     color: grey;
+    padding-top: 50px;
 }
 
 .navbar{
@@ -10,4 +11,8 @@ html, body {
 
 .page-header {
     margin: 25px 0 20px !important;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    vertical-align: middle !important;
 }

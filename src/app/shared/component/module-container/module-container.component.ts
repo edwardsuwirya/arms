@@ -8,19 +8,8 @@ import {Component} from "@angular/core";
 
 @Component({
     selector: 'arms-module-container',
-    template: `<div class="moduleContainer">
-                <div class="container">
-                   <ng-content></ng-content>
-                </div>
-                </div>`,
-    styles: [`.moduleContainer{
-                padding: 10px 10px 30px 10px;
-               }
-               @media (min-width: 1200px) {
-                    .container {
-                        width: 1270px !important;
-                    }
-                }
-    `]
+    templateUrl: './module-container.component.html',
+    styleUrls: ['./module-container.component.css']
 })
-export class ModuleContainerComponent {}
+export class ModuleContainerComponent {
+}

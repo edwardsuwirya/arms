@@ -1,0 +1,7 @@
+input:not([type]), input[type=text] {
+    margin: 0 0 5px 0 !important;
+}
+
+.date-picker {
+    background-color: white !important;
+}
