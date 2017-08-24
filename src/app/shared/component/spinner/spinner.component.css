@@ -4,13 +4,14 @@
     top: 0;
     left: 0;
     bottom: 0;
-    background-color: #b1dcfb;
-    opacity: 0.1;
+    background-color: whitesmoke;
+    opacity: 0.6;
     z-index: 10000;
 }
 
 .spinner {
-    position: absolute;
-    top: 40%;
-    left: 45%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 15000;
 }

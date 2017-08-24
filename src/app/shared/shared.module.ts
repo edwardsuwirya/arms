@@ -8,6 +8,14 @@ import {SpinnerComponent} from "./component/spinner/spinner.component";
 import {GoHomeComponent} from "./component/go-home/go-home.component";
 import {TimestampToDatePipe} from "./pipe/timestamp-to-date.pipe";
 import {DatePickerComponent} from "./component/date-picker/date-picker.component";
+import {AlertComponent} from "./component/alert/alert.component";
+import {FormErrorsService} from "./service/form-errors.service";
+import {LocalStorageService} from "./service/local-storage.service";
+import {I18nService} from "./service/i18n.service";
+import {TranslatePipe} from "./pipe/translate.pipe";
+import {DateUtilService} from "./service/date-util.service";
+import {DateFormatPipe} from "./pipe/date-format.pipe";
+import {ViewModalComponent} from "./component/view-modal/view-modal.component";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -17,7 +25,11 @@ import {DatePickerComponent} from "./component/date-picker/date-picker.component
         SpinnerComponent,
         GoHomeComponent,
         DatePickerComponent,
-        TimestampToDatePipe
+        AlertComponent,
+        ViewModalComponent,
+        TranslatePipe,
+        TimestampToDatePipe,
+        DateFormatPipe
     ],
     imports: [
         CommonModule,
@@ -35,14 +47,23 @@ import {DatePickerComponent} from "./component/date-picker/date-picker.component
         SpinnerComponent,
         GoHomeComponent,
         DatePickerComponent,
-        TimestampToDatePipe
+        AlertComponent,
+        ViewModalComponent,
+        TranslatePipe,
+        TimestampToDatePipe,
+        DateFormatPipe
     ]
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: SharedModule,
-            providers: []
+            providers: [
+                LocalStorageService,
+                I18nService,
+                FormErrorsService,
+                DateUtilService
+            ]
         };
     }
 }

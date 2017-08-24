@@ -5,7 +5,7 @@ html, body {
     padding-top: 50px;
 }
 
-.navbar{
+.navbar {
     margin-bottom: 0px !important;
 }
 
@@ -15,4 +15,16 @@ html, body {
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
     vertical-align: middle !important;
+}
+
+.small-button {
+    width: 100px;
+}
+
+.medium-button {
+    width: 150px;
+}
+
+.large-button {
+    width: 200px;
 }

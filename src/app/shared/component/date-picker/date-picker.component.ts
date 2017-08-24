@@ -38,8 +38,15 @@ export class DatePickerComponent implements OnInit,AfterViewInit {
         // this.setPickerDate('');
     }
 
+    clear() {
+        this.picker.setDate(null);
+    }
+
     setPickerDate(newDate: string = '') {
         let that = this;
+        if (this.picker) {
+            this.picker.destroy();
+        }
         if (newDate) {
             let n = new TimestampToDatePipe().transform(newDate, 'YYYY-MM-DD');
             this.picker = new Pikaday({
@@ -60,6 +67,7 @@ export class DatePickerComponent implements OnInit,AfterViewInit {
                 }
             });
         }
+
 
     }
 
