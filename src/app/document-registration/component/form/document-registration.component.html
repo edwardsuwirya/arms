@@ -1,66 +1,172 @@
-<div class="page-header">
-    <h3>Registrasi Dokumen</h3>
+<div *ngIf="loading">
+    <arms-spinner></arms-spinner>
 </div>
-<div class="pull-right">
-    <button type="button" class="btn btn-default"
-            id="documentRegistrationAdd" (click)="onAddDocumentRegistration()" style="margin-bottom: 10px;">
-        Tambah Dokumen
-    </button>
+<arms-alert #alertError [title]="'invalidRegistration' | translate" [contentInfos]="errorInfo"></arms-alert>
+<div class="page-header">
+    <h3>{{'depositDocumentRegistration'|translate}}</h3>
+</div>
+<div style="margin-bottom: 250px">
+    <form [formGroup]="documentRegistrationFormGroup">
+        <div class="form-group form-group-sm">
+            <label for="idBox">{{'idBox'|translate}}</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="idBox" formControlName="idBox" readonly>
+                <div class="input-group-btn">
+                    <button class="btn btn-default btn-sm" type="button" (click)="doChooseBox()">{{'choose'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="idDoc">{{'idDoc'|translate}}</label>
+            <input type="text" class="form-control" id="idDoc" formControlName="idDocument" readonly>
+        </div>
+        <div class="form-group form-group-sm">
+            <label>{{'documentType'|translate}}</label>
+            <select class="form-control" formControlName="documentType">
+                <option value="th">Transaksi Harian</option>
+            </select>
+        </div>
+        <div class="form-group form-group-sm" *ngIf="isDailyTransaction">
+            <label for="sheetNo">{{'sheetNo'|translate}}</label>
+            <input type="text" class="form-control" formControlName="sheetNo" id="sheetNo">
+        </div>
+        <div class="row" *ngIf="isDailyTransaction">
+            <div class="col-sm-6">
+                <div class="form-group form-group-sm">
+                    <label>{{'startValidDate'|translate}}</label>
+                    <arms-datepicker #startValidDate (selectedDate)="doGetStartDate($event)"
+                                     [id]="'startValidDate'"></arms-datepicker>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-group-sm">
+                    <label>{{'endValidDate'|translate}}</label>
+                    <arms-datepicker #endValidDate (selectedDate)="doGetEndDate($event)"
+                                     [id]="'endValidDate'"></arms-datepicker>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="documentNo">{{'documentNo'|translate}}</label>
+            <input type="text" class="form-control" formControlName="documentNo" id="documentNo">
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="documentName">{{'documentName'|translate}}</label>
+            <input type="text" class="form-control" formControlName="documentName" id="documentName">
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="description">{{'description'|translate}}</label>
+            <textarea class="form-control" formControlName="description" id="description"></textarea>
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="keyword">{{'keyword'|translate}}</label>
+            <textarea class="form-control" formControlName="keyword" id="keyword"></textarea>
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="workingUnit">{{'workingUnit'|translate}}</label>
+            <input type="text" class="form-control" formControlName="workingUnit" id="workingUnit" readonly>
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="docInputFile">{{'attachment'|translate}}</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="docInputFile" formControlName="fileUpload" readonly>
+                <div class="input-group-btn">
+                    <button class="btn btn-default btn-sm" type="button" (click)="file.click()">{{'browse'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-primary small-button btn-sm" (click)="doSave()">
+                    {{'save'|translate}}
+                </button>
+                <button type="button" class="btn btn-default small-button btn-sm" (click)="doReset()">
+                    {{'reset'|translate}}
+                </button>
+            </div>
+        </div>
+        <input #file (change)="onFileChange($event)"
+               type="file" style="display: none"
+               id="docInputFile1">
+    </form>
+    <div style="height: 300px; overflow: auto;">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>ID Box</th>
+                <th>ID Dokumen</th>
+                <th>Status</th>
+                <th>Tipe Dokumen</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody *ngIf="!listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length===0)">
+            <tr>
+                <td colspan="6">{{'noDataFound'|translate}}</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr *ngFor="let doc of listDocumentRegistrations;let i =index;">
+                <td></td>
+                <td>{{doc.idBox}}</td>
+                <td>{{doc.idDocument}}</td>
+                <td>{{doc.status}}</td>
+                <td>{{doc.documentType}}</td>
+                <td>
+                    <button type="button" class="btn btn-link"><i class="fa fa-th-list" aria-hidden="true"
+                                                                  (click)="doView(box)"></i></button>
+                    <button type="button" class="btn btn-link"><i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                                  (click)="doUpdate(box)"></i>
+                    </button>
+                    <button type="button" class="btn btn-link"><i class="fa fa-times" aria-hidden="true"
+                                                                  (click)="doDelete(box)"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th>No. Reg</th>
-        <th>No. Dokumen</th>
-        <th>Nama Dokumen</th>
-        <th>Deskripsi</th>
-        <th>Kata Kunci</th>
-        <th>Internal/Vendor</th>
-        <th>Kode Lokasi</th>
-        <th>No Box</th>
-        <th>Tanggal Simpan</th>
-        <th>Status Pinjam</th>
-        <th>Histori Pinjam</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngIf="armsDocuments.length==0">
-        <td colspan="12">No Data</td>
-    </tr>
-    <tr *ngFor="let d of armsDocuments">
-        <td>{{d.registrationNo}}</td>
-        <td>{{d.documentNo}}</td>
-        <td>{{d.documentName}}</td>
-        <td>{{d.description}}</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-        <td>8</td>
-        <td>
-            <div style="display: inline-block">
-                <button class="btn btn-default"><i class="fa fa-retweet"></i></button>
-                <button class="btn btn-default"><i class="fa fa-close"></i></button>
-            </div>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<div class="pull-right">
-    <button type="button" class="btn btn-default"
-            id="documentRegistrationConfirmation" (click)="onAddDocumentRegistration()"
-            style="margin-bottom: 10px;width: 200px;">
-        Konfirmasi Registrasi
-    </button>
-    <button type="button" class="btn btn-default"
-            id="documentRegistrationCancellation" (click)="onCancelDocumentRegistration()"
-            style="margin-bottom: 10px;width: 200px;">
-        Batal
-    </button>
-</div>
-<arms-modal-document-registration [id]="'docReg'" (newRegistration)="onUpdateNewRegistration($event)"
-                                  #modalDocReg></arms-modal-document-registration>
+<arms-view-modal #viewModal [title]="'infoRegistration'|translate">
+    <ul class="list-group" *ngIf="box">
+        <li class="list-group-item">
+            <span class="badge">{{box.idBox}}</span>
+            {{'idBox'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{box.workingUnit}}</span>
+            {{'workingUnit'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{box.boxDescription}}</span>
+            {{'boxDescription'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{box.boxSize}}</span>
+            {{'boxSize'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{box.depositType}}</span>
+            {{'depositType'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{box.depositLocation}}</span>
+            {{'depositLocation'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{box.depositShelf}}</span>
+            {{'depositShelf'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{box.startValidDate | dateFormat}}</span>
+            {{'startValidDate'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{box.endValidDate | dateFormat}}</span>
+            {{'endValidDate'|translate}}
+        </li>
+    </ul>
+</arms-view-modal>

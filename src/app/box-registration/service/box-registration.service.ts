@@ -10,4 +10,12 @@ export class BoxRegistrationService {
     addNewBox(box: BoxRegistration) {
         return Observable.of(box).delay(2500);
     }
+
+    updateBox(box: BoxRegistration) {
+        return Observable.of(box).delay(2700);
+    }
+
+    deleteBox(box: BoxRegistration) {
+        return Observable.of(box).delay(2900);
+    }
 }

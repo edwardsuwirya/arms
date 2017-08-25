@@ -16,6 +16,9 @@ import {TranslatePipe} from "./pipe/translate.pipe";
 import {DateUtilService} from "./service/date-util.service";
 import {DateFormatPipe} from "./pipe/date-format.pipe";
 import {ViewModalComponent} from "./component/view-modal/view-modal.component";
+import {HttpUtilService} from "./service/http-util.service";
+import {SecKeyService} from "./service/seckey.service";
+import {SimpleTokenService} from "./service/simple-token.service";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -62,7 +65,10 @@ export class SharedModule {
                 LocalStorageService,
                 I18nService,
                 FormErrorsService,
-                DateUtilService
+                DateUtilService,
+                HttpUtilService,
+                SecKeyService,
+                SimpleTokenService
             ]
         };
     }

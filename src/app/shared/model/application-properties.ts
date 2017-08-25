@@ -8,10 +8,16 @@ export const APP_CONFIG = new InjectionToken("app.config");
 const SERVICE_BASE_URL: string = process.env.API_URL;
 
 const LANG_US = {
+    'documentNo': 'Document No',
+    'documentName': 'Document Name',
+    'depositDocumentRegistration': 'Document Registration',
+    'depositBoxRegistration': 'Box Registration',
     'invalidRegistration': 'Invalid Registration',
+    'exceededSize': 'Invalid Size',
     'infoRegistration': 'Info Registration',
     'invalidPeriod': 'Invalid Period',
     'advanceStartDate': 'Start date is after end date',
+    'overlimitSize': 'File size is overlimit',
     'noDataFound': 'No Data Found',
     'save': 'Save',
     'reset': 'Reset',
@@ -22,7 +28,9 @@ const LANG_US = {
     'internal': 'Internal',
     'vendor': 'Vendor',
     'required': 'Required',
-    'idBox': 'Box Id',
+    'idBox': 'Box ID',
+    'fileUpload': 'File Attachment',
+    'idDoc': 'Document ID',
     'workingUnit': 'Working Unit',
     'boxDescription': 'Box Description',
     'depositLocation': 'Box Location',
@@ -30,14 +38,25 @@ const LANG_US = {
     'depositRoom': 'Box Deposit Room',
     'depositShelf': 'Box Deposit Shelf',
     'startValidDate': 'Start Valid Date',
-    'endValidDate': 'End Valid Date'
+    'endValidDate': 'End Valid Date',
+    'documentType': 'Document Type',
+    'sheetNo': 'Total Sheets',
+    'description': 'Description',
+    'keyword': 'Keyword',
+    'attachment': 'Attachment'
 };
 
 const LANG_ID = {
+    'documentNo': 'Nomor Dokumen',
+    'documentName': 'Nama Dokumen',
+    'depositDocumentRegistration': 'Registrasi Dokumen',
+    'depositBoxRegistration': 'Registrasi Box',
     'invalidRegistration': 'Kesalahan Registrasi',
+    'exceededSize': 'Kesalahan Ukuran',
     'infoRegistration': 'Informasi Registrasi',
     'invalidPeriod': 'Kesalahan periode',
     'advanceStartDate': 'Tanggal mulai setelah tanggal akhir',
+    'overlimitSize': 'Ukuran file terlalu besar',
     'noDataFound': 'Data tidak ditemukan',
     'save': 'Simpan',
     'reset': 'Batal',
@@ -48,7 +67,9 @@ const LANG_ID = {
     'internal': 'Internal',
     'vendor': 'Vendor',
     'required': 'Dibutuhkan',
-    'idBox': 'Id Box',
+    'idBox': 'ID Box',
+    'idDoc': 'ID Dokumen',
+    'fileUpload': 'File Lampiran',
     'workingUnit': 'Unit kerja',
     'boxDescription': 'Deskripsi box',
     'depositLocation': 'Lokasi box',
@@ -56,7 +77,12 @@ const LANG_ID = {
     'depositRoom': 'Ruang penyimpanan box',
     'depositShelf': 'Rak penyimpanan box',
     'startValidDate': 'Tanggal mulai periode berlaku',
-    'endValidDate': 'Tanggal akhir periode berlaku'
+    'endValidDate': 'Tanggal akhir periode berlaku',
+    'documentType': 'Tipe Dokumen',
+    'sheetNo': 'Jumlah Lembar',
+    'description': 'Deskripsi',
+    'keyword': 'Kata Kunci',
+    'attachment': 'Lampiran'
 };
 
 const ERROR_DICT = {

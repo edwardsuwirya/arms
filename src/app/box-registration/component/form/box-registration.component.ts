@@ -106,17 +106,30 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
             this.alertError.doShowModal();
         } else {
             if (this.dateUtilService.compareBetweenDates(formVal.startValidDate, formVal.endValidDate) == false) {
-                this.boxRegistrationService.addNewBox(newBox).subscribe((b) => {
-                    if (!this.listBoxRegistrations) {
-                        this.listBoxRegistrations = [];
-                    }
-                    if (this.isUpdatingForm) {
-                        this.doDelete(this.box);
-                    }
-                    this.listBoxRegistrations.push(b);
-                    this.doReset();
-                    this.loading = false;
-                })
+                if (this.isUpdatingForm) {
+                    this.boxRegistrationService.updateBox(newBox).subscribe((b) => {
+                        this.doSpliceBox(this.box);
+                        if (!this.listBoxRegistrations) {
+                            this.listBoxRegistrations = [];
+                        }
+                        this.listBoxRegistrations.push(b);
+                        this.doReset();
+                        this.loading = false;
+                    }, (err) => {
+                        this.loading = false;
+                    });
+                } else {
+                    this.boxRegistrationService.addNewBox(newBox).subscribe((b) => {
+                        if (!this.listBoxRegistrations) {
+                            this.listBoxRegistrations = [];
+                        }
+                        this.listBoxRegistrations.push(b);
+                        this.doReset();
+                        this.loading = false;
+                    }, (err) => {
+                        this.loading = false;
+                    })
+                }
             } else {
                 this.loading = false;
                 this.errorInfo = [new MessageInfo('invalidPeriod', 'advanceStartDate')];
@@ -156,8 +169,22 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
         this.endValidDate.setPickerDate(box.endValidDate);
     }
 
-    doDelete(box: BoxRegistration) {
+    doSpliceBox(box: BoxRegistration) {
         let boxIndex = this.listBoxRegistrations.indexOf(box);
         this.listBoxRegistrations.splice(boxIndex, 1);
+    }
+
+    doDelete(box: BoxRegistration) {
+        this.loading = true;
+        this.boxRegistrationService.deleteBox(box).subscribe((b) => {
+            this.doSpliceBox(b);
+            this.loading = false;
+        }, (err) => {
+            this.loading = false;
+        })
+    }
+
+    doChooseLocation() {
+        this.boxRegistrationFormGroup.controls['depositLocation'].setValue('Jakarta');
     }
 }

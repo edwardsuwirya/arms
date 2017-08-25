@@ -3,23 +3,23 @@
 </div>
 <arms-alert #alertError [title]="'invalidRegistration' | translate" [contentInfos]="errorInfo"></arms-alert>
 <div class="page-header">
-    <h3>Registrasi Box Deposit</h3>
+    <h3>{{'depositBoxRegistration'|translate}}</h3>
 </div>
 <div style="margin-bottom: 250px">
     <form [formGroup]="boxRegistrationFormGroup">
-        <div class="form-group">
+        <div class="form-group form-group-sm">
             <label for="idBox">{{'idBox'|translate}}</label>
             <input type="text" class="form-control" id="idBox" formControlName="idBox" readonly>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-sm">
             <label for="workingUnit">{{'workingUnit'|translate}}</label>
             <input type="text" class="form-control" id="workingUnit" formControlName="workingUnit" readonly>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-sm">
             <label for="boxDesc">{{'boxDescription'|translate}}</label>
             <input type="text" class="form-control" formControlName="boxDescription" id="boxDesc">
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-sm">
             <label for="boxDesc">{{'boxSize'|translate}}</label>
             <div>
                 <div class="radio-inline">
@@ -42,50 +42,52 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-sm">
             <label for="boxDesc">{{'depositType'|translate}}</label>
             <div>
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" formControlName="depositType" id="optDepositType1" value="I" checked>
+                        <input type="radio" formControlName="depositType" id="optDepositType1" value="Internal" checked>
                         {{'internal'|translate}}
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" formControlName="depositType" id="optDepositType2" value="V">
+                        <input type="radio" formControlName="depositType" id="optDepositType2" value="Vendor">
                         {{'vendor'|translate}}
                     </label>
                 </div>
             </div>
         </div>
-        <div class="form-group" *ngIf="isVendorLocationNeeded">
+        <div class="form-group form-group-sm" *ngIf="isVendorLocationNeeded">
             <label for="depositLocation">{{'depositLocation'|translate}}</label>
             <div class="input-group">
                 <input type="text" class="form-control" id="depositLocation" readonly>
                 <div class="input-group-btn">
-                    <button class="btn btn-default" type="button">{{'choose'|translate}}</button>
+                    <button class="btn btn-default btn-sm" type="button" (click)="doChooseLocation()">
+                        {{'choose'|translate}}
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-sm">
             <label for="depositRoom">{{'depositRoom'|translate}}</label>
             <input type="text" class="form-control" formControlName="depositRoom" id="depositRoom">
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-sm">
             <label for="depositShelf">{{'depositShelf'|translate}}</label>
             <input type="text" class="form-control" formControlName="depositShelf" id="depositShelf">
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label>{{'startValidDate'|translate}}</label>
                     <arms-datepicker #startValidDate (selectedDate)="doGetStartDate($event)"
                                      [id]="'startValidDate'"></arms-datepicker>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label>{{'endValidDate'|translate}}</label>
                     <arms-datepicker #endValidDate (selectedDate)="doGetEndDate($event)"
                                      [id]="'endValidDate'"></arms-datepicker>
@@ -94,54 +96,58 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <button type="button" class="btn btn-primary small-button" (click)="doSave()">{{'save'|translate}}
+                <button type="button" class="btn btn-primary small-button btn-sm" (click)="doSave()">
+                    {{'save'|translate}}
                 </button>
-                <button type="button" class="btn btn-default small-button" (click)="doReset()">{{'reset'|translate}}
+                <button type="button" class="btn btn-default small-button btn-sm" (click)="doReset()">
+                    {{'reset'|translate}}
                 </button>
             </div>
         </div>
     </form>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>No</th>
-            <th>ID Box</th>
-            <th>Deskripsi Box</th>
-            <th>Tipe Penyimpanan</th>
-            <th>Lokasi Penyimpanan</th>
-            <th>Periode</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody *ngIf="!listBoxRegistrations || (listBoxRegistrations && listBoxRegistrations.length===0)">
-        <tr>
-            <td colspan="7">{{'noDataFound'|translate}}</td>
-        </tr>
-        </tbody>
-        <tbody>
-        <tr *ngFor="let box of listBoxRegistrations;let i =index;">
-            <td></td>
-            <td>{{box.idBox}}</td>
-            <!--<td>{{box.workingUnit}}</td>-->
-            <td>{{box.boxDescription}}</td>
-            <!--<td>{{box.boxSize}}</td>-->
-            <td>{{box.depositType}}</td>
-            <td>{{box.depositLocation}}</td>
-            <!--<td>{{box.depositRoom}}</td>-->
-            <!--<td>{{box.depositShelf}}</td>-->
-            <td>{{box.startValidDate | dateFormat}}-{{box.endValidDate | dateFormat}}</td>
-            <td>
-                <button type="button" class="btn btn-link"><i class="fa fa-th-list" aria-hidden="true"
-                                                              (click)="doView(box)"></i></button>
-                <button type="button" class="btn btn-link"><i class="fa fa-pencil-square-o" aria-hidden="true"
-                                                              (click)="doUpdate(box)"></i>
-                </button>
-                <button type="button" class="btn btn-link"><i class="fa fa-times" aria-hidden="true"
-                                                              (click)="doDelete(box)"></i></button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div style="height: 300px; overflow: auto;">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>ID Box</th>
+                <th>Deskripsi Box</th>
+                <th>Tipe Penyimpanan</th>
+                <th>Lokasi Penyimpanan</th>
+                <th>Periode</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody *ngIf="!listBoxRegistrations || (listBoxRegistrations && listBoxRegistrations.length===0)">
+            <tr>
+                <td colspan="7">{{'noDataFound'|translate}}</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr *ngFor="let box of listBoxRegistrations;let i =index;">
+                <td></td>
+                <td>{{box.idBox}}</td>
+                <!--<td>{{box.workingUnit}}</td>-->
+                <td>{{box.boxDescription}}</td>
+                <!--<td>{{box.boxSize}}</td>-->
+                <td>{{box.depositType}}</td>
+                <td>{{box.depositLocation}}</td>
+                <!--<td>{{box.depositRoom}}</td>-->
+                <!--<td>{{box.depositShelf}}</td>-->
+                <td>{{box.startValidDate | dateFormat}}-{{box.endValidDate | dateFormat}}</td>
+                <td>
+                    <button type="button" class="btn btn-link"><i class="fa fa-th-list" aria-hidden="true"
+                                                                  (click)="doView(box)"></i></button>
+                    <button type="button" class="btn btn-link"><i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                                  (click)="doUpdate(box)"></i>
+                    </button>
+                    <button type="button" class="btn btn-link"><i class="fa fa-times" aria-hidden="true"
+                                                                  (click)="doDelete(box)"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <arms-view-modal #viewModal [title]="'infoRegistration'|translate">

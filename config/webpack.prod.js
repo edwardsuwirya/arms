@@ -23,7 +23,7 @@ module.exports = webpackMerge(commonConfig, {
         new HtmlWebpackPlugin({
             template: 'src/index.ejs',
             favicon: 'src/public/images/favicon.ico',
-            baseUrl: '/cbs'
+            baseUrl: '/arms'
         }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
