@@ -19,6 +19,7 @@ import {ViewModalComponent} from "./component/view-modal/view-modal.component";
 import {HttpUtilService} from "./service/http-util.service";
 import {SecKeyService} from "./service/seckey.service";
 import {SimpleTokenService} from "./service/simple-token.service";
+import {PaginationComponent} from "./component/pagination/pagination.component";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -30,6 +31,7 @@ import {SimpleTokenService} from "./service/simple-token.service";
         DatePickerComponent,
         AlertComponent,
         ViewModalComponent,
+        PaginationComponent,
         TranslatePipe,
         TimestampToDatePipe,
         DateFormatPipe
@@ -50,6 +52,7 @@ import {SimpleTokenService} from "./service/simple-token.service";
         SpinnerComponent,
         GoHomeComponent,
         DatePickerComponent,
+        PaginationComponent,
         AlertComponent,
         ViewModalComponent,
         TranslatePipe,
@@ -58,7 +61,7 @@ import {SimpleTokenService} from "./service/simple-token.service";
     ]
 })
 export class SharedModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot():ModuleWithProviders {
         return {
             ngModule: SharedModule,
             providers: [

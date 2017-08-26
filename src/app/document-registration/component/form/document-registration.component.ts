@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, ViewChild} from "@angular/core";
+import {Component, OnInit, AfterViewInit, ViewChild, ElementRef} from "@angular/core";
 import {ViewModalComponent} from "../../../shared/component/view-modal/view-modal.component";
 import {AlertComponent} from "../../../shared/component/alert/alert.component";
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
@@ -20,38 +20,41 @@ import {Observable} from "rxjs";
 })
 export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
-    viewModal: ViewModalComponent;
+    viewModal:ViewModalComponent;
 
     @ViewChild('alertError')
-    alertError: AlertComponent;
+    alertError:AlertComponent;
 
     @ViewChild('startValidDate')
-    startValidDate: DatePickerComponent;
+    startValidDate:DatePickerComponent;
 
     @ViewChild('endValidDate')
-    endValidDate: DatePickerComponent;
+    endValidDate:DatePickerComponent;
 
-    documentRegistrationFormGroup: FormGroup;
+    @ViewChild('file')
+    fileInput:ElementRef;
 
-    listDocumentRegistrations: DocumentRegistration[];
+    documentRegistrationFormGroup:FormGroup;
 
-    loading: boolean = false;
+    listDocumentRegistrations:DocumentRegistration[];
 
-    errorInfo: MessageInfo[] = [];
+    loading:boolean = false;
 
-    isDailyTransaction: boolean = false;
-    isUpdatingForm: boolean = false;
-    armsDocument: DocumentRegistration;
+    errorInfo:MessageInfo[] = [];
 
-    fileInfo: any;
+    isDailyTransaction:boolean = false;
+    isUpdatingForm:boolean = false;
+    armsDocument:DocumentRegistration;
 
-    constructor(private formBuilder: FormBuilder,
-                private documentRegistrationService: DocumentRegistrationService,
-                private formErrorsService: FormErrorsService,
-                private dateUtilService: DateUtilService) {
+    fileInfo:any;
+
+    constructor(private formBuilder:FormBuilder,
+                private documentRegistrationService:DocumentRegistrationService,
+                private formErrorsService:FormErrorsService,
+                private dateUtilService:DateUtilService) {
     }
 
-    ngOnInit(): void {
+    ngOnInit():void {
         this.documentRegistrationFormGroup = this.formBuilder.group({
             idBox: [''],
             idDocument: [''],
@@ -74,9 +77,10 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
                 this.documentRegistrationFormGroup.controls['sheetNo'].setValidators(Validators.required);
                 this.documentRegistrationFormGroup.controls['startValidDate'].setValidators(Validators.required);
                 this.documentRegistrationFormGroup.controls['endValidDate'].setValidators(Validators.required);
-                Observable.timer(500).do(() => {
-                    this.startValidDate.setPickerDate();
-                    this.endValidDate.setPickerDate();
+
+                Observable.timer(300).do(() => {
+                    this.startValidDate.setPickerDate(this.documentRegistrationFormGroup.controls['startValidDate'].value);
+                    this.endValidDate.setPickerDate(this.documentRegistrationFormGroup.controls['endValidDate'].value);
                 }).subscribe();
 
             } else {
@@ -88,7 +92,7 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
         })
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit():void {
 
     }
 
@@ -116,12 +120,12 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
         let formVal = this.documentRegistrationFormGroup.getRawValue();
         console.log(formVal);
 
-        let newBox: DocumentRegistration = new DocumentRegistration(formVal.idBox,
+        let newBox:DocumentRegistration = new DocumentRegistration(formVal.idBox,
             formVal.idDocument,
             formVal.documentType,
             formVal.sheetNo,
-            formVal.startPeriod,
-            formVal.endPeriod,
+            formVal.startValidDate,
+            formVal.endValidDate,
             formVal.documentNo,
             formVal.documentName,
             formVal.description, formVal.keyword,
@@ -168,6 +172,8 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
 
     doReset() {
         this.documentRegistrationFormGroup.reset();
+        this.fileInput.nativeElement.value = '';
+        this.documentRegistrationFormGroup.controls['workingUnit'].setValue('7012');
         if (this.startValidDate) {
             this.startValidDate.clear();
         }
@@ -177,12 +183,12 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
         this.isUpdatingForm = false;
     }
 
-    doView(armsDocument: DocumentRegistration) {
+    doView(armsDocument:DocumentRegistration) {
         this.armsDocument = armsDocument;
         this.viewModal.doShowModal();
     }
 
-    doUpdate(armsDocument: DocumentRegistration) {
+    doUpdate(armsDocument:DocumentRegistration) {
         this.armsDocument = armsDocument;
         this.isUpdatingForm = true;
         this.documentRegistrationFormGroup.controls['idBox'].setValue(armsDocument.idBox);
@@ -196,16 +202,14 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
         this.documentRegistrationFormGroup.controls['description'].setValue(armsDocument.description);
         this.documentRegistrationFormGroup.controls['keyword'].setValue(armsDocument.keyword);
         this.documentRegistrationFormGroup.controls['workingUnit'].setValue(armsDocument.workingUnit);
-        this.startValidDate.setPickerDate(armsDocument.startPeriod);
-        this.endValidDate.setPickerDate(armsDocument.endPeriod);
     }
 
-    doSpliceBox(armsDocument: DocumentRegistration) {
+    doSpliceBox(armsDocument:DocumentRegistration) {
         let boxIndex = this.listDocumentRegistrations.indexOf(armsDocument);
         this.listDocumentRegistrations.splice(boxIndex, 1);
     }
 
-    doDelete(box: DocumentRegistration) {
+    doDelete(box:DocumentRegistration) {
         this.loading = true;
         this.documentRegistrationService.deleteDocument(box).subscribe((b) => {
             this.doSpliceBox(b);

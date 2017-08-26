@@ -13,7 +13,6 @@ import {BoxRegistrationService} from "./service/box-registration.service";
         SharedModule
     ],
     exports: [
-        BoxRegistrationComponent,
     ],
     providers: [
         BoxRegistrationService

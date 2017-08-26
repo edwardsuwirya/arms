@@ -1,5 +1,6 @@
-import {Component, OnInit, AfterViewInit} from "@angular/core";
+import {Component, OnInit, AfterViewInit, ViewChild} from "@angular/core";
 import {Router} from "@angular/router";
+import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
 /**
  * Created by 15050978 on 8/16/2017.
  */
@@ -9,6 +10,8 @@ import {Router} from "@angular/router";
     styleUrls: ['check-in-req.component.css']
 })
 export class CheckInRequestComponent implements OnInit,AfterViewInit {
+    @ViewChild('pickupDate')
+    pickupDate:DatePickerComponent;
 
     listBox:string[] = ['514-01', '514-02', '514-03', '514-04', '514-05'];
     listBoxToBeSend:string[] = [];
@@ -20,17 +23,22 @@ export class CheckInRequestComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit():void {
+        this.pickupDate.setPickerDate();
     }
 
-    doSend(item:string){
+    doGetPickupDate(event) {
+
+    }
+
+    doSend(item:string) {
         this.listBoxToBeSend.push(item);
         let selectedItemIdx = this.listBox.indexOf(item);
-        this.listBox.splice(selectedItemIdx,1);
+        this.listBox.splice(selectedItemIdx, 1);
     }
-    doCancelSend(item:string){
+
+    doCancelSend(item:string) {
         this.listBox.push(item);
         let selectedItemIdx = this.listBoxToBeSend.indexOf(item);
-        this.listBoxToBeSend.splice(selectedItemIdx,1);
-
+        this.listBoxToBeSend.splice(selectedItemIdx, 1);
     }
 }

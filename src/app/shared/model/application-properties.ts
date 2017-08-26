@@ -5,9 +5,12 @@ import {InjectionToken} from "@angular/core";
 
 export const APP_CONFIG = new InjectionToken("app.config");
 
-const SERVICE_BASE_URL: string = process.env.API_URL;
+const SERVICE_BASE_URL:string = process.env.API_URL;
 
 const LANG_US = {
+    'checkInApproval': 'Approval Pickup Box',
+    'depositDocumentRegistrationApproval': 'Approval Document Registration',
+    'browse': 'browse',
     'documentNo': 'Document No',
     'documentName': 'Document Name',
     'depositDocumentRegistration': 'Document Registration',
@@ -43,10 +46,19 @@ const LANG_US = {
     'sheetNo': 'Total Sheets',
     'description': 'Description',
     'keyword': 'Keyword',
-    'attachment': 'Attachment'
+    'attachment': 'Attachment',
+    'viewDetailBox': 'View box detail',
+    'deleteBox': 'Delete a box',
+    'updateBox': 'Update box information',
+    'viewDetailDoc': 'View document detail',
+    'deleteDoc': 'delete a document',
+    'updateDoc': 'update document information',
 };
 
 const LANG_ID = {
+    'checkInApproval': 'Persetujuan Pickup Box',
+    'depositDocumentRegistrationApproval': 'Persetujuan Registrasi Dokumen',
+    'browse': 'Jelajah File',
     'documentNo': 'Nomor Dokumen',
     'documentName': 'Nama Dokumen',
     'depositDocumentRegistration': 'Registrasi Dokumen',
@@ -82,7 +94,13 @@ const LANG_ID = {
     'sheetNo': 'Jumlah Lembar',
     'description': 'Deskripsi',
     'keyword': 'Kata Kunci',
-    'attachment': 'Lampiran'
+    'attachment': 'Lampiran',
+    'viewDetailBox': 'Lihat informasi box',
+    'deleteBox': 'Hapus box',
+    'updateBox': 'Pembaruan informasi box',
+    'viewDetailDoc': 'Lihat informasi dokumen',
+    'deleteDoc': 'Hapus dokumen',
+    'updateDoc': 'Pembaruan informasi dokumen',
 };
 
 const ERROR_DICT = {
