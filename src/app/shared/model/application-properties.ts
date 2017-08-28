@@ -8,6 +8,8 @@ export const APP_CONFIG = new InjectionToken("app.config");
 const SERVICE_BASE_URL:string = process.env.API_URL;
 
 const LANG_US = {
+    'documentSearch': 'Document Search',
+    'borrowRegistration': 'Borrow Document Registration',
     'checkInApproval': 'Approval Pickup Box',
     'depositDocumentRegistrationApproval': 'Approval Document Registration',
     'browse': 'browse',
@@ -56,12 +58,14 @@ const LANG_US = {
 };
 
 const LANG_ID = {
+    'documentSearch': 'Pencarian Arsip',
+    'borrowRegistration': 'Peminjaman Arsip',
     'checkInApproval': 'Persetujuan Pickup Box',
-    'depositDocumentRegistrationApproval': 'Persetujuan Registrasi Dokumen',
+    'depositDocumentRegistrationApproval': 'Persetujuan Registrasi Arsip',
     'browse': 'Jelajah File',
-    'documentNo': 'Nomor Dokumen',
-    'documentName': 'Nama Dokumen',
-    'depositDocumentRegistration': 'Registrasi Dokumen',
+    'documentNo': 'Nomor Arsip',
+    'documentName': 'Nama Arsip',
+    'depositDocumentRegistration': 'Registrasi Arsip',
     'depositBoxRegistration': 'Registrasi Box',
     'invalidRegistration': 'Kesalahan Registrasi',
     'exceededSize': 'Kesalahan Ukuran',
@@ -90,7 +94,7 @@ const LANG_ID = {
     'depositShelf': 'Rak penyimpanan box',
     'startValidDate': 'Tanggal mulai periode berlaku',
     'endValidDate': 'Tanggal akhir periode berlaku',
-    'documentType': 'Tipe Dokumen',
+    'documentType': 'Tipe Arsip',
     'sheetNo': 'Jumlah Lembar',
     'description': 'Deskripsi',
     'keyword': 'Kata Kunci',
@@ -98,9 +102,9 @@ const LANG_ID = {
     'viewDetailBox': 'Lihat informasi box',
     'deleteBox': 'Hapus box',
     'updateBox': 'Pembaruan informasi box',
-    'viewDetailDoc': 'Lihat informasi dokumen',
+    'viewDetailDoc': 'Lihat informasi arsip',
     'deleteDoc': 'Hapus dokumen',
-    'updateDoc': 'Pembaruan informasi dokumen',
+    'updateDoc': 'Pembaruan informasi arsip',
 };
 
 const ERROR_DICT = {
