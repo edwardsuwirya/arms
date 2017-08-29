@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var helpers = require('./helpers');
 
 module.exports = {
@@ -51,7 +52,9 @@ module.exports = {
             helpers.root('./src'),
             {}
         ),
-
+        new CopyWebpackPlugin([
+            {from:'src/public/images',to:'assets'}
+        ]),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
         }),

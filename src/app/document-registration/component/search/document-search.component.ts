@@ -27,7 +27,7 @@ export class DocumentSearchComponent implements OnInit,AfterViewInit {
 
     ngOnInit():void {
         this.documentSearchFormGroup = this.formBuilder.group({
-            idDocument: [''],
+            idDoc: [''],
             documentNo: [''],
             documentName: [''],
             description: [''],

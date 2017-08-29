@@ -10,10 +10,12 @@ import {DOCUMENT_REGISTRATION_PATH} from "../document-registration/document-regi
 import {CHECK_IN_PATH} from "../check-in/check-in.module";
 import {CHECK_OUT_PATH} from "../check-out/check-out.module";
 import {BOX_REGISTRATION_PATH} from "../box-registration/box-registration.module";
+import {LoginComponent} from "../login/component/login.component";
 
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
+    {path: '', redirectTo: '/login', pathMatch: 'full'},
+    {path: 'login', component: LoginComponent},
     {
         path: 'home', component: HomePageComponent,
         children: [

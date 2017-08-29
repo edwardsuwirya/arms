@@ -2,6 +2,7 @@
  * Created by edo on 06/05/2017.
  */
 import {Component, OnInit, AfterViewInit} from "@angular/core";
+import {Router} from "@angular/router";
 
 declare let $: any;
 declare let _: any;
@@ -17,7 +18,7 @@ export class HomePageComponent implements OnInit,AfterViewInit {
     appName: string;
     appVersion: string;
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     ngOnInit() {
@@ -28,5 +29,9 @@ export class HomePageComponent implements OnInit,AfterViewInit {
         this.activeRole = 'Custody';
         this.appName = 'ARMS';
         this.appVersion = '1.0.0';
+    }
+
+    doLogout(){
+        this.router.navigate(['/login']);
     }
 }

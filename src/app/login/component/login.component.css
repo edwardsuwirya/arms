@@ -1,0 +1,26 @@
+.arms-bg {
+    background: url('assets/bg.png') center no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.arms-title {
+    font-weight: normal;
+    color: #5e5e5e;
+    letter-spacing: 3pt;
+    word-spacing: 0pt;
+    font-size: 48px;
+    text-align: left;
+    font-family: arial black, sans-serif;
+}
+
+.arms-subtitle{
+    font-weight: normal;
+    color: #5e5e5e;
+    font-size: 14px;
+    font-family: arial, sans-serif;
+    letter-spacing: 2pt;
+}

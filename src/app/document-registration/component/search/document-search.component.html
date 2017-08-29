@@ -6,6 +6,26 @@
 </div>
 <div style="margin-bottom: 250px">
     <form [formGroup]="documentSearchFormGroup" style="margin-bottom: 20px">
+        <div class="form-group form-group-sm">
+            <label for="idBox">{{'idDoc'|translate}}</label>
+            <input type="text" class="form-control" id="idBox" formControlName="idDoc">
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="documentNo">{{'documentNo'|translate}}</label>
+            <input type="text" class="form-control" id="documentNo" formControlName="documentNo">
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="documentName">{{'documentName'|translate}}</label>
+            <input type="text" class="form-control" id="documentName" formControlName="documentName">
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="description">{{'description'|translate}}</label>
+            <input type="text" class="form-control" id="description" formControlName="description">
+        </div>
+        <div class="form-group form-group-sm">
+            <label for="keyword">{{'description'|translate}}</label>
+            <input type="text" class="form-control" id="keyword" formControlName="keyword">
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <button type="button" class="btn btn-primary small-button btn-sm" (click)="doSearch()">

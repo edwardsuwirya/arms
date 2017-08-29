@@ -13,6 +13,7 @@ import {CheckInModule} from "./check-in/check-in.module";
 import {CheckOutModule} from "./check-out/check-out.module";
 import {BoxRegistrationComponent} from "./box-registration/component/form/box-registration.component";
 import {BoxRegistrationModule} from "./box-registration/box-registration.module";
+import {LoginModule} from "./login/login.module";
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import {BoxRegistrationModule} from "./box-registration/box-registration.module"
         AppRouteModule,
         SharedModule.forRoot(),
         ReactiveFormsModule,
+        LoginModule,
         HomeModule,
         BoxRegistrationModule,
         DocumentRegistrationModule,
