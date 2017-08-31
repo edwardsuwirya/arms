@@ -4,6 +4,7 @@ import {DocumentRegistrationComponent} from "./component/form/document-registrat
 import {DocumentRegistrationService} from "./service/document-registration.service";
 import {DocumentRegistrationApprovalComponent} from "./component/approval/document-registration-approval.component";
 import {DocumentSearchComponent} from "./component/search/document-search.component";
+import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
 /**
  * Created by 15050978 on 8/15/2017.
  */
@@ -14,7 +15,8 @@ import {DocumentSearchComponent} from "./component/search/document-search.compon
         DocumentSearchComponent
     ],
     imports: [
-        SharedModule
+        SharedModule,
+        ArmsMenuModule
     ],
     exports: [],
     providers: [

@@ -5,6 +5,7 @@ import {SharedModule} from "../shared/shared.module";
 import {NgModule} from "@angular/core";
 import {CheckInRequestComponent} from "./component/request/check-in-req.component";
 import {CheckInApprovalComponent} from "./component/approval/check-in.approval.component";
+import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
 /**
  * Created by 15050978 on 8/16/2017.
  */
@@ -15,7 +16,8 @@ import {CheckInApprovalComponent} from "./component/approval/check-in.approval.c
         CheckInApprovalComponent
     ],
     imports: [
-        SharedModule
+        SharedModule,
+        ArmsMenuModule
     ],
     exports: [],
     providers: []

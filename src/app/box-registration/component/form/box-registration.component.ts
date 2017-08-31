@@ -53,7 +53,7 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
             workingUnit: ['7012'],
             boxDescription: ['', Validators.required],
             boxSize: ['S', Validators.required],
-            depositType: ['I', Validators.required],
+            depositType: ['Internal', Validators.required],
             depositLocation: [''],
             depositRoom: ['', Validators.required],
             depositShelf: ['', Validators.required],

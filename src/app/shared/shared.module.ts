@@ -20,6 +20,7 @@ import {HttpUtilService} from "./service/http-util.service";
 import {SecKeyService} from "./service/seckey.service";
 import {SimpleTokenService} from "./service/simple-token.service";
 import {PaginationComponent} from "./component/pagination/pagination.component";
+import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -41,7 +42,7 @@ import {PaginationComponent} from "./component/pagination/pagination.component";
         HttpModule,
         RouterModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     exports: [
         CommonModule,
@@ -61,7 +62,7 @@ import {PaginationComponent} from "./component/pagination/pagination.component";
     ]
 })
 export class SharedModule {
-    static forRoot():ModuleWithProviders {
+    static forRoot(): ModuleWithProviders {
         return {
             ngModule: SharedModule,
             providers: [

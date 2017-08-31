@@ -1,5 +1,5 @@
 .arms-bg {
-    background: url('assets/bg.png') center no-repeat;
+    background: url('assets/bg.jpg') center no-repeat;
     position: absolute;
     top: 0;
     left: 0;
@@ -17,10 +17,18 @@
     font-family: arial black, sans-serif;
 }
 
-.arms-subtitle{
+.arms-subtitle {
     font-weight: normal;
     color: #5e5e5e;
     font-size: 14px;
     font-family: arial, sans-serif;
     letter-spacing: 2pt;
+}
+
+.panel {
+    background-color: rgba(245, 245, 245, 0.4) !important;
+}
+
+.panel-default {
+    border-color: transparent !important;
 }

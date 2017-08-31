@@ -1,49 +1,60 @@
-<div class="page-header">
-    <h3>Permintaan Pickup Box</h3>
+<div *ngIf="loading">
+    <arms-spinner></arms-spinner>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label>Tanggal</label>
-            <arms-datepicker #pickupDate (selectedDate)="doGetPickupDate($event)"
-                             [id]="'pickupDate'"></arms-datepicker>
+<arms-module-container>
+    <div sidebar>
+        <arms-menu [isTabOpen]="2" [activeMenu]="'pickupBox'"></arms-menu>
+    </div>
+    <div content>
+        <div class="page-header">
+            <h3>Permintaan Pickup Box</h3>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-    </div>
-</div>
-<div class="well">
-    <div class="row">
-        <div class="col-md-6">
-            <h5>Box Yang Dikelola</h5>
-            <ul class="list-group">
-                <li *ngFor="let item of listBox" class="list-group-item">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Tanggal</label>
+                    <arms-datepicker #pickupDate (selectedDate)="doGetPickupDate($event)"
+                                     [id]="'pickupDate'"></arms-datepicker>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+        <div class="well">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Box Yang Dikelola</h5>
+                    <ul class="list-group">
+                        <li *ngFor="let item of listBox" class="list-group-item">
                 <span class="pull-right" style="margin-top: -5px">
                     <a class="btn btn-link">Reg. Doc</a>
                     <a class="btn btn-link" (click)="doSend(item)">Kirim</a>
                 </span>
-                    {{item}}
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <h5>Box Yang Akan Dikirm</h5>
-            <ul class="list-group">
-                <li *ngFor="let item of listBoxToBeSend" class="list-group-item">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>Box Yang Akan Dikirm</h5>
+                    <ul class="list-group">
+                        <li *ngFor="let item of listBoxToBeSend" class="list-group-item">
                 <span class="pull-right" style="margin-top: -5px">
                     <a class="btn btn-link" (click)="doCancelSend(item)">Batal</a>
                 </span>
-                    {{item}}
-                </li>
-            </ul>
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="text-align: right">
+                    <button type="button" class="btn btn-default" routerLink="/">Batal</button>
+                    <button type="button" class="btn btn-primary" (click)="onAddDocumentRegistration()">Konfirmasi
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12" style="text-align: right">
-            <button type="button" class="btn btn-default" routerLink="/">Batal</button>
-            <button type="button" class="btn btn-primary" (click)="onAddDocumentRegistration()">Konfirmasi</button>
-        </div>
-    </div>
-</div>
+</arms-module-container>

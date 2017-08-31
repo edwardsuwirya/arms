@@ -4,7 +4,6 @@
 import {NgModule} from "@angular/core";
 import {HomePageComponent} from "./component/home-page.component";
 import {SharedModule} from "../shared/shared.module";
-import {RouterModule} from "@angular/router";
 import {WelcomePageComponent} from "./component/welcome-page.component";
 import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
 

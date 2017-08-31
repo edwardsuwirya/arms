@@ -2,151 +2,163 @@
     <arms-spinner></arms-spinner>
 </div>
 <arms-alert #alertError [title]="'invalidRegistration' | translate" [contentInfos]="errorInfo"></arms-alert>
-<div class="page-header">
-    <h3>{{'depositDocumentRegistration'|translate}}</h3>
-</div>
-<div style="margin-bottom: 250px">
-    <form [formGroup]="documentRegistrationFormGroup" style="margin-bottom: 20px">
-        <div class="form-group form-group-sm">
-            <label for="idBox">{{'idBox'|translate}}</label>
-            <div class="input-group">
-                <div class="input-group-btn">
-                    <button class="btn btn-default btn-sm" type="button" (click)="doChooseBox()">{{'choose'|translate}}
-                    </button>
-                </div>
-                <input type="text" class="form-control" id="idBox" formControlName="idBox" readonly>
-            </div>
+<arms-module-container>
+    <div sidebar>
+        <arms-menu [isTabOpen]="1" [activeMenu]="'registrasiArsip'"></arms-menu>
+    </div>
+    <div content>
+        <div class="page-header">
+            <h3>{{'depositDocumentRegistration'|translate}}</h3>
         </div>
-        <div class="form-group form-group-sm">
-            <label for="idDoc">{{'idDoc'|translate}}</label>
-            <input type="text" class="form-control" id="idDoc" formControlName="idDocument" readonly>
-        </div>
-        <div class="form-group form-group-sm">
-            <label>{{'documentType'|translate}}</label>
-            <select class="form-control" formControlName="documentType">
-                <option value="th">Transaksi Harian</option>
-                <option value="tb">Transaksi Bulanan</option>
-            </select>
-        </div>
-        <div class="form-group form-group-sm" *ngIf="isDailyTransaction">
-            <label for="sheetNo">{{'sheetNo'|translate}}</label>
-            <input type="text" class="form-control" formControlName="sheetNo" id="sheetNo">
-        </div>
-        <div class="row" *ngIf="isDailyTransaction">
-            <div class="col-sm-6">
+        <div style="margin-bottom: 250px">
+            <form [formGroup]="documentRegistrationFormGroup" style="margin-bottom: 20px">
                 <div class="form-group form-group-sm">
-                    <label>{{'startValidDate'|translate}}</label>
-                    <arms-datepicker #startValidDate (selectedDate)="doGetStartDate($event)"
-                                     [id]="'startValidDate'"></arms-datepicker>
+                    <label for="idBox">{{'idBox'|translate}}</label>
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="button" (click)="doChooseBox()">
+                                {{'choose'|translate}}
+                            </button>
+                        </div>
+                        <input type="text" class="form-control" id="idBox" formControlName="idBox" readonly>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
                 <div class="form-group form-group-sm">
-                    <label>{{'endValidDate'|translate}}</label>
-                    <arms-datepicker #endValidDate (selectedDate)="doGetEndDate($event)"
-                                     [id]="'endValidDate'"></arms-datepicker>
+                    <label for="idDoc">{{'idDoc'|translate}}</label>
+                    <input type="text" class="form-control" id="idDoc" formControlName="idDocument" readonly>
                 </div>
-            </div>
-        </div>
-        <div class="form-group form-group-sm">
-            <label for="documentNo">{{'documentNo'|translate}}</label>
-            <input type="text" class="form-control" formControlName="documentNo" id="documentNo">
-        </div>
-        <div class="form-group form-group-sm">
-            <label for="documentName">{{'documentName'|translate}}</label>
-            <input type="text" class="form-control" formControlName="documentName" id="documentName">
-        </div>
-        <div class="form-group form-group-sm">
-            <label for="description">{{'description'|translate}}</label>
-            <textarea class="form-control" formControlName="description" id="description"></textarea>
-        </div>
-        <div class="form-group form-group-sm">
-            <label for="keyword">{{'keyword'|translate}}</label>
-            <textarea class="form-control" formControlName="keyword" id="keyword"></textarea>
-        </div>
-        <div class="form-group form-group-sm">
-            <label for="workingUnit">{{'workingUnit'|translate}}</label>
-            <input type="text" class="form-control" formControlName="workingUnit" id="workingUnit" readonly>
-        </div>
-        <div class="form-group form-group-sm">
-            <label for="docInputFile">{{'attachment'|translate}}</label>
-            <div class="input-group">
-                <div class="input-group-btn">
-                    <button class="btn btn-default btn-sm" type="button" (click)="file.click()">{{'browse'|translate}}
-                    </button>
+                <div class="form-group form-group-sm">
+                    <label>{{'documentType'|translate}}</label>
+                    <select class="form-control" formControlName="documentType">
+                        <option value="th">Transaksi Harian</option>
+                        <option value="tb">Transaksi Bulanan</option>
+                    </select>
                 </div>
-                <input type="text" class="form-control" id="docInputFile" formControlName="fileUpload" readonly>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <button type="button" class="btn btn-primary small-button btn-sm" (click)="doSave()">
-                    {{'save'|translate}}
-                </button>
-                <button type="button" class="btn btn-default small-button btn-sm" (click)="doReset()">
-                    {{'reset'|translate}}
-                </button>
-            </div>
-        </div>
-        <input #file (change)="onFileChange($event)"
-               type="file" style="display: none"
-               id="docInputFile1">
-    </form>
-    <div class="well">
-        <div style="height: 300px; overflow: auto;">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>No</th>
-                    <th>ID Box</th>
-                    <th>ID Dokumen</th>
-                    <th>Status</th>
-                    <th>Tipe Dokumen</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody *ngIf="!listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length===0)">
-                <tr>
-                    <td colspan="6">{{'noDataFound'|translate}}</td>
-                </tr>
-                </tbody>
-                <tbody>
-                <tr *ngFor="let doc of listDocumentRegistrations;let i =index;">
-                    <td></td>
-                    <td>{{doc.idBox}}</td>
-                    <td>{{doc.idDocument}}</td>
-                    <td>{{doc.status}}</td>
-                    <td>{{doc.documentType}}</td>
-                    <td>
-                        <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
-                                title="{{'viewDetailDoc'|translate}}"><i class="fa fa-th-list" aria-hidden="true"
-                                                                         (click)="doView(doc)"></i></button>
-                        <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
-                                title="{{'updateDoc'|translate}}"><i class="fa fa-pencil-square-o" aria-hidden="true"
-                                                                     (click)="doUpdate(doc)"></i>
+                <div class="form-group form-group-sm" *ngIf="isDailyTransaction">
+                    <label for="sheetNo">{{'sheetNo'|translate}}</label>
+                    <input type="text" class="form-control" formControlName="sheetNo" id="sheetNo">
+                </div>
+                <div class="row" *ngIf="isDailyTransaction">
+                    <div class="col-sm-6">
+                        <div class="form-group form-group-sm">
+                            <label>{{'startValidDate'|translate}}</label>
+                            <arms-datepicker #startValidDate (selectedDate)="doGetStartDate($event)"
+                                             [id]="'startValidDate'"></arms-datepicker>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group form-group-sm">
+                            <label>{{'endValidDate'|translate}}</label>
+                            <arms-datepicker #endValidDate (selectedDate)="doGetEndDate($event)"
+                                             [id]="'endValidDate'"></arms-datepicker>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="documentNo">{{'documentNo'|translate}}</label>
+                    <input type="text" class="form-control" formControlName="documentNo" id="documentNo">
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="documentName">{{'documentName'|translate}}</label>
+                    <input type="text" class="form-control" formControlName="documentName" id="documentName">
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="description">{{'description'|translate}}</label>
+                    <textarea class="form-control" formControlName="description" id="description"></textarea>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="keyword">{{'keyword'|translate}}</label>
+                    <textarea class="form-control" formControlName="keyword" id="keyword"></textarea>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="workingUnit">{{'workingUnit'|translate}}</label>
+                    <input type="text" class="form-control" formControlName="workingUnit" id="workingUnit" readonly>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="docInputFile">{{'attachment'|translate}}</label>
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="button" (click)="file.click()">
+                                {{'browse'|translate}}
+                            </button>
+                        </div>
+                        <input type="text" class="form-control" id="docInputFile" formControlName="fileUpload" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-primary small-button btn-sm" (click)="doSave()">
+                            {{'save'|translate}}
                         </button>
-                        <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
-                                title="{{'deleteDoc'|translate}}"><i class="fa fa-times" aria-hidden="true"
-                                                                     (click)="doDelete(doc)"></i></button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            <div class="pull-left">
-                <arms-pagination
-                        *ngIf="listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0)"
-                        [totalPage]="19"></arms-pagination>
-            </div>
-            <div class="pull-right">
-                <button *ngIf="listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0)"
-                        class="btn btn-primary">Submit Approval
-                </button>
+                        <button type="button" class="btn btn-default small-button btn-sm" (click)="doReset()">
+                            {{'reset'|translate}}
+                        </button>
+                    </div>
+                </div>
+                <input #file (change)="onFileChange($event)"
+                       type="file" style="display: none"
+                       id="docInputFile1">
+            </form>
+            <div class="well">
+                <div style="height: 300px; overflow: auto;">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>ID Box</th>
+                            <th>ID Dokumen</th>
+                            <th>Status</th>
+                            <th>Tipe Dokumen</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody *ngIf="!listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length===0)">
+                        <tr>
+                            <td colspan="6">{{'noDataFound'|translate}}</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr *ngFor="let doc of listDocumentRegistrations;let i =index;">
+                            <td></td>
+                            <td>{{doc.idBox}}</td>
+                            <td>{{doc.idDocument}}</td>
+                            <td>{{doc.status}}</td>
+                            <td>{{doc.documentType}}</td>
+                            <td>
+                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
+                                        title="{{'viewDetailDoc'|translate}}"><i class="fa fa-th-list"
+                                                                                 aria-hidden="true"
+                                                                                 (click)="doView(doc)"></i></button>
+                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
+                                        title="{{'updateDoc'|translate}}"><i class="fa fa-pencil-square-o"
+                                                                             aria-hidden="true"
+                                                                             (click)="doUpdate(doc)"></i>
+                                </button>
+                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
+                                        title="{{'deleteDoc'|translate}}"><i class="fa fa-times" aria-hidden="true"
+                                                                             (click)="doDelete(doc)"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="pull-left">
+                        <arms-pagination
+                                *ngIf="listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0)"
+                                [totalPage]="19"></arms-pagination>
+                    </div>
+                    <div class="pull-right">
+                        <button *ngIf="listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0)"
+                                class="btn btn-primary">Submit Approval
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</arms-module-container>
+
 
 <arms-view-modal #viewModal [title]="'infoRegistration'|translate">
     <ul class="list-group" *ngIf="armsDocument">

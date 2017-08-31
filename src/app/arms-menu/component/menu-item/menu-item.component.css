@@ -12,9 +12,18 @@
     border: 1px solid gainsboro;
 }
 
+.active {
+    border: 1px solid gray;
+    background: whitesmoke;
+}
+
 .content:hover {
     border: 1px solid gray;
     background: whitesmoke;
+}
+
+.title-wrapper-active {
+    font-weight: bolder;
 }
 
 .content:hover ~ .title-wrapper {

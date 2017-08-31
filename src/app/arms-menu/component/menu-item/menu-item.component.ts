@@ -1,4 +1,4 @@
-import {OnInit, Component, AfterViewInit, Input} from "@angular/core";
+import {OnInit, Component, AfterViewInit, Input, EventEmitter, Output} from "@angular/core";
 import {Router} from "@angular/router";
 /**
  * Created by 15050978 on 8/16/2017.
@@ -10,6 +10,9 @@ import {Router} from "@angular/router";
 })
 export class ArmsMenuItemComponent implements OnInit,AfterViewInit {
     @Input()
+    id: string = '';
+
+    @Input()
     title: string = '';
 
     @Input()
@@ -17,6 +20,9 @@ export class ArmsMenuItemComponent implements OnInit,AfterViewInit {
 
     @Input()
     direction: string = '';
+
+    @Input()
+    activeMenu: string = '';
 
     constructor(private router: Router) {
     }

@@ -9,25 +9,22 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+            <div id="collapseOne" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===1}" role="tabpanel"
                  aria-labelledby="headingOne">
-                <div class="panel-body">
+                <div class="panel-body" style="text-align: center">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <arms-menu-item [icon]="'fa-archive'" [title]="'Registrasi Box'"
-                                            [direction]="'/boxRegistration'"></arms-menu-item>
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
+                            <arms-menu-item [id]="'registrasiBox'" [icon]="'fa-archive'" [title]="'Registrasi Box'"
+                                            [direction]="'/boxRegistration'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
-                        <div class="col-sm-6">
-                            <arms-menu-item [icon]="'fa-tags'" [title]="'Registrasi Dokumen'"
-                                            [direction]="'/documentRegistration'"></arms-menu-item>
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
+                            <arms-menu-item [id]="'registrasiArsip'" [icon]="'fa-tags'" [title]="'Registrasi Arsip'"
+                                            [direction]="'/documentRegistration'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <arms-menu-item [icon]="'fa-thumbs-o-up'" [title]="'Persetujuan Registrasi Doc'"
-                                            [direction]="'/documentRegistration/approval'"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
+                            <arms-menu-item [id]="'persetujuanRegistrasiArsip'" [icon]="'fa-thumbs-o-up'"
+                                            [title]="'Persetujuan Registrasi Arsip'"
+                                            [direction]="'/documentRegistration/approval'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                     </div>
                 </div>
@@ -42,17 +39,18 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+            <div id="collapseTwo" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===2}" role="tabpanel"
                  aria-labelledby="headingTwo">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <arms-menu-item [icon]="'fa-level-up'" [title]="'Pick Up Box'"
-                                            [direction]="'/checkIn'"></arms-menu-item>
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
+                            <arms-menu-item [id]="'pickupBox'" [icon]="'fa-level-up'" [title]="'Pick Up Box'"
+                                            [direction]="'/checkIn'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
-                        <div class="col-sm-6">
-                            <arms-menu-item [icon]="'fa-thumbs-o-up'" [title]="'Persetujuan Pick Up Box'"
-                                            [direction]="'/checkIn/approval'"></arms-menu-item>
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
+                            <arms-menu-item [id]="'persetujuanPickupBox'" [icon]="'fa-thumbs-o-up'"
+                                            [title]="'Persetujuan Pick Up Box'"
+                                            [direction]="'/checkIn/approval'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                     </div>
                 </div>
@@ -67,13 +65,13 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+            <div id="collapseThree" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===3}" role="tabpanel"
                  aria-labelledby="headingThree">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <arms-menu-item [icon]="'fa-binoculars'" [title]="'Pencarian Dokumen'"
-                                            [direction]="'/documentRegistration/search'"></arms-menu-item>
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
+                            <arms-menu-item [id]="'pencarianArsip'" [icon]="'fa-binoculars'" [title]="'Pencarian Arsip'"
+                                            [direction]="'/documentRegistration/search'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                     </div>
                 </div>
@@ -88,13 +86,14 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+            <div id="collapseFour" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===4}" role="tabpanel"
                  aria-labelledby="headingFour">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <arms-menu-item [icon]="'fa-level-down'" [title]="'Pengembalian Dokumen'"
-                                            [direction]="'/checkOut'"></arms-menu-item>
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
+                            <arms-menu-item [id]="'pengembalianArsip'" [icon]="'fa-level-down'"
+                                            [title]="'Pengembalian Arsip'"
+                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                     </div>
                 </div>

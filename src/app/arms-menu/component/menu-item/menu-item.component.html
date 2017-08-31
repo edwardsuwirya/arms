@@ -1,8 +1,9 @@
 <div class="col-md-2">
-    <div class="base-wrapper">
-        <div class="circleBase content" (click)="doClick()">
+    <div id="{{id}}" class="base-wrapper">
+        <div class="circleBase content" [ngClass]="{'active': id===activeMenu}" (click)="doClick()">
             <i class="fa fa-2x {{icon}}"></i>
         </div>
-        <div class="title-wrapper">{{title}}</div>
+        <div class="title-wrapper" [ngClass]="{'title-wrapper-active': id===activeMenu}" (click)="doClick()">{{title}}
+        </div>
     </div>
 </div>

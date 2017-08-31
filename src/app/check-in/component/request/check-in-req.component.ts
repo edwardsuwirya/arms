@@ -13,6 +13,8 @@ export class CheckInRequestComponent implements OnInit,AfterViewInit {
     @ViewChild('pickupDate')
     pickupDate:DatePickerComponent;
 
+    loading: boolean = false;
+
     listBox:string[] = ['514-01', '514-02', '514-03', '514-04', '514-05'];
     listBoxToBeSend:string[] = [];
 

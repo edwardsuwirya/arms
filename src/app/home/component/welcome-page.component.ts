@@ -4,7 +4,12 @@ import {Component} from "@angular/core";
  */
 @Component({
     selector: 'arms-welcome-page',
-    template: '<div></div>',
+    template: `
+        <div class="container-fluid">
+            <arms-menu [isWelcome]="true"></arms-menu>
+        </div>
+    `,
     styles: []
 })
-export class WelcomePageComponent {}
+export class WelcomePageComponent {
+}
