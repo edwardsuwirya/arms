@@ -5,7 +5,7 @@ import {InjectionToken} from "@angular/core";
 
 export const APP_CONFIG = new InjectionToken("app.config");
 
-const SERVICE_BASE_URL: string = process.env.API_URL;
+const SERVICE_BASE_URL:string = process.env.API_URL;
 
 const LANG_US = {
     'boxSending': 'Box Sending ',
@@ -63,6 +63,9 @@ const LANG_US = {
     'viewDetailDoc': 'View document detail',
     'deleteDoc': 'delete a document',
     'updateDoc': 'update document information',
+    'approval': 'Approval',
+    'approve': 'Approve',
+    'reject': 'Reject'
 };
 
 const LANG_ID = {
@@ -121,6 +124,9 @@ const LANG_ID = {
     'viewDetailDoc': 'Lihat informasi arsip',
     'deleteDoc': 'Hapus dokumen',
     'updateDoc': 'Pembaruan informasi arsip',
+    'approval': 'Persetujuan',
+    'approve': 'Disetujui',
+    'reject': 'Ditolak'
 };
 
 const ERROR_DICT = {

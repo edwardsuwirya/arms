@@ -1,8 +1,8 @@
-import {Component, OnInit, AfterViewInit, Input} from "@angular/core";
+import {Component, OnInit, AfterViewInit, Input, EventEmitter, Output} from "@angular/core";
 /**
  * Created by 15050978 on 8/24/2017.
  */
-declare let $: any;
+declare let $:any;
 @Component({
     selector: 'arms-view-modal',
     templateUrl: './view-modal.component.html',
@@ -10,18 +10,36 @@ declare let $: any;
 })
 export class ViewModalComponent implements OnInit,AfterViewInit {
     @Input()
-    title: string = 'Info';
+    title:string = 'Info';
 
     @Input()
-    id: string = 'viewModal';
+    id:string = 'viewModal';
 
-    ngOnInit(): void {
+    @Input()
+    showButton:{} = {
+        'save': false,
+        'cancel': false,
+        'close': 'true'
+    };
+
+    @Output()
+    saveClick:EventEmitter<boolean> = new EventEmitter();
+
+    ngOnInit():void {
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit():void {
     }
 
     doShowModal() {
         $('#' + this.id).modal();
+    }
+
+    doCloseModal() {
+        $('#' + this.id).modal('hide');
+    }
+
+    doSave() {
+        this.saveClick.emit(true);
     }
 }

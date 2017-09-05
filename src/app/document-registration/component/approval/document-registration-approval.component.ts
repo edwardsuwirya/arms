@@ -1,6 +1,7 @@
 import {OnInit, Component, AfterViewInit, ViewChild} from "@angular/core";
-import {DocumentRegistration} from "../../model/document-registration";
 import {ViewModalComponent} from "../../../shared/component/view-modal/view-modal.component";
+import {DocumentRegistrationService} from "../../service/document-registration.service";
+import {DocumentApproval} from "../../model/document-approval";
 /**
  * Created by edo on 26/08/2017.
  */
@@ -13,19 +14,30 @@ export class DocumentRegistrationApprovalComponent implements OnInit,AfterViewIn
     @ViewChild('viewModal')
     viewModal:ViewModalComponent;
 
-    listDocumentRegistrations:DocumentRegistration[];
-    armsDocument:DocumentRegistration;
+    listDocumentApproval:DocumentApproval[];
+    armsDocApproval:DocumentApproval;
+
+    constructor(private documentRegistrationService:DocumentRegistrationService) {
+    }
 
     ngOnInit():void {
-
+        this.documentRegistrationService.getListDocumentRegistrationForApproval().subscribe((res)=> {
+            this.listDocumentApproval = res;
+        })
     }
 
     ngAfterViewInit():void {
 
     }
 
-    doView(armsDocument:DocumentRegistration) {
-        this.armsDocument = armsDocument;
+    doApprove(doc:DocumentApproval) {
+        this.armsDocApproval = doc;
         this.viewModal.doShowModal();
+    }
+
+    doSave(event) {
+        if (event) {
+            this.viewModal.doCloseModal();
+        }
     }
 }

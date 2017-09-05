@@ -15,28 +15,24 @@
                 <tr>
                     <th>No</th>
                     <th>ID Box</th>
-                    <th>ID Dokumen</th>
-                    <th>Status</th>
-                    <th>Tipe Dokumen</th>
+                    <th>Lokasi</th>
                     <th></th>
                 </tr>
                 </thead>
-                <tbody *ngIf="!listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length===0)">
+                <tbody *ngIf="!listDocumentApproval || (listDocumentApproval && listDocumentApproval.length===0)">
                 <tr>
                     <td colspan="6">{{'noDataFound'|translate}}</td>
                 </tr>
                 </tbody>
                 <tbody>
-                <tr *ngFor="let doc of listDocumentRegistrations;let i =index;">
-                    <td></td>
+                <tr *ngFor="let doc of listDocumentApproval;let i =index;">
+                    <td>{{i+1}}</td>
                     <td>{{doc.idBox}}</td>
-                    <td>{{doc.idDocument}}</td>
-                    <td>{{doc.status}}</td>
-                    <td>{{doc.documentType}}</td>
+                    <td>{{doc.depositLocation}}</td>
                     <td>
                         <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
-                                title="{{'viewDetailDoc'|translate}}"><i class="fa fa-th-list" aria-hidden="true"
-                                                                         (click)="doView(doc)"></i></button>
+                                title="{{'approve'|translate}}"><i class="fa fa-edit" aria-hidden="true"
+                                                                   (click)="doApprove(doc)"></i></button>
                     </td>
                 </tr>
                 </tbody>
@@ -44,58 +40,44 @@
         </div>
         <div>
             <arms-pagination
-                    *ngIf="listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0)"
+                    *ngIf="listDocumentApproval || (listDocumentApproval && listDocumentApproval.length>0)"
                     [totalPage]="19"></arms-pagination>
         </div>
     </div>
 </arms-module-container>
 
-<arms-view-modal #viewModal [title]="'infoRegistration'|translate">
-    <ul class="list-group" *ngIf="armsDocument">
+<arms-view-modal #viewModal [title]="'approval'|translate"
+                 [showButton]="{'save':true,'cancel':true,'close':false}"
+                 (saveClick)="doSave($event)">
+    <ul class="list-group" *ngIf="armsDocApproval">
         <li class="list-group-item">
-            <span class="badge">{{armsDocument.idBox}}</span>
+            <span class="badge">{{armsDocApproval.idBox}}</span>
             {{'idBox'|translate}}
         </li>
         <li class="list-group-item">
-            <span class="badge">{{armsDocument.idDocument}}</span>
+            <span class="badge">{{armsDocApproval.documentType}}</span>
             {{'idDocument'|translate}}
         </li>
         <li class="list-group-item">
-            <span class="badge">{{armsDocument.documentType}}</span>
+            <span class="badge">{{armsDocApproval.depositLocation}}</span>
             {{'documentType'|translate}}
         </li>
         <li class="list-group-item">
-            <span class="badge">{{armsDocument.sheetNo}}</span>
+            <span class="badge">{{armsDocApproval.workingUnit}}</span>
             {{'sheetNo'|translate}}
         </li>
-        <li class="list-group-item">
-            <span class="badge">{{armsDocument.startValidDate | dateFormat}}</span>
-            {{'startValidDate'|translate}}
-        </li>
-        <li class="list-group-item">
-            <span class="badge">{{armsDocument.endValidDate | dateFormat}}</span>
-            {{'endValidDate'|translate}}
-        </li>
-        <li class="list-group-item">
-            <span class="badge">{{armsDocument.documentNo}}</span>
-            {{'documentNo'|translate}}
-        </li>
-        <li class="list-group-item">
-            <span class="badge">{{armsDocument.documentName}}</span>
-            {{'documentName'|translate}}
-        </li>
-        <li class="list-group-item">
-            <span class="badge">{{armsDocument.description}}</span>
-            {{'description'|translate}}
-        </li>
-        <li class="list-group-item">
-            <span class="badge">{{armsDocument.keyword}}</span>
-            {{'keyword'|translate}}
-        </li>
-        <li class="list-group-item">
-            <span class="badge">{{armsDocument.workingUnit}}</span>
-            {{'workingUnit'|translate}}
-        </li>
-
     </ul>
+    <hr>
+    <div class="form-group" style="text-align: center">
+        <div class="radio-inline">
+            <label><input type="radio" name="optradio">{{'approve'|translate}}</label>
+        </div>
+        <div class="radio-inline">
+            <label><input type="radio" name="optradio">{{'reject'|translate}}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+    </div>
 </arms-view-modal>
