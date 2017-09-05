@@ -13,6 +13,8 @@ import {CheckOutModule} from "./check-out/check-out.module";
 import {BoxRegistrationModule} from "./box-registration/box-registration.module";
 import {LoginModule} from "./login/login.module";
 import {DocumentSearchLendModule} from "./document-search-lend/document-search-lend.module";
+import {BoxReturnModule} from "./box-return/box-return.module";
+import {BoxMaintenanceModule} from "./box-maintenance/box-maintenance.module";
 
 @NgModule({
     declarations: [
@@ -30,6 +32,8 @@ import {DocumentSearchLendModule} from "./document-search-lend/document-search-l
         BoxRegistrationModule,
         DocumentRegistrationModule,
         DocumentSearchLendModule,
+        BoxReturnModule,
+        BoxMaintenanceModule,
         CheckInModule,
         CheckOutModule
     ],

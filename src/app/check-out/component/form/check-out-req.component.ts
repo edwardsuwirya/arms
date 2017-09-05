@@ -15,7 +15,8 @@ export class CheckOutRequestComponent implements OnInit,AfterViewInit {
 
     loading: boolean = false;
 
-    listBox: string[] = ['514-01', '514-02', '514-03', '514-04', '514-05'];
+    listBox: string[] = ['701217072017001', '701217072017002', '701217072017003', '701217072017004', '701217072017005',
+        '701217072017006', '701217072017007'];
     listBoxToBeBorrow: string[] = [];
 
     constructor(private router: Router) {

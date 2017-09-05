@@ -3,7 +3,7 @@
 </div>
 <arms-module-container>
     <div sidebar>
-        <arms-menu [isTabOpen]="5" [activeMenu]="'peminjamanBox'"></arms-menu>
+        <arms-menu [isTabOpen]="4" [activeMenu]="'peminjamanBox'"></arms-menu>
     </div>
     <div content>
         <div class="page-header">
@@ -61,7 +61,6 @@
                             <ul class="list-group">
                                 <li *ngFor="let item of listBox" class="list-group-item">
                                     <span class="pull-right" style="margin-top: -5px">
-                                        <a class="btn btn-link">Reg. Doc</a>
                                         <a class="btn btn-link" (click)="doSend(item)">Kirim</a>
                                     </span>
                                     {{item}}

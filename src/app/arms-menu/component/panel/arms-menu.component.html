@@ -166,12 +166,13 @@
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'pengembalianBox'" [icon]="'fa-arrow-down'"
                                             [title]="'Pengembalian Box'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="'/boxReturn'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'persetujuanPengembalianBox'" [icon]="'fa-thumbs-o-up'"
                                             [title]="'Persetujuan Pengembalian Box'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="'/boxReturn/approval'"
+                                            [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                     </div>
                 </div>

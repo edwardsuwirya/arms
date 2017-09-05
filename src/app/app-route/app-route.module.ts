@@ -12,6 +12,8 @@ import {CHECK_OUT_PATH} from "../check-out/check-out.module";
 import {BOX_REGISTRATION_PATH} from "../box-registration/box-registration.module";
 import {LoginComponent} from "../login/component/login.component";
 import {DOCUMENT_SEARCH_LEND_PATH} from "../document-search-lend/document-search-lend.module";
+import {BOX_MAINTENANCE_PATH} from "../box-maintenance/box-maintenance.module";
+import {BOX_RETURN_PATH} from "../box-return/box-return.module";
 
 
 export const routes: Routes = [
@@ -27,6 +29,14 @@ export const routes: Routes = [
             {
                 path: 'boxRegistration',
                 children: BOX_REGISTRATION_PATH
+            },
+            {
+                path: 'boxMaintenance',
+                children: BOX_MAINTENANCE_PATH
+            },
+            {
+                path: 'boxReturn',
+                children: BOX_RETURN_PATH
             },
             {
                 path: 'documentRegistration',
