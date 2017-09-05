@@ -11,6 +11,7 @@ import {CHECK_IN_PATH} from "../check-in/check-in.module";
 import {CHECK_OUT_PATH} from "../check-out/check-out.module";
 import {BOX_REGISTRATION_PATH} from "../box-registration/box-registration.module";
 import {LoginComponent} from "../login/component/login.component";
+import {DOCUMENT_SEARCH_LEND_PATH} from "../document-search-lend/document-search-lend.module";
 
 
 export const routes: Routes = [
@@ -30,6 +31,10 @@ export const routes: Routes = [
             {
                 path: 'documentRegistration',
                 children: DOCUMENT_REGISTRATION_PATH
+            },
+            {
+                path: 'documentSearchLend',
+                children: DOCUMENT_SEARCH_LEND_PATH
             },
             {
                 path: 'checkIn',

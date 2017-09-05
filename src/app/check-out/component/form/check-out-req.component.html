@@ -3,18 +3,18 @@
 </div>
 <arms-module-container>
     <div sidebar>
-        <arms-menu [isTabOpen]="2" [activeMenu]="'pickupBox'"></arms-menu>
+        <arms-menu [isTabOpen]="5" [activeMenu]="'peminjamanBox'"></arms-menu>
     </div>
     <div content>
         <div class="page-header">
-            <h3>Permintaan Pickup Box</h3>
+            <h3>{{'boxLending'|translate}}</h3>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label>Tanggal</label>
-                    <arms-datepicker #pickupDate (selectedDate)="doGetPickupDate($event)"
-                                     [id]="'pickupDate'"></arms-datepicker>
+                    <arms-datepicker #borrowDate (selectedDate)="doGetBorrowDate($event)"
+                                     [id]="'borrowDate'"></arms-datepicker>
                 </div>
             </div>
         </div>
@@ -32,6 +32,21 @@
                                 <div>Unit Kerja : Cabang Jakarta Utara I</div>
                                 <div>Alamat : Jl. Gunung Sahari no 131 A</div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label>ID Box</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="idBoxSearch">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="button" (click)="doChooseLocation()">
+                                {{'search'|translate}}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -56,7 +71,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h5>Box Yang Akan Dikirm</h5>
+                    <h5>Box Yang Akan Dipinjam</h5>
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <ul class="list-group">

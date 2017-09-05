@@ -5,9 +5,16 @@ import {InjectionToken} from "@angular/core";
 
 export const APP_CONFIG = new InjectionToken("app.config");
 
-const SERVICE_BASE_URL:string = process.env.API_URL;
+const SERVICE_BASE_URL: string = process.env.API_URL;
 
 const LANG_US = {
+    'boxSending': 'Box Sending ',
+    'boxLending': 'Box Lending ',
+    'documentLending': 'Document Lending',
+    'documentLendingReceive': 'Document Lending Receive',
+    'documentLendingApproval': 'Document Lending Approval',
+    'boxLendingApproval': 'Approval Lending Box',
+    'boxReceiving': 'Receiving Box',
     'documentSearch': 'Document Search',
     'borrowRegistration': 'Borrow Document Registration',
     'checkInApproval': 'Approval Pickup Box',
@@ -24,7 +31,7 @@ const LANG_US = {
     'advanceStartDate': 'Start date is after end date',
     'overlimitSize': 'File size is overlimit',
     'noDataFound': 'No Data Found',
-    'search':'search',
+    'search': 'search',
     'save': 'Save',
     'reset': 'Reset',
     'choose': 'Choose',
@@ -59,6 +66,13 @@ const LANG_US = {
 };
 
 const LANG_ID = {
+    'boxSending': 'Pengiriman Box',
+    'boxLending': 'Peminjaman Box',
+    'documentLending': 'Peminjaman Arsip',
+    'documentLendingApproval': 'Persetujuan Peminjaman Arsip',
+    'documentLendingReceive': 'Penerimaan Peminjaman Arsip',
+    'boxLendingApproval': 'Persetujuan Peminjaman Box',
+    'boxReceiving': 'Penerimaan Box',
     'documentSearch': 'Pencarian Arsip',
     'borrowRegistration': 'Peminjaman Arsip',
     'checkInApproval': 'Persetujuan Pickup Box',
@@ -75,7 +89,7 @@ const LANG_ID = {
     'advanceStartDate': 'Tanggal mulai setelah tanggal akhir',
     'overlimitSize': 'Ukuran file terlalu besar',
     'noDataFound': 'Data tidak ditemukan',
-    'search':'Cari',
+    'search': 'Cari',
     'save': 'Simpan',
     'reset': 'Batal',
     'choose': 'Pilih',

@@ -50,28 +50,27 @@
                             <th>No</th>
                             <th>ID Dokumen</th>
                             <th>No Dokumen</th>
-                            <th>Nama Dokumen</th>
-                            <th>Deskripsi</th>
-                            <th>Kata Kunci</th>
-                            <th>ID Box</th>
+                            <th>Tipe Dokumen</th>
+                            <th>Unit Kerja</th>
                             <th>Status Pinjam</th>
+                            <th>Histori Pinjam</th>
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody *ngIf="!listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length===0)">
+                        <tbody *ngIf="!listDocumentSearch || (listDocumentSearch && listDocumentSearch.length===0)">
                         <tr>
-                            <td colspan="9">{{'noDataFound'|translate}}</td>
+                            <td colspan="8">{{'noDataFound'|translate}}</td>
                         </tr>
                         </tbody>
                         <tbody>
-                        <tr *ngFor="let doc of listDocumentRegistrations;let i =index;">
+                        <tr *ngFor="let doc of listDocumentSearch;let i =index;">
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="pull-left">
                     <arms-pagination
-                            *ngIf="listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0)"
+                            *ngIf="listDocumentSearch || (listDocumentSearch && listDocumentSearch.length>0)"
                             [totalPage]="3"></arms-pagination>
                 </div>
             </div>

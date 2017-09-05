@@ -8,12 +8,11 @@ import {APP_CONFIG, appConfig} from "./shared/model/application-properties";
 import {SharedModule} from "./shared/shared.module";
 import {HomeModule} from "./home/home.module";
 import {DocumentRegistrationModule} from "./document-registration/document-registration.module";
-import {ArmsMenuModule} from "./arms-menu/arms-menu.module";
 import {CheckInModule} from "./check-in/check-in.module";
 import {CheckOutModule} from "./check-out/check-out.module";
-import {BoxRegistrationComponent} from "./box-registration/component/form/box-registration.component";
 import {BoxRegistrationModule} from "./box-registration/box-registration.module";
 import {LoginModule} from "./login/login.module";
+import {DocumentSearchLendModule} from "./document-search-lend/document-search-lend.module";
 
 @NgModule({
     declarations: [
@@ -30,6 +29,7 @@ import {LoginModule} from "./login/login.module";
         HomeModule,
         BoxRegistrationModule,
         DocumentRegistrationModule,
+        DocumentSearchLendModule,
         CheckInModule,
         CheckOutModule
     ],

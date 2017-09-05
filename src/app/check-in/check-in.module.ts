@@ -6,6 +6,7 @@ import {NgModule} from "@angular/core";
 import {CheckInRequestComponent} from "./component/request/check-in-req.component";
 import {CheckInApprovalComponent} from "./component/approval/check-in.approval.component";
 import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
+import {BoxSendComponent} from "./component/send/box-send.component";
 /**
  * Created by 15050978 on 8/16/2017.
  */
@@ -13,7 +14,8 @@ import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
 @NgModule({
     declarations: [
         CheckInRequestComponent,
-        CheckInApprovalComponent
+        CheckInApprovalComponent,
+        BoxSendComponent
     ],
     imports: [
         SharedModule,
@@ -32,5 +34,9 @@ export const CHECK_IN_PATH = [
     {
         path: 'approval',
         component: CheckInApprovalComponent,
+    },
+    {
+        path: 'send',
+        component: BoxSendComponent,
     },
 ]

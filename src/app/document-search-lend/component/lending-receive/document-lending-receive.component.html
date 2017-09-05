@@ -1,0 +1,58 @@
+<div *ngIf="loading">
+    <arms-spinner></arms-spinner>
+</div>
+<arms-module-container>
+    <div sidebar>
+        <arms-menu [isTabOpen]="3" [activeMenu]="'penerimaanPeminjamanArsip'"></arms-menu>
+    </div>
+    <div content>
+        <div class="page-header">
+            <h3>{{'documentLendingReceive'|translate}}</h3>
+        </div>
+        <div style="margin-bottom: 250px">
+            <div class="well">
+                <div style="height: 300px; overflow: auto;">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>ID Dokumen</th>
+                            <th>No Dokumen</th>
+                            <th>Tipe Dokumen</th>
+                            <th>Unit Kerja</th>
+                            <th>Status Pinjam</th>
+                            <th>Histori Pinjam</th>
+                            <th></th>
+                            <th>Select</th>
+                        </tr>
+                        </thead>
+                        <tbody *ngIf="!listDocumentSearch || (listDocumentSearch && listDocumentSearch.length===0)">
+                        <tr>
+                            <td colspan="10">{{'noDataFound'|translate}}</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr *ngFor="let doc of listDocumentSearch;let i =index;">
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="pull-left">
+                        <arms-pagination
+                                *ngIf="listDocumentSearch || (listDocumentSearch && listDocumentSearch.length>0)"
+                                [totalPage]="3"></arms-pagination>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-primary large-button">{{'spvSend' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</arms-module-container>
+
+<arms-view-modal #boxViewModal [title]="'boxInformation'|translate">
+</arms-view-modal>
+<arms-view-modal #lendingInfoModal [title]="'lendingInformation'|translate">
+</arms-view-modal>
