@@ -30,8 +30,9 @@
                 <div class="form-group form-group-sm">
                     <label>{{'documentType'|translate}}</label>
                     <select class="form-control" formControlName="documentType">
-                        <option value="th">Transaksi Harian</option>
-                        <option value="tb">Transaksi Bulanan</option>
+                        <option value="dn">Dokumen Nasabah</option>
+                        <option value="th">Transaksi Harian/Arsip</option>
+                        <option value="fk">File Kredit</option>
                     </select>
                 </div>
                 <div class="form-group form-group-sm" *ngIf="isDailyTransaction">

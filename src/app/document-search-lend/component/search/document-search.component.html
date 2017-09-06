@@ -12,24 +12,36 @@
         <div style="margin-bottom: 250px">
             <form [formGroup]="documentSearchFormGroup" style="margin-bottom: 20px">
                 <div class="form-group form-group-sm">
-                    <label for="idBox">{{'idDoc'|translate}}</label>
-                    <input type="text" class="form-control" id="idBox" formControlName="idDoc">
+                    <label for="idBox">{{'idBox'|translate}}</label>
+                    <input type="text" class="form-control" id="idBox" formControlName="idBox">
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="idDoc">{{'idDoc'|translate}}</label>
+                    <input type="text" class="form-control" id="idDoc" formControlName="idDoc">
                 </div>
                 <div class="form-group form-group-sm">
                     <label for="documentNo">{{'documentNo'|translate}}</label>
                     <input type="text" class="form-control" id="documentNo" formControlName="documentNo">
                 </div>
                 <div class="form-group form-group-sm">
-                    <label for="documentName">{{'documentName'|translate}}</label>
-                    <input type="text" class="form-control" id="documentName" formControlName="documentName">
+                    <label for="documentType">{{'documentType'|translate}}</label>
+                    <select class="form-control" id="documentType" formControlName="documentType">
+                        <option></option>
+                        <option value="dn">Dokumen Nasabah</option>
+                        <option value="th">Transaksi Harian/Arsip</option>
+                        <option value="fk">File Kredit</option>
+                    </select>
                 </div>
                 <div class="form-group form-group-sm">
-                    <label for="description">{{'description'|translate}}</label>
-                    <input type="text" class="form-control" id="description" formControlName="description">
-                </div>
-                <div class="form-group form-group-sm">
-                    <label for="keyword">{{'description'|translate}}</label>
-                    <input type="text" class="form-control" id="keyword" formControlName="keyword">
+                    <label for="workingUnit">{{'workingUnit'|translate}}</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="workingUnit" formControlName="workingUnit" readonly>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="button" (click)="doChooseWorkingUnit()">
+                                {{'choose'|translate}}
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">

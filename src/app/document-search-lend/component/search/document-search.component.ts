@@ -38,16 +38,19 @@ export class DocumentSearchComponent implements OnInit,AfterViewInit {
 
     ngOnInit(): void {
         this.documentSearchFormGroup = this.formBuilder.group({
+            idBox: [''],
             idDoc: [''],
             documentNo: [''],
-            documentName: [''],
-            description: [''],
-            keyword: [''],
+            documentType: [''],
             workingUnit: ['']
         });
     }
 
     ngAfterViewInit(): void {
+    }
+
+    doChooseWorkingUnit() {
+
     }
 
     doSearch() {

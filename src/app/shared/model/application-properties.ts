@@ -121,7 +121,7 @@ const LANG_ID = {
     'required': 'Dibutuhkan',
     'receive': 'Diterima',
     'idBox': 'ID Box',
-    'idDoc': 'ID Dokumen',
+    'idDoc': 'ID Arsip',
     'fileUpload': 'File Lampiran',
     'workingUnit': 'Unit kerja',
     'boxDescription': 'Deskripsi box',
