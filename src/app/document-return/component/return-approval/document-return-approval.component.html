@@ -3,11 +3,11 @@
 </div>
 <arms-module-container>
     <div sidebar>
-        <arms-menu [isTabOpen]="3" [activeMenu]="'persetujuanPeminjamanArsip'"></arms-menu>
+        <arms-menu [isTabOpen]="4" [activeMenu]="'persetujuanPengembalianArsip'"></arms-menu>
     </div>
     <div content>
         <div class="page-header">
-            <h3>{{'documentLendingApproval'|translate}}</h3>
+            <h3>{{'documentReturningApproval'|translate}}</h3>
         </div>
         <div class="well">
             <div class="panel panel-default">
@@ -25,13 +25,13 @@
                                 <th>Pilih</th>
                             </tr>
                             </thead>
-                            <tbody *ngIf="!listDocumentForLendApproval || (listDocumentForLendApproval && listDocumentForLendApproval.length===0)">
+                            <tbody *ngIf="!listDocumentReturnForApproval || (listDocumentReturnForApproval && listDocumentReturnForApproval.length===0)">
                             <tr>
                                 <td colspan="10">{{'noDataFound'|translate}}</td>
                             </tr>
                             </tbody>
                             <tbody>
-                            <tr *ngFor="let doc of listDocumentForLendApproval;let i =index;">
+                            <tr *ngFor="let doc of listDocumentReturnForApproval;let i =index;">
                                 <td>{{i+1}}</td>
                                 <td>{{doc.idBox}}</td>
                                 <td>{{doc.idDoc}}</td>
@@ -48,13 +48,13 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="listDocumentForLendApproval || (listDocumentForLendApproval && listDocumentForLendApproval.length>0)">
+        <div *ngIf="listDocumentReturnForApproval || (listDocumentReturnForApproval && listDocumentReturnForApproval.length>0)">
             <div class="pull-left">
                 <arms-pagination
                         [totalPage]="3"></arms-pagination>
             </div>
             <div class="pull-right">
-                <button class="btn btn-primary large-button">{{'spvSend' | translate}}</button>
+                <button class="btn btn-success medium-button">{{'approve' | translate}}</button>
             </div>
         </div>
     </div>

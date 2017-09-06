@@ -15,6 +15,7 @@ import {LoginModule} from "./login/login.module";
 import {DocumentSearchLendModule} from "./document-search-lend/document-search-lend.module";
 import {BoxReturnModule} from "./box-return/box-return.module";
 import {BoxMaintenanceModule} from "./box-maintenance/box-maintenance.module";
+import {DocumentReturnModule} from "./document-return/document-return.module";
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import {BoxMaintenanceModule} from "./box-maintenance/box-maintenance.module";
         BoxReturnModule,
         BoxMaintenanceModule,
         CheckInModule,
-        CheckOutModule
+        CheckOutModule,
+        DocumentReturnModule
     ],
     providers: [
         {provide: APP_CONFIG, useValue: appConfig},

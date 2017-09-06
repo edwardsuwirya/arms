@@ -46,10 +46,9 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div *ngIf="listBoxSendForApprove || (listBoxSendForApprove && listBoxSendForApprove.length>0)">
             <div class="pull-left">
                 <arms-pagination
-                        *ngIf="listBoxSendForApprove || (listBoxSendForApprove && listBoxSendForApprove.length>0)"
                         [totalPage]="19"></arms-pagination>
             </div>
             <div class="pull-right">

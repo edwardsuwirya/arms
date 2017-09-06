@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'persetujuanPeminjamanArsip'" [icon]="'fa-thumbs-o-up'"
-                                            [title]="'Persetujuan Pemijaman Arsip'"
+                                            [title]="'Persetujuan Peminjaman Arsip'"
                                             [direction]="'/documentSearchLend/approval'"
                                             [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
@@ -156,12 +156,13 @@
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'pengembalianArsip'" [icon]="'fa-level-down'"
                                             [title]="'Pengembalian Arsip'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="'/documentReturn'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'persetujuanPengembalianArsip'" [icon]="'fa-thumbs-o-up'"
                                             [title]="'Persetujuan Pengembalian Arsip'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="'/documentReturn/approval'"
+                                            [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'pengembalianBox'" [icon]="'fa-arrow-down'"
@@ -172,6 +173,12 @@
                             <arms-menu-item [id]="'persetujuanPengembalianBox'" [icon]="'fa-thumbs-o-up'"
                                             [title]="'Persetujuan Pengembalian Box'"
                                             [direction]="'/boxReturn/approval'"
+                                            [activeMenu]="activeMenu"></arms-menu-item>
+                        </div>
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
+                            <arms-menu-item [id]="'peringatanPengembalianDoc'" [icon]="'fa-clock-o'"
+                                            [title]="'Peringatan Pengembalian Arsip'"
+                                            [direction]="'/boxReturn/reminder'"
                                             [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                     </div>

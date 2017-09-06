@@ -18,11 +18,11 @@
                             <tr>
                                 <th>No</th>
                                 <th>ID Box</th>
-                                <th>ID Document</th>
-                                <th>Name</th>
-                                <th>Borrow Start Date</th>
-                                <th>Borrow End Date</th>
-                                <th>Select</th>
+                                <th>ID Arsip</th>
+                                <th>Nama</th>
+                                <th>Tanggal Mulai Pinjam</th>
+                                <th>Tanggal Akhir Pinjam</th>
+                                <th>Pilih</th>
                             </tr>
                             </thead>
                             <tbody *ngIf="!listDocumentForLend || (listDocumentForLend && listDocumentForLend.length===0)">
@@ -48,11 +48,9 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div *ngIf="listDocumentForLend || (listDocumentForLend && listDocumentForLend.length>0)">
             <div class="pull-left">
-                <arms-pagination
-                        *ngIf="listDocumentForLend || (listDocumentForLend && listDocumentForLend.length>0)"
-                        [totalPage]="3"></arms-pagination>
+                <arms-pagination [totalPage]="3"></arms-pagination>
             </div>
             <div class="pull-right">
                 <button class="btn btn-primary large-button">{{'spvSend' | translate}}</button>

@@ -5,13 +5,15 @@ import {InjectionToken} from "@angular/core";
 
 export const APP_CONFIG = new InjectionToken("app.config");
 
-const SERVICE_BASE_URL: string = process.env.API_URL;
+const SERVICE_BASE_URL:string = process.env.API_URL;
 
 const LANG_US = {
     'lending': 'Lending',
     'viewLendingHistory': 'Lending History',
     'boxSending': 'Box Sending ',
     'boxLending': 'Box Lending ',
+    'documentReturning': 'Document Return',
+    'documentReturningApproval': 'Document Return Approval',
     'documentLending': 'Document Lending',
     'documentLendingReceive': 'Document Lending Receive',
     'documentLendingApproval': 'Document Lending Approval',
@@ -49,6 +51,7 @@ const LANG_US = {
     'vendor': 'Vendor',
     'required': 'Required',
     'receive': 'Receive',
+    'return': 'Return',
     'idBox': 'Box ID',
     'fileUpload': 'File Attachment',
     'idDoc': 'Document ID',
@@ -83,6 +86,8 @@ const LANG_ID = {
     'viewLendingHistory': 'Histori Peminjaman',
     'boxSending': 'Pengiriman Box',
     'boxLending': 'Peminjaman Box',
+    'documentReturning': 'Pengembalian Arsip',
+    'documentReturningApproval': 'Persetujuan Pengembalian Arsip',
     'documentLending': 'Peminjaman Arsip',
     'documentLendingApproval': 'Persetujuan Peminjaman Arsip',
     'documentLendingReceive': 'Penerimaan Peminjaman Arsip',
@@ -120,6 +125,7 @@ const LANG_ID = {
     'vendor': 'Vendor',
     'required': 'Dibutuhkan',
     'receive': 'Diterima',
+    'return': 'Dikembalikan',
     'idBox': 'ID Box',
     'idDoc': 'ID Arsip',
     'fileUpload': 'File Lampiran',

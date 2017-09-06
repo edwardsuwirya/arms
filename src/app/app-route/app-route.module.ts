@@ -14,6 +14,7 @@ import {LoginComponent} from "../login/component/login.component";
 import {DOCUMENT_SEARCH_LEND_PATH} from "../document-search-lend/document-search-lend.module";
 import {BOX_MAINTENANCE_PATH} from "../box-maintenance/box-maintenance.module";
 import {BOX_RETURN_PATH} from "../box-return/box-return.module";
+import {DOCUMENT_RETURN_PATH} from "../document-return/document-return.module";
 
 
 export const routes: Routes = [
@@ -45,6 +46,10 @@ export const routes: Routes = [
             {
                 path: 'documentSearchLend',
                 children: DOCUMENT_SEARCH_LEND_PATH
+            },
+            {
+                path: 'documentReturn',
+                children: DOCUMENT_RETURN_PATH
             },
             {
                 path: 'checkIn',

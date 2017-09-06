@@ -4,6 +4,7 @@ import {NgModule} from "@angular/core";
 import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
 import {BoxReceiveComponent} from "./component/receive/box-receive.component";
 import {CheckOutApprovalComponent} from "./component/approval/check-out-approval.component";
+import {BoxLendService} from "./service/box-lend.service";
 /**
  * Created by 15050978 on 8/16/2017.
  */
@@ -18,7 +19,9 @@ import {CheckOutApprovalComponent} from "./component/approval/check-out-approval
         ArmsMenuModule
     ],
     exports: [],
-    providers: []
+    providers: [
+        BoxLendService
+    ]
 })
 export class CheckOutModule {
 }
