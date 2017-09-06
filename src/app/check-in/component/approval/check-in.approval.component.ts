@@ -1,4 +1,6 @@
 import {OnInit, Component, AfterViewInit} from "@angular/core";
+import {BoxSend} from "../../model/box-send";
+import {CheckInService} from "../../service/check-in.service";
 /**
  * Created by edo on 26/08/2017.
  */
@@ -8,10 +10,23 @@ import {OnInit, Component, AfterViewInit} from "@angular/core";
     styleUrls: ['check-in-approval.component.css']
 })
 export class CheckInApprovalComponent implements OnInit,AfterViewInit {
-    ngOnInit():void {
+    loading: boolean = false;
+
+    listBoxSendForApprove: BoxSend[] = [];
+
+    constructor(private checkInService: CheckInService) {
+
     }
 
-    ngAfterViewInit():void {
+    ngOnInit(): void {
+        this.loading = true;
+        this.checkInService.getListBoxForSendApproval().subscribe((res) => {
+            this.listBoxSendForApprove = res;
+            this.loading = false;
+        })
+    }
+
+    ngAfterViewInit(): void {
     }
 
 }

@@ -2,7 +2,7 @@ import {Component, OnInit, AfterViewInit, Input, EventEmitter, Output} from "@an
 /**
  * Created by 15050978 on 8/24/2017.
  */
-declare let $:any;
+declare let $: any;
 @Component({
     selector: 'arms-view-modal',
     templateUrl: './view-modal.component.html',
@@ -10,25 +10,28 @@ declare let $:any;
 })
 export class ViewModalComponent implements OnInit,AfterViewInit {
     @Input()
-    title:string = 'Info';
+    title: string = 'Info';
 
     @Input()
-    id:string = 'viewModal';
+    id: string = 'viewModal';
 
     @Input()
-    showButton:{} = {
+    modalSize: string = 'm';
+
+    @Input()
+    showButton: {} = {
         'save': false,
         'cancel': false,
         'close': 'true'
     };
 
     @Output()
-    saveClick:EventEmitter<boolean> = new EventEmitter();
+    saveClick: EventEmitter<boolean> = new EventEmitter();
 
-    ngOnInit():void {
+    ngOnInit(): void {
     }
 
-    ngAfterViewInit():void {
+    ngAfterViewInit(): void {
     }
 
     doShowModal() {

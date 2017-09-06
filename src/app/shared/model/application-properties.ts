@@ -5,9 +5,11 @@ import {InjectionToken} from "@angular/core";
 
 export const APP_CONFIG = new InjectionToken("app.config");
 
-const SERVICE_BASE_URL:string = process.env.API_URL;
+const SERVICE_BASE_URL: string = process.env.API_URL;
 
 const LANG_US = {
+    'lending': 'Lending',
+    'viewLendingHistory': 'Lending History',
     'boxSending': 'Box Sending ',
     'boxLending': 'Box Lending ',
     'documentLending': 'Document Lending',
@@ -30,10 +32,15 @@ const LANG_US = {
     'invalidPeriod': 'Invalid Period',
     'advanceStartDate': 'Start date is after end date',
     'overlimitSize': 'File size is overlimit',
+    'spvSend': 'Send To Supervisor',
     'noDataFound': 'No Data Found',
+    'view': 'View',
+    'update': 'Update',
+    'delete': 'Delete',
     'search': 'search',
     'save': 'Save',
     'reset': 'Reset',
+    'close': 'Close',
     'choose': 'Choose',
     'small': 'Small',
     'medium': 'Medium',
@@ -41,6 +48,7 @@ const LANG_US = {
     'internal': 'Internal',
     'vendor': 'Vendor',
     'required': 'Required',
+    'receive': 'Receive',
     'idBox': 'Box ID',
     'fileUpload': 'File Attachment',
     'idDoc': 'Document ID',
@@ -63,12 +71,16 @@ const LANG_US = {
     'viewDetailDoc': 'View document detail',
     'deleteDoc': 'delete a document',
     'updateDoc': 'update document information',
+    'send': 'Send',
     'approval': 'Approval',
     'approve': 'Approve',
-    'reject': 'Reject'
+    'reject': 'Reject',
+    'reason': 'Reason'
 };
 
 const LANG_ID = {
+    'lending': 'Peminjaman',
+    'viewLendingHistory': 'Histori Peminjaman',
     'boxSending': 'Pengiriman Box',
     'boxLending': 'Peminjaman Box',
     'documentLending': 'Peminjaman Arsip',
@@ -91,10 +103,15 @@ const LANG_ID = {
     'invalidPeriod': 'Kesalahan periode',
     'advanceStartDate': 'Tanggal mulai setelah tanggal akhir',
     'overlimitSize': 'Ukuran file terlalu besar',
+    'spvSend': 'Kirim Ke Supervisor',
     'noDataFound': 'Data tidak ditemukan',
+    'view': 'Lihat',
+    'update': 'Ubah',
+    'delete': 'Hapus',
     'search': 'Cari',
     'save': 'Simpan',
     'reset': 'Batal',
+    'close': 'Tutup',
     'choose': 'Pilih',
     'small': 'Kecil',
     'medium': 'Sedang',
@@ -102,6 +119,7 @@ const LANG_ID = {
     'internal': 'Internal',
     'vendor': 'Vendor',
     'required': 'Dibutuhkan',
+    'receive': 'Diterima',
     'idBox': 'ID Box',
     'idDoc': 'ID Dokumen',
     'fileUpload': 'File Lampiran',
@@ -124,9 +142,11 @@ const LANG_ID = {
     'viewDetailDoc': 'Lihat informasi arsip',
     'deleteDoc': 'Hapus dokumen',
     'updateDoc': 'Pembaruan informasi arsip',
+    'send': 'Kirim',
     'approval': 'Persetujuan',
     'approve': 'Disetujui',
-    'reject': 'Ditolak'
+    'reject': 'Ditolak',
+    'reason': 'Alasan'
 };
 
 const ERROR_DICT = {

@@ -7,6 +7,7 @@ import {CheckInRequestComponent} from "./component/request/check-in-req.componen
 import {CheckInApprovalComponent} from "./component/approval/check-in.approval.component";
 import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
 import {BoxSendComponent} from "./component/send/box-send.component";
+import {CheckInService} from "./service/check-in.service";
 /**
  * Created by 15050978 on 8/16/2017.
  */
@@ -22,7 +23,9 @@ import {BoxSendComponent} from "./component/send/box-send.component";
         ArmsMenuModule
     ],
     exports: [],
-    providers: []
+    providers: [
+        CheckInService
+    ]
 })
 export class CheckInModule {
 }

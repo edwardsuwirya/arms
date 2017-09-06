@@ -1,6 +1,7 @@
 import {Component, OnInit, AfterViewInit, ViewChild} from "@angular/core";
 import {ViewModalComponent} from "../../../shared/component/view-modal/view-modal.component";
-import {DocumentSearch} from "../../model/document-search";
+import {DocumentSearchLendService} from "../../service/document-search-lend.service";
+import {DocumentLend} from "../../model/document-lend";
 /**
  * Created by edo on 28/08/2017.
  */
@@ -16,12 +17,17 @@ export class DocumentLendComponent implements OnInit,AfterViewInit {
     lendingInfoModal: ViewModalComponent;
 
     loading: boolean = false;
-    listDocumentSearch: DocumentSearch[];
+    listDocumentForLend: DocumentLend[];
 
-    constructor() {
+    constructor(private documentSearchLendService: DocumentSearchLendService) {
     }
 
     ngOnInit(): void {
+        this.loading = true;
+        this.documentSearchLendService.getListDocumentForLend().subscribe((res) => {
+            this.listDocumentForLend = res;
+            this.loading = false;
+        })
     }
 
     ngAfterViewInit(): void {

@@ -43,42 +43,147 @@
                 </div>
             </form>
             <div class="well">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div style="height: 300px; overflow: auto;">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>ID Dokumen</th>
+                                    <th>No Dokumen</th>
+                                    <th>Tipe Dokumen</th>
+                                    <th>Unit Kerja</th>
+                                    <th>Dipinjam</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody *ngIf="!listDocumentSearch || (listDocumentSearch && listDocumentSearch.length===0)">
+                                <tr>
+                                    <td colspan="7">{{'noDataFound'|translate}}</td>
+                                </tr>
+                                </tbody>
+                                <tbody>
+                                <tr *ngFor="let doc of listDocumentSearch;let i =index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{doc.idBox}}</td>
+                                    <td>{{doc.idDocument}}</td>
+                                    <td>{{doc.documentType}}</td>
+                                    <td>{{doc.workingUnit}}</td>
+                                    <td>
+                                        <i class="fa fa-square-o" *ngIf="doc.lendingStatus==='0'"></i>
+                                        <i class="fa fa-check-square-o" *ngIf="doc.lendingStatus==='1'"></i>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{{'viewLendingHistory'|translate}}" (click)="doViewHistory(doc)">
+                                            <i class="fa fa-th-list"></i> {{'viewLendingHistory'|translate}}
+                                        </button>
+                                        <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{{'lending'|translate}}" (click)="doBorrow(doc)">
+                                            <i class="fa fa-pencil-square-o"></i> {{'lending'|translate}}
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-left">
+                <arms-pagination
+                        *ngIf="listDocumentSearch || (listDocumentSearch && listDocumentSearch.length>0)"
+                        [totalPage]="3"></arms-pagination>
+            </div>
+        </div>
+    </div>
+</arms-module-container>
+<arms-view-modal #historyModal [id]="'historyModal'" [title]="'viewLendingHistory'|translate" [modalSize]="'xl'">
+    <div class="well">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{'idDoc'|translate}} : {{idDocSelected}}
                 <div style="height: 300px; overflow: auto;">
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>ID Dokumen</th>
-                            <th>No Dokumen</th>
-                            <th>Tipe Dokumen</th>
+                            <th>Nama Peminjam</th>
                             <th>Unit Kerja</th>
-                            <th>Status Pinjam</th>
-                            <th>Histori Pinjam</th>
-                            <th></th>
+                            <th>Alasan</th>
+                            <th>Tanggal Pinjam</th>
+                            <th>Tanggal Kembali</th>
+                            <th>Lama Pinjam</th>
                         </tr>
                         </thead>
-                        <tbody *ngIf="!listDocumentSearch || (listDocumentSearch && listDocumentSearch.length===0)">
+                        <tbody *ngIf="!listHistoryDocumentLend || (listHistoryDocumentLend && listHistoryDocumentLend.length===0)">
                         <tr>
-                            <td colspan="8">{{'noDataFound'|translate}}</td>
+                            <td colspan="7">{{'noDataFound'|translate}}</td>
                         </tr>
                         </tbody>
                         <tbody>
-                        <tr *ngFor="let doc of listDocumentSearch;let i =index;">
+                        <tr *ngFor="let doc of listHistoryDocumentLend;let i =index;">
+                            <td>{{i+1}}</td>
+                            <td>{{doc.borrowerName}}</td>
+                            <td></td>
+                            <td>{{doc.reason}}</td>
+                            <td>{{doc.borrowStartDate}}</td>
+                            <td>{{doc.borrowEndDate}}</td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="pull-left">
-                    <arms-pagination
-                            *ngIf="listDocumentSearch || (listDocumentSearch && listDocumentSearch.length>0)"
-                            [totalPage]="3"></arms-pagination>
-                </div>
             </div>
         </div>
     </div>
-</arms-module-container>
-
-<arms-view-modal #viewModal [title]="'infoRegistration'|translate">
 </arms-view-modal>
-<arms-view-modal #borrowModal [title]="'borrowRegistration'|translate">
+<arms-view-modal #borrowModal [id]="'borrowModal'" [title]="'borrowRegistration'|translate"
+                 [showButton]="{'save':true,'cancel':true,'close':false}"
+                 (saveClick)="doSave($event)">
+    <ul class="list-group" *ngIf="doc">
+        <li class="list-group-item">
+            <span class="badge">{{doc.idBox}}</span>
+            {{'idBox'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{doc.idDocument}}</span>
+            {{'idDoc'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{doc.documentNo}}</span>
+            {{'documentNo'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{doc.workingUnit}}</span>
+            {{'workingUnit'|translate}}
+        </li>
+    </ul>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Tanggal Mulai</label>
+                <arms-datepicker #docStartDate (selectedDate)="doGetBoxSendingDate($event)"
+                                 [id]="'docStartDate'"></arms-datepicker>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Tanggal Akhir</label>
+                <arms-datepicker #docEndDate (selectedDate)="doGetBoxSendingDate($event)"
+                                 [id]="'docEndDate'"></arms-datepicker>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>{{'reason'|translate}}</label>
+                <textarea class="form-control" id="reason"></textarea>
+            </div>
+        </div>
+    </div>
 </arms-view-modal>

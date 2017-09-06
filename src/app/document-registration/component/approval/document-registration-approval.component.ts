@@ -12,25 +12,29 @@ import {DocumentApproval} from "../../model/document-approval";
 })
 export class DocumentRegistrationApprovalComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
-    viewModal:ViewModalComponent;
+    viewModal: ViewModalComponent;
 
-    listDocumentApproval:DocumentApproval[];
-    armsDocApproval:DocumentApproval;
+    listDocumentApproval: DocumentApproval[];
+    armsDocApproval: DocumentApproval;
 
-    constructor(private documentRegistrationService:DocumentRegistrationService) {
+    loading: boolean = false;
+
+    constructor(private documentRegistrationService: DocumentRegistrationService) {
     }
 
-    ngOnInit():void {
-        this.documentRegistrationService.getListDocumentRegistrationForApproval().subscribe((res)=> {
+    ngOnInit(): void {
+        this.loading = true;
+        this.documentRegistrationService.getListDocumentRegistrationForApproval().subscribe((res) => {
             this.listDocumentApproval = res;
+            this.loading = false;
         })
     }
 
-    ngAfterViewInit():void {
+    ngAfterViewInit(): void {
 
     }
 
-    doApprove(doc:DocumentApproval) {
+    doApprove(doc: DocumentApproval) {
         this.armsDocApproval = doc;
         this.viewModal.doShowModal();
     }

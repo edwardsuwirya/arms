@@ -8,4 +8,13 @@ export class DocumentSearch {
     documentType: string;
     workingUnit: string;
     lendingStatus: string;
+
+    constructor(idBox: string, idDocument: string, documentNo: string, documentType: string, workingUnit: string, lendingStatus: string) {
+        this.idBox = idBox;
+        this.idDocument = idDocument;
+        this.documentNo = documentNo;
+        this.documentType = documentType;
+        this.workingUnit = workingUnit;
+        this.lendingStatus = lendingStatus;
+    }
 }

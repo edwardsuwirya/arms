@@ -1,5 +1,5 @@
 <div id="{{id}}" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" [ngClass]="{'modal-lg': modalSize==='xl'}">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -10,10 +10,14 @@
                 <ng-content></ng-content>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default medium-button" (click)="doSave()" *ngIf="showButton.save">Save</button>
-                <button type="button" class="btn btn-default medium-button" data-dismiss="modal" *ngIf="showButton.cancel">Cancel
+                <button type="button" class="btn btn-default medium-button" (click)="doSave()" *ngIf="showButton.save">
+                    {{'save'|translate}}
                 </button>
-                <button type="button" class="btn btn-default medium-button" data-dismiss="modal" *ngIf="showButton.close">Close
+                <button type="button" class="btn btn-default medium-button" data-dismiss="modal"
+                        *ngIf="showButton.cancel">{{'reset'|translate}}
+                </button>
+                <button type="button" class="btn btn-default medium-button" data-dismiss="modal"
+                        *ngIf="showButton.close">{{'close'|translate}}
                 </button>
             </div>
         </div>

@@ -112,57 +112,64 @@
                 </div>
             </form>
             <div class="well">
-                <div style="height: 300px; overflow: auto;">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>ID Box</th>
-                            <th>Deskripsi Box</th>
-                            <th>Tipe Penyimpanan</th>
-                            <th>Lokasi Penyimpanan</th>
-                            <th>Periode</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody *ngIf="!listBoxRegistrations || (listBoxRegistrations && listBoxRegistrations.length===0)">
-                        <tr>
-                            <td colspan="7">{{'noDataFound'|translate}}</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr *ngFor="let box of listBoxRegistrations;let i =index;">
-                            <td></td>
-                            <td>{{box.idBox}}</td>
-                            <!--<td>{{box.workingUnit}}</td>-->
-                            <td>{{box.boxDescription}}</td>
-                            <!--<td>{{box.boxSize}}</td>-->
-                            <td>{{box.depositType}}</td>
-                            <td>{{box.depositLocation}}</td>
-                            <!--<td>{{box.depositRoom}}</td>-->
-                            <!--<td>{{box.depositShelf}}</td>-->
-                            <td>{{box.startValidDate | dateFormat}}-{{box.endValidDate | dateFormat}}</td>
-                            <td>
-                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
-                                        title="{{'viewDetailBox'|translate}}"><i class="fa fa-th-list"
-                                                                                 aria-hidden="true"
-                                                                                 (click)="doView(box)"></i></button>
-                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
-                                        title="{{'updateBox'|translate}}"><i class="fa fa-pencil-square-o"
-                                                                             aria-hidden="true"
-                                                                             (click)="doUpdate(box)"></i>
-                                </button>
-                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top"
-                                        title="{{'deleteBox'|translate}}"><i class="fa fa-times" aria-hidden="true"
-                                                                             (click)="doDelete(box)"></i></button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div style="height: 300px; overflow: auto;">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>ID Box</th>
+                                    <th>Deskripsi Box</th>
+                                    <th>Tipe Penyimpanan</th>
+                                    <th>Lokasi Penyimpanan</th>
+                                    <th>Periode</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody *ngIf="!listBoxRegistrations || (listBoxRegistrations && listBoxRegistrations.length===0)">
+                                <tr>
+                                    <td colspan="7">{{'noDataFound'|translate}}</td>
+                                </tr>
+                                </tbody>
+                                <tbody>
+                                <tr *ngFor="let box of listBoxRegistrations;let i =index;">
+                                    <td></td>
+                                    <td>{{box.idBox}}</td>
+                                    <!--<td>{{box.workingUnit}}</td>-->
+                                    <td>{{box.boxDescription}}</td>
+                                    <!--<td>{{box.boxSize}}</td>-->
+                                    <td>{{box.depositType}}</td>
+                                    <td>{{box.depositLocation}}</td>
+                                    <!--<td>{{box.depositRoom}}</td>-->
+                                    <!--<td>{{box.depositShelf}}</td>-->
+                                    <td>{{box.startValidDate | dateFormat}}-{{box.endValidDate | dateFormat}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{{'viewDetailBox'|translate}}" (click)="doView(box)">
+                                            <i class="fa fa-th-list"></i> {{'view'|translate}}
+                                        </button>
+                                        <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{{'updateBox'|translate}}" (click)="doUpdate(box)">
+                                            <i class="fa fa-pencil-square-o"></i> {{'update'|translate}}
+                                        </button>
+                                        <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{{'deleteBox'|translate}}" (click)="doDelete(box)">
+                                            <i class="fa fa-times"></i> {{'delete'|translate}}
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <arms-pagination *ngIf="listBoxRegistrations || (listBoxRegistrations && listBoxRegistrations.length>0)"
-                                 [totalPage]="19"></arms-pagination>
             </div>
+            <arms-pagination *ngIf="listBoxRegistrations || (listBoxRegistrations && listBoxRegistrations.length>0)"
+                             [totalPage]="19"></arms-pagination>
         </div>
     </div>
 </arms-module-container>

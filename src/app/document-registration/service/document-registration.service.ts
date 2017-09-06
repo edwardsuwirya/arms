@@ -48,10 +48,9 @@ export class DocumentRegistrationService {
     }
 
     getListDocumentRegistrationForApproval() {
-
         return Observable.of([
             new DocumentApproval('7012707201001', 'Transaksi Harian', 'Internal', '7', 'Cabang Jakarta Utara I'),
             new DocumentApproval('7012707201002', 'File Kredit', 'Eksternal', '5', 'Cabang Bekasi'),
-        ])
+        ]).delay(900);
     }
 }

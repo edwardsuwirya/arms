@@ -9,50 +9,97 @@
         <div class="page-header">
             <h3>{{'documentLendingReceive'|translate}}</h3>
         </div>
-        <div style="margin-bottom: 250px">
-            <div class="well">
-                <div style="height: 300px; overflow: auto;">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>ID Dokumen</th>
-                            <th>No Dokumen</th>
-                            <th>Tipe Dokumen</th>
-                            <th>Unit Kerja</th>
-                            <th>Status Pinjam</th>
-                            <th>Histori Pinjam</th>
-                            <th></th>
-                            <th>Select</th>
-                        </tr>
-                        </thead>
-                        <tbody *ngIf="!listDocumentSearch || (listDocumentSearch && listDocumentSearch.length===0)">
-                        <tr>
-                            <td colspan="10">{{'noDataFound'|translate}}</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr *ngFor="let doc of listDocumentSearch;let i =index;">
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <div class="pull-left">
-                        <arms-pagination
-                                *ngIf="listDocumentSearch || (listDocumentSearch && listDocumentSearch.length>0)"
-                                [totalPage]="3"></arms-pagination>
-                    </div>
-                    <div class="pull-right">
-                        <button class="btn btn-primary large-button">{{'spvSend' | translate}}</button>
+        <div class="well">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="height: 300px; overflow: auto;">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID Box</th>
+                                <th>ID Document</th>
+                                <th>Name</th>
+                                <th>Borrow Start Date</th>
+                                <th>Borrow End Date</th>
+                                <th>Select</th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="!listDocumentForLendReceive || (listDocumentForLendReceive && listDocumentForLendReceive.length===0)">
+                            <tr>
+                                <td colspan="10">{{'noDataFound'|translate}}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr *ngFor="let doc of listDocumentForLendReceive;let i =index;">
+                                <td>{{i+1}}</td>
+                                <td>{{doc.idBox}}</td>
+                                <td>{{doc.idDoc}}</td>
+                                <td>{{doc.borrowerName}}</td>
+                                <td>{{doc.borrowStartDate}}</td>
+                                <td>{{doc.borrowEndDate}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{{'receive'|translate}}" (click)="doReceive(doc)">
+                                        <i class="fa fa-handshake-o"></i> {{'receive'|translate}}
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="pull-left">
+            <arms-pagination
+                    *ngIf="listDocumentForLendReceive || (listDocumentForLendReceive && listDocumentForLendReceive.length>0)"
+                    [totalPage]="3"></arms-pagination>
+        </div>
     </div>
 </arms-module-container>
 
-<arms-view-modal #boxViewModal [title]="'boxInformation'|translate">
-</arms-view-modal>
-<arms-view-modal #lendingInfoModal [title]="'lendingInformation'|translate">
+<arms-view-modal #docViewModal [title]="'information'|translate"
+                 [showButton]="{'save':true,'cancel':true,'close':false}"
+                 (saveClick)="doSave($event)">
+    <ul class="list-group" *ngIf="doc">
+        <li class="list-group-item">
+            <span class="badge">{{doc.idBox}}</span>
+            {{'idBox'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{doc.idDoc}}</span>
+            {{'idDoc'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{doc.borrowerName}}</span>
+            {{'name'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{doc.borrowStartDate}} - {{doc.borrowEndDate}}</span>
+            {{'period'|translate}}
+        </li>
+        <li class="list-group-item">
+            <span class="badge">{{doc.reason}}</span>
+            {{'reason'|translate}}
+        </li>
+    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Nama</label>
+                <input type="text" class="form-control" id="receiveName">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Tanggal</label>
+                <arms-datepicker #docReceiveDate (selectedDate)="doGetBoxSendingDate($event)"
+                                 [id]="'docReceiveDate'"></arms-datepicker>
+            </div>
+        </div>
+    </div>
 </arms-view-modal>
