@@ -1,0 +1,56 @@
+<div *ngIf="loading">
+    <arms-spinner></arms-spinner>
+</div>
+<arms-module-container>
+    <div sidebar>
+        <arms-menu [isTabOpen]="6" [activeMenu]="'persetujuanPengajuanPengkinianDataBox'"></arms-menu>
+    </div>
+    <div content>
+        <div class="page-header">
+            <h3>{{'boxMaintenanceRequestApproval'|translate}}</h3>
+        </div>
+        <div class="well">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="height: 300px; overflow: auto;">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID Box</th>
+                                <th>Lokasi</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="!listBoxMaintenance || (listBoxMaintenance && listBoxMaintenance.length===0)">
+                            <tr>
+                                <td colspan="7">{{'noDataFound'|translate}}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr *ngFor="let box of listBoxMaintenance;let i =index;">
+                                <td>{{i+1}}</td>
+                                <td>{{box.idBox}}</td>
+                                <td>{{box.documentLocation}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{{'approval'|translate}}" (click)="doApprove(box)">
+                                        <i class="fa fa-thumbs-o-up"></i> {{'approval'|translate}}
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <arms-pagination *ngIf="listBoxMaintenance || (listBoxMaintenance && listBoxMaintenance.length>0)"
+                         [totalPage]="19"></arms-pagination>
+    </div>
+</arms-module-container>
+
+
+<arms-view-modal #viewModal [title]="'infoRegistration'|translate">
+</arms-view-modal>

@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <div class="row row-offcanvas row-offcanvas-left">
-        <div class="col-xs-12 col-sm-12 col-md-3" id="sidebar" role="navigation">
+        <div class="col-xs-12 col-sm-12 col-md-3" id="sidebar" role="navigation" *ngIf="showSideBar">
             <ng-content select="[sidebar]"></ng-content>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-9">
+        <div class="col-xs-12 col-sm-12" [ngClass]="{'col-md-9': showSideBar,'col-md-12':!showSideBar}">
             <ng-content select="[content]"></ng-content>
         </div>
     </div>

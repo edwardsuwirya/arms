@@ -1,0 +1,121 @@
+<div *ngIf="loading">
+    <arms-spinner></arms-spinner>
+</div>
+<arms-module-container>
+    <div sidebar>
+        <arms-menu [isTabOpen]="6" [activeMenu]="'pengkinianDataBox'"></arms-menu>
+    </div>
+    <div content>
+        <div class="page-header">
+            <h3>{{'boxMaintenance'|translate}}</h3>
+        </div>
+        <div class="well">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="height: 300px; overflow: auto;">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID Box</th>
+                                <th>Lokasi</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="!listBoxMaintenance || (listBoxMaintenance && listBoxMaintenance.length===0)">
+                            <tr>
+                                <td colspan="7">{{'noDataFound'|translate}}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr *ngFor="let box of listBoxMaintenance;let i =index;">
+                                <td>{{i+1}}</td>
+                                <td>{{box.idBox}}</td>
+                                <td>{{box.documentLocation}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{{'maintenance'|translate}}" (click)="doMaintenance(box)">
+                                        <i class="fa fa-cog"></i> {{'maintenance'|translate}}
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <arms-pagination
+                *ngIf="listBoxDetailMaintenance || (listBoxDetailMaintenance && listBoxDetailMaintenance.length>0)"
+                [totalPage]="19"></arms-pagination>
+        <div class="well">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div>
+                        <div class="pull-left">
+                            <strong>ID Box</strong> {{idBoxSelected}}
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="{{'add'|translate}}" (click)="doAdd()">
+                                <i class="fa fa-plus"></i> {{'add'|translate}} {{'document'|translate}}
+                            </button>
+                        </div>
+                    </div>
+                    <div style="height: 300px; overflow: auto;clear: both">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID Box</th>
+                                <th>Tipe Arsip</th>
+                                <th>No Arsip</th>
+                                <th>Jumlah Lembar</th>
+                                <th>Periode Awal</th>
+                                <th>Periode Akhir</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="!listBoxDetailMaintenance || (listBoxDetailMaintenance && listBoxDetailMaintenance.length===0)">
+                            <tr>
+                                <td colspan="9">{{'noDataFound'|translate}}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr *ngFor="let box of listBoxDetailMaintenance;let i =index;">
+                                <td>{{i+1}}</td>
+                                <td>{{box.idBox}}</td>
+                                <td>{{box.documentType}}</td>
+                                <td>{{box.documentNo}}</td>
+                                <td>{{box.sheetNo}}</td>
+                                <td>{{box.startPeriod}}</td>
+                                <td>{{box.endPeriod}}</td>
+                                <td>{{box.status}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{{'update'|translate}}" (click)="doUpdate(box)">
+                                        <i class="fa fa-pencil"></i> {{'update'|translate}}
+                                    </button>
+                                    <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{{'delete'|translate}}" (click)="doDelete(box)">
+                                        <i class="fa fa-trash"></i> {{'delete'|translate}}
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</arms-module-container>
+
+<arms-view-modal #viewModal [modalSize]="'m'" [showFooter]="false">
+    <arms-document-registration [forMaintenance]="true"></arms-document-registration>
+</arms-view-modal>

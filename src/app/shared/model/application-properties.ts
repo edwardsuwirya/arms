@@ -5,18 +5,23 @@ import {InjectionToken} from "@angular/core";
 
 export const APP_CONFIG = new InjectionToken("app.config");
 
-const SERVICE_BASE_URL:string = process.env.API_URL;
+const SERVICE_BASE_URL: string = process.env.API_URL;
 
 const LANG_US = {
+    'documentRegistration': 'Document Registration',
     'lending': 'Lending',
     'viewLendingHistory': 'Lending History',
     'boxSending': 'Box Sending ',
     'boxLending': 'Box Lending ',
+    'boxMaintenance': 'Box Maintenance',
+    'boxMaintenanceRequest': 'Box Maintenance Request',
+    'boxMaintenanceRequestApproval': 'Box Maintenance Request Approval',
     'documentReturning': 'Document Return',
     'documentReturningApproval': 'Document Return Approval',
     'documentLending': 'Document Lending',
     'documentLendingReceive': 'Document Lending Receive',
     'documentLendingApproval': 'Document Lending Approval',
+    'boxMaintenanceApproval': 'Box Maintenance Approval',
     'boxLendingApproval': 'Approval Lending Box',
     'boxReceiving': 'Receiving Box',
     'documentSearch': 'Document Search',
@@ -24,6 +29,7 @@ const LANG_US = {
     'checkInApproval': 'Approval Pickup Box',
     'depositDocumentRegistrationApproval': 'Approval Document Registration',
     'browse': 'browse',
+    'document': 'Document',
     'documentNo': 'Document No',
     'documentName': 'Document Name',
     'depositDocumentRegistration': 'Document Registration',
@@ -37,14 +43,16 @@ const LANG_US = {
     'spvSend': 'Send To Supervisor',
     'noDataFound': 'No Data Found',
     'view': 'View',
+    'add': 'Add',
     'update': 'Update',
     'delete': 'Delete',
-    'search': 'search',
+    'search': 'Search',
     'save': 'Save',
     'reset': 'Reset',
     'close': 'Close',
     'choose': 'Choose',
     'small': 'Small',
+    'maintenance': 'Maitenance',
     'medium': 'Medium',
     'large': 'Large',
     'internal': 'Internal',
@@ -78,19 +86,25 @@ const LANG_US = {
     'approval': 'Approval',
     'approve': 'Approve',
     'reject': 'Reject',
-    'reason': 'Reason'
+    'reason': 'Reason',
+    'request': 'Request'
 };
 
 const LANG_ID = {
+    'documentRegistration': 'Pendaftaran Arsip',
     'lending': 'Peminjaman',
     'viewLendingHistory': 'Histori Peminjaman',
     'boxSending': 'Pengiriman Box',
     'boxLending': 'Peminjaman Box',
+    'boxMaintenance': 'Pengkinian Data Box',
+    'boxMaintenanceRequest': 'Pengajuan Pengkinian Data Box',
+    'boxMaintenanceRequestApproval': 'Persetujuan Pengajuan Pengkinian Data Box',
     'documentReturning': 'Pengembalian Arsip',
     'documentReturningApproval': 'Persetujuan Pengembalian Arsip',
     'documentLending': 'Peminjaman Arsip',
     'documentLendingApproval': 'Persetujuan Peminjaman Arsip',
     'documentLendingReceive': 'Penerimaan Peminjaman Arsip',
+    'boxMaintenanceApproval': 'Persetujuan Pengkinian Data Box',
     'boxLendingApproval': 'Persetujuan Peminjaman Box',
     'boxReceiving': 'Penerimaan Box',
     'documentSearch': 'Pencarian Arsip',
@@ -98,6 +112,7 @@ const LANG_ID = {
     'checkInApproval': 'Persetujuan Pickup Box',
     'depositDocumentRegistrationApproval': 'Persetujuan Registrasi Arsip',
     'browse': 'Jelajah File',
+    'document': 'Arsip',
     'documentNo': 'Nomor Arsip',
     'documentName': 'Nama Arsip',
     'depositDocumentRegistration': 'Registrasi Arsip',
@@ -111,6 +126,7 @@ const LANG_ID = {
     'spvSend': 'Kirim Ke Supervisor',
     'noDataFound': 'Data tidak ditemukan',
     'view': 'Lihat',
+    'add': 'Tambah',
     'update': 'Ubah',
     'delete': 'Hapus',
     'search': 'Cari',
@@ -119,6 +135,7 @@ const LANG_ID = {
     'close': 'Tutup',
     'choose': 'Pilih',
     'small': 'Kecil',
+    'maintenance': 'Pengkinian',
     'medium': 'Sedang',
     'large': 'Besar',
     'internal': 'Internal',
@@ -152,7 +169,8 @@ const LANG_ID = {
     'approval': 'Persetujuan',
     'approve': 'Disetujui',
     'reject': 'Ditolak',
-    'reason': 'Alasan'
+    'reason': 'Alasan',
+    'request': 'Pengajuan'
 };
 
 const ERROR_DICT = {

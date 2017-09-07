@@ -4,7 +4,7 @@
 /**
  * Created by edo on 07/05/2017.
  */
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 @Component({
     selector: 'arms-module-container',
@@ -12,4 +12,6 @@ import {Component} from "@angular/core";
     styleUrls: ['./module-container.component.css']
 })
 export class ModuleContainerComponent {
+    @Input()
+    showSideBar: boolean = true;
 }

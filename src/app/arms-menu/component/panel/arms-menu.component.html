@@ -194,29 +194,32 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapseSix" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===4}" role="tabpanel"
+            <div id="collapseSix" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===6}" role="tabpanel"
                  aria-labelledby="headingFour">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'pengajuanPengkinianDataBox'" [icon]="'fa-list-alt'"
                                             [title]="'Pengajuan Pengkinian Data Box'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="'/boxMaintenance/request'"
+                                            [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'persetujuanPengajuanPengkinianDataBox'" [icon]="'fa-check-square-o'"
                                             [title]="'Persetujuan Pengajuan Pengkinian Data Box'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="'/boxMaintenance/requestApproval'"
+                                            [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'pengkinianDataBox'" [icon]="'fa-edit'"
                                             [title]="'Pengkinian Data Box'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="'/boxMaintenance'" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                         <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
                             <arms-menu-item [id]="'persetujuanPengkinianDataBox'" [icon]="'fa-thumbs-o-up'"
                                             [title]="'Persetujuan Pengkinian Data Box'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="'/boxMaintenance/approval'"
+                                            [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                     </div>
                 </div>

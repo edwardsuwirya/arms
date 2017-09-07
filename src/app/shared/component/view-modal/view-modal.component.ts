@@ -19,6 +19,9 @@ export class ViewModalComponent implements OnInit,AfterViewInit {
     modalSize: string = 'm';
 
     @Input()
+    showFooter: boolean = true;
+
+    @Input()
     showButton: {} = {
         'save': false,
         'cancel': false,

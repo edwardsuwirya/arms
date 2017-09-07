@@ -2,7 +2,7 @@
     <arms-spinner></arms-spinner>
 </div>
 <arms-alert #alertError [title]="'invalidRegistration' | translate" [contentInfos]="errorInfo"></arms-alert>
-<arms-module-container>
+<arms-module-container [showSideBar]="!forMaintenance">
     <div sidebar>
         <arms-menu [isTabOpen]="1" [activeMenu]="'registrasiArsip'"></arms-menu>
     </div>
@@ -10,7 +10,7 @@
         <div class="page-header">
             <h3>{{'depositDocumentRegistration'|translate}}</h3>
         </div>
-        <div style="margin-bottom: 250px">
+        <div style="margin-bottom: 50px">
             <form [formGroup]="documentRegistrationFormGroup" style="margin-bottom: 20px">
                 <div class="form-group form-group-sm">
                     <label for="idBox">{{'idBox'|translate}}</label>
@@ -100,7 +100,7 @@
                        type="file" style="display: none"
                        id="docInputFile1">
             </form>
-            <div class="well">
+            <div class="well" *ngIf="!forMaintenance">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div style="height: 300px; overflow: auto;">
@@ -151,15 +151,12 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div *ngIf="!forMaintenance && (listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0))">
                 <div class="pull-left">
-                    <arms-pagination
-                            *ngIf="listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0)"
-                            [totalPage]="19"></arms-pagination>
+                    <arms-pagination [totalPage]="19"></arms-pagination>
                 </div>
                 <div class="pull-right">
-                    <button *ngIf="listDocumentRegistrations || (listDocumentRegistrations && listDocumentRegistrations.length>0)"
-                            class="btn btn-primary">Submit Approval
+                    <button class="btn btn-primary">Submit Approval
                     </button>
                 </div>
             </div>

@@ -16,7 +16,9 @@ import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
         SharedModule,
         ArmsMenuModule
     ],
-    exports: [],
+    exports: [
+        DocumentRegistrationComponent
+    ],
     providers: [
         DocumentRegistrationService
     ]

@@ -1,0 +1,97 @@
+<div *ngIf="loading">
+    <arms-spinner></arms-spinner>
+</div>
+<arms-module-container>
+    <div sidebar>
+        <arms-menu [isTabOpen]="6" [activeMenu]="'pengajuanPengkinianDataBox'"></arms-menu>
+    </div>
+    <div content>
+        <div class="page-header">
+            <h3>{{'boxMaintenanceRequest'|translate}}</h3>
+        </div>
+        <div style="margin-bottom: 250px">
+            <form [formGroup]="boxMaintenanceRequestFormGroup" style="margin-bottom: 20px;">
+                <div class="form-group form-group-sm">
+                    <label for="idBox">{{'idBox'|translate}}</label>
+                    <input type="text" class="form-control" id="idBox" formControlName="idBox">
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="idDoc">{{'idDoc'|translate}}</label>
+                    <input type="text" class="form-control" id="idDoc" formControlName="idDoc">
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="documentNo">{{'documentNo'|translate}}</label>
+                    <input type="text" class="form-control" formControlName="documentNo" id="documentNo">
+                </div>
+                <div class="form-group form-group-sm">
+                    <label for="documentType">{{'documentType'|translate}}</label>
+                    <select class="form-control" id="documentType" formControlName="documentType">
+                        <option></option>
+                        <option value="dn">Dokumen Nasabah</option>
+                        <option value="th">Transaksi Harian/Arsip</option>
+                        <option value="fk">File Kredit</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-primary small-button btn-sm" (click)="doSearch()">
+                            {{'search'|translate}}
+                        </button>
+                        <button type="button" class="btn btn-default small-button btn-sm" (click)="doReset()">
+                            {{'reset'|translate}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="well">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div style="height: 300px; overflow: auto;">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>ID Box</th>
+                                    <th>ID Arsip</th>
+                                    <th>No Arsip</th>
+                                    <th>Tipe Arsip</th>
+                                    <th>Unit Kerja</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody *ngIf="!listBoxMaintenance || (listBoxMaintenance && listBoxMaintenance.length===0)">
+                                <tr>
+                                    <td colspan="7">{{'noDataFound'|translate}}</td>
+                                </tr>
+                                </tbody>
+                                <tbody>
+                                <tr *ngFor="let box of listBoxMaintenance;let i =index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{box.idBox}}</td>
+                                    <td>{{box.idDoc}}</td>
+                                    <td>{{box.documentNo}}</td>
+                                    <td>{{box.documentType}}</td>
+                                    <td>{{box.workingUnit}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{{'request'|translate}}" (click)="doRequest(box)">
+                                            <i class="fa fa-commenting-o"></i> {{'request'|translate}}
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <arms-pagination *ngIf="listBoxMaintenance || (listBoxMaintenance && listBoxMaintenance.length>0)"
+                             [totalPage]="19"></arms-pagination>
+        </div>
+    </div>
+</arms-module-container>
+
+
+<arms-view-modal #viewModal [title]="'infoRegistration'|translate">
+</arms-view-modal>
