@@ -8,6 +8,7 @@ export const APP_CONFIG = new InjectionToken("app.config");
 const SERVICE_BASE_URL: string = process.env.API_URL;
 
 const LANG_US = {
+    'reminderDocReturnList': 'Overdue Document Borrow List',
     'documentRegistration': 'Document Registration',
     'lending': 'Lending',
     'viewLendingHistory': 'Lending History',
@@ -87,10 +88,16 @@ const LANG_US = {
     'approve': 'Approve',
     'reject': 'Reject',
     'reason': 'Reason',
-    'request': 'Request'
+    'request': 'Request',
+    'overdue': 'Overdue',
+    'more3': 'More Than 3 Days',
+    'between13': '1-3 Days',
+    'dueDate': 'Due Date',
+    'today': 'Today'
 };
 
 const LANG_ID = {
+    'reminderDocReturnList': 'Daftar Pengembalian Arsip Habis Batas Waktu',
     'documentRegistration': 'Pendaftaran Arsip',
     'lending': 'Peminjaman',
     'viewLendingHistory': 'Histori Peminjaman',
@@ -170,7 +177,12 @@ const LANG_ID = {
     'approve': 'Disetujui',
     'reject': 'Ditolak',
     'reason': 'Alasan',
-    'request': 'Pengajuan'
+    'request': 'Pengajuan',
+    'overdue': 'Keterlambatan',
+    'more3': 'Lebih dari 3 Hari',
+    'between13': '1-3 Hari',
+    'dueDate': 'Jatuh Tempo',
+    'today': 'Hari Ini'
 };
 
 const ERROR_DICT = {

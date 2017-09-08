@@ -16,6 +16,7 @@ import {DocumentSearchLendModule} from "./document-search-lend/document-search-l
 import {BoxReturnModule} from "./box-return/box-return.module";
 import {BoxMaintenanceModule} from "./box-maintenance/box-maintenance.module";
 import {DocumentReturnModule} from "./document-return/document-return.module";
+import {ReminderModule} from "./reminder/reminder.module";
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import {DocumentReturnModule} from "./document-return/document-return.module";
         BoxMaintenanceModule,
         CheckInModule,
         CheckOutModule,
-        DocumentReturnModule
+        DocumentReturnModule,
+        ReminderModule
     ],
     providers: [
         {provide: APP_CONFIG, useValue: appConfig},

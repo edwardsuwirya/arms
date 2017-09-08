@@ -15,6 +15,7 @@ import {DOCUMENT_SEARCH_LEND_PATH} from "../document-search-lend/document-search
 import {BOX_MAINTENANCE_PATH} from "../box-maintenance/box-maintenance.module";
 import {BOX_RETURN_PATH} from "../box-return/box-return.module";
 import {DOCUMENT_RETURN_PATH} from "../document-return/document-return.module";
+import {REMINDER_PATH} from "../reminder/reminder.module";
 
 
 export const routes: Routes = [
@@ -58,6 +59,9 @@ export const routes: Routes = [
             {
                 path: 'checkOut',
                 children: CHECK_OUT_PATH
+            }, {
+                path: 'reminder',
+                children: REMINDER_PATH
             },
         ]
     },

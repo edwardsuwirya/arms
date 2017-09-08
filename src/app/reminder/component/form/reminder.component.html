@@ -1,0 +1,164 @@
+<div *ngIf="loading">
+    <arms-spinner></arms-spinner>
+</div>
+<arms-module-container>
+    <div sidebar>
+        <arms-menu [isTabOpen]="4" [activeMenu]="'peringatanPengembalianDoc'"></arms-menu>
+    </div>
+    <div content>
+        <div class="page-header">
+            <h3>{{'reminderDocReturnList'|translate}}</h3>
+        </div>
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="searchCategory"></label>
+                <select class="form-control" id="searchCategory">
+                    <option></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="searchValue"></label>
+                <input type="text" class="form-control" id="searchValue">
+            </div>
+            <button class="btn btn-default"><i class="fa fa-binoculars"></i></button>
+        </form>
+        <br/>
+        <h4>{{'dueDate' | translate}} <span class="label label-info">{{'today'|translate}}</span></h4>
+        <div class="well">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="height: 300px; overflow: auto;">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID Box</th>
+                                <th>ID Arsip</th>
+                                <th>Nama</th>
+                                <th>Tanggal Mulai Pinjam</th>
+                                <th>Tanggal Akhir Pinjam</th>
+                                <th>Pilih</th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="!listDocumentForLend || (listDocumentForLend && listDocumentForLend.length===0)">
+                            <tr>
+                                <td colspan="10">{{'noDataFound'|translate}}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr *ngFor="let doc of listDocumentForLend;let i =index;">
+                                <td>{{i+1}}</td>
+                                <td>{{doc.idBox}}</td>
+                                <td>{{doc.idDoc}}</td>
+                                <td>{{doc.borrowerName}}</td>
+                                <td>{{doc.borrowStartDate}}</td>
+                                <td>{{doc.borrowEndDate}}</td>
+                                <td>
+                                    <input type="checkbox">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="listDocumentForLend || (listDocumentForLend && listDocumentForLend.length>0)">
+            <div class="pull-left">
+                <arms-pagination [totalPage]="3"></arms-pagination>
+            </div>
+        </div>
+        <br/>
+        <h4>{{'overdue' | translate}} <span class="label label-warning">{{'between13'|translate}}</span></h4>
+        <div class="well">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="height: 300px; overflow: auto;">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID Box</th>
+                                <th>ID Arsip</th>
+                                <th>Nama</th>
+                                <th>Tanggal Mulai Pinjam</th>
+                                <th>Tanggal Akhir Pinjam</th>
+                                <th>Pilih</th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="!listDocumentForLend || (listDocumentForLend && listDocumentForLend.length===0)">
+                            <tr>
+                                <td colspan="10">{{'noDataFound'|translate}}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr *ngFor="let doc of listDocumentForLend;let i =index;">
+                                <td>{{i+1}}</td>
+                                <td>{{doc.idBox}}</td>
+                                <td>{{doc.idDoc}}</td>
+                                <td>{{doc.borrowerName}}</td>
+                                <td>{{doc.borrowStartDate}}</td>
+                                <td>{{doc.borrowEndDate}}</td>
+                                <td>
+                                    <input type="checkbox">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="listDocumentForLend || (listDocumentForLend && listDocumentForLend.length>0)">
+            <div class="pull-left">
+                <arms-pagination [totalPage]="3"></arms-pagination>
+            </div>
+        </div>
+        <br/>
+        <h4>{{'overdue' | translate}} <span class="label label-danger">{{'more3'|translate}}</span></h4>
+        <div class="well">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="height: 300px; overflow: auto;">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID Box</th>
+                                <th>ID Arsip</th>
+                                <th>Nama</th>
+                                <th>Tanggal Mulai Pinjam</th>
+                                <th>Tanggal Akhir Pinjam</th>
+                                <th>Pilih</th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="!listDocumentForLend || (listDocumentForLend && listDocumentForLend.length===0)">
+                            <tr>
+                                <td colspan="10">{{'noDataFound'|translate}}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr *ngFor="let doc of listDocumentForLend;let i =index;">
+                                <td>{{i+1}}</td>
+                                <td>{{doc.idBox}}</td>
+                                <td>{{doc.idDoc}}</td>
+                                <td>{{doc.borrowerName}}</td>
+                                <td>{{doc.borrowStartDate}}</td>
+                                <td>{{doc.borrowEndDate}}</td>
+                                <td>
+                                    <input type="checkbox">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="listDocumentForLend || (listDocumentForLend && listDocumentForLend.length>0)">
+            <div class="pull-left">
+                <arms-pagination [totalPage]="3"></arms-pagination>
+            </div>
+        </div>
+    </div>
+</arms-module-container>
