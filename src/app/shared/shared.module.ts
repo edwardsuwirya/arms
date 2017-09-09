@@ -20,7 +20,7 @@ import {HttpUtilService} from "./service/http-util.service";
 import {SecKeyService} from "./service/seckey.service";
 import {SimpleTokenService} from "./service/simple-token.service";
 import {PaginationComponent} from "./component/pagination/pagination.component";
-import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
+import {RouterGuardService} from "./service/router-guard.service";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -62,7 +62,7 @@ import {ArmsMenuModule} from "../arms-menu/arms-menu.module";
     ]
 })
 export class SharedModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot():ModuleWithProviders {
         return {
             ngModule: SharedModule,
             providers: [
@@ -72,7 +72,8 @@ export class SharedModule {
                 DateUtilService,
                 HttpUtilService,
                 SecKeyService,
-                SimpleTokenService
+                SimpleTokenService,
+                RouterGuardService
             ]
         };
     }

@@ -1,4 +1,6 @@
 import {Component, OnInit, AfterViewInit, Input} from "@angular/core";
+import {ArmsMenuService} from "../../service/arms-menu.service";
+import {Menu} from "../../model/menu";
 /**
  * Created by 15050978 on 8/16/2017.
  */
@@ -9,20 +11,28 @@ import {Component, OnInit, AfterViewInit, Input} from "@angular/core";
 })
 export class ArmsMenuComponent implements OnInit,AfterViewInit {
     @Input()
-    isWelcome: boolean = false;
+    isWelcome:boolean = false;
 
     @Input()
-    isTabOpen: number = 1;
+    isTabOpen:number = 1;
 
     @Input()
-    activeMenu: string = '';
+    activeMenu:string = '';
 
-    constructor() {
+    menus:Menu[];
+    menuLoading:boolean = false;
+
+    constructor(private armsMenuService:ArmsMenuService) {
     }
 
-    ngOnInit(): void {
+    ngOnInit():void {
+        this.menuLoading = true;
+        this.armsMenuService.getUserMenu().subscribe((menus)=> {
+            this.menus = menus;
+            this.menuLoading = false;
+        })
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit():void {
     }
 }

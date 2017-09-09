@@ -1,225 +1,27 @@
 <div class="sidebar-nav">
+    <div style="text-align: center" *ngIf="menuLoading">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
+        <div class="panel panel-default" *ngFor="let menu of menus">
+            <div class="panel-heading" role="tab" id="{{'heading'+menu.id}}">
                 <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="{{'#'+menu.id}}"
                        aria-expanded="true" aria-controls="collapseOne">
-                        Registrasi
+                        {{menu.title}}
                     </a>
                 </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===1}" role="tabpanel"
+            <div id="{{menu.id}}" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===menu.tabNo}"
+                 role="tabpanel"
                  aria-labelledby="headingOne">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'registrasiBox'" [icon]="'fa-cubes'" [title]="'Registrasi Box'"
-                                            [direction]="'/boxRegistration'" [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'registrasiArsip'" [icon]="'fa-tags'" [title]="'Registrasi Arsip'"
-                                            [direction]="'/documentRegistration'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'persetujuanRegistrasiArsip'" [icon]="'fa-thumbs-o-up'"
-                                            [title]="'Persetujuan Registrasi Arsip'"
-                                            [direction]="'/documentRegistration/approval'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Pengiriman Box
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===2}" role="tabpanel"
-                 aria-labelledby="headingTwo">
-                <div class="panel-body" style="text-align: center">
-                    <div class="row">
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'pickupBox'" [icon]="'fa-hand-lizard-o'"
-                                            [title]="'Permintaan Pick Up Box'"
-                                            [direction]="'/checkIn'" [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'persetujuanPickupBox'" [icon]="'fa-thumbs-o-up'"
-                                            [title]="'Persetujuan Pick Up Box'"
-                                            [direction]="'/checkIn/approval'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'pengirimanBox'" [icon]="'fa-truck'"
-                                            [title]="'Pengiriman Box'"
-                                            [direction]="'/checkIn/send'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingThree">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Informasi / Peminjaman Arsip
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===3}" role="tabpanel"
-                 aria-labelledby="headingThree">
-                <div class="panel-body" style="text-align: center">
-                    <div class="row">
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'pencarianArsip'" [icon]="'fa-binoculars'" [title]="'Pencarian Arsip'"
-                                            [direction]="'/documentSearchLend/search'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'peminjamanArsip'" [icon]="'fa-level-up'"
-                                            [title]="'Peminjaman Arsip'"
-                                            [direction]="'/documentSearchLend/lend'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'persetujuanPeminjamanArsip'" [icon]="'fa-thumbs-o-up'"
-                                            [title]="'Persetujuan Peminjaman Arsip'"
-                                            [direction]="'/documentSearchLend/approval'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'penerimaanPeminjamanArsip'" [icon]="'fa-clone'"
-                                            [title]="'Penerimaan Peminjaman Arsip'"
-                                            [direction]="'/documentSearchLend/receive'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingFive">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        Peminjaman Box
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseFive" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===5}" role="tabpanel"
-                 aria-labelledby="headingFour">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'peminjamanBox'" [icon]="'fa-level-up'"
-                                            [title]="'Peminjaman Box'"
-                                            [direction]="'/checkOut'" [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'persetujuanPeminjamanBox'" [icon]="'fa-thumbs-o-up'"
-                                            [title]="'Persetujuan Peminjaman Box'"
-                                            [direction]="'/checkOut/approval'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'penerimaanBox'" [icon]="'fa-cube'"
-                                            [title]="'Penerimaan Box'"
-                                            [direction]="'/checkOut/receive'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingFour">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        Pengembalian
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseFour" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===4}" role="tabpanel"
-                 aria-labelledby="headingFour">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'pengembalianArsip'" [icon]="'fa-level-down'"
-                                            [title]="'Pengembalian Arsip'"
-                                            [direction]="'/documentReturn'" [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'persetujuanPengembalianArsip'" [icon]="'fa-thumbs-o-up'"
-                                            [title]="'Persetujuan Pengembalian Arsip'"
-                                            [direction]="'/documentReturn/approval'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'pengembalianBox'" [icon]="'fa-arrow-down'"
-                                            [title]="'Pengembalian Box'"
-                                            [direction]="'/documentReturn'" [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'persetujuanPengembalianBox'" [icon]="'fa-thumbs-o-up'"
-                                            [title]="'Persetujuan Pengembalian Box'"
-                                            [direction]="'/documentReturn/approval'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'peringatanPengembalianDoc'" [icon]="'fa-clock-o'"
-                                            [title]="'Peringatan Pengembalian Arsip'"
-                                            [direction]="'/reminder'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingSix">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                        Pengkinian Data Box
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseSix" class="panel-collapse collapse" [ngClass]="{'in': isTabOpen===6}" role="tabpanel"
-                 aria-labelledby="headingFour">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'pengajuanPengkinianDataBox'" [icon]="'fa-list-alt'"
-                                            [title]="'Pengajuan Pengkinian Data Box'"
-                                            [direction]="'/boxMaintenance/request'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'persetujuanPengajuanPengkinianDataBox'" [icon]="'fa-check-square-o'"
-                                            [title]="'Persetujuan Pengajuan Pengkinian Data Box'"
-                                            [direction]="'/boxMaintenance/requestApproval'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'pengkinianDataBox'" [icon]="'fa-edit'"
-                                            [title]="'Pengkinian Data Box'"
-                                            [direction]="'/boxMaintenance'" [activeMenu]="activeMenu"></arms-menu-item>
-                        </div>
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}">
-                            <arms-menu-item [id]="'persetujuanPengkinianDataBox'" [icon]="'fa-thumbs-o-up'"
-                                            [title]="'Persetujuan Pengkinian Data Box'"
-                                            [direction]="'/boxMaintenance/approval'"
-                                            [activeMenu]="activeMenu"></arms-menu-item>
+                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}"
+                             *ngFor="let menuItem of menu.menuItem">
+                            <arms-menu-item [id]="menuItem.id" [icon]="menuItem.icon" [title]="menuItem.title"
+                                            [direction]="menuItem.direction" [activeMenu]="activeMenu"></arms-menu-item>
                         </div>
                     </div>
                 </div>

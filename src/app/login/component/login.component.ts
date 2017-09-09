@@ -2,6 +2,7 @@ import {Component, OnInit, AfterViewInit, ElementRef, ViewChild} from "@angular/
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
+import {LoginService} from "../service/login.service";
 
 /**
  * Created by 15050978 on 8/29/2017.
@@ -12,15 +13,16 @@ import {Observable} from "rxjs";
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit,AfterViewInit {
-    loginForm: FormGroup;
+    loginForm:FormGroup;
 
     @ViewChild('userNameInput')
-    userNameInput: ElementRef;
+    userNameInput:ElementRef;
 
-    constructor(private router: Router, private formBuilder: FormBuilder) {
+    constructor(private router:Router, private formBuilder:FormBuilder,
+                private loginService:LoginService) {
     }
 
-    ngOnInit(): void {
+    ngOnInit():void {
         this.loginForm = this.formBuilder.group({
             un: ['', Validators.required],
             pw: ['', Validators.required]
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit,AfterViewInit {
         this.doSetFocus();
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit():void {
     }
 
     doSetFocus() {
@@ -38,6 +40,13 @@ export class LoginComponent implements OnInit,AfterViewInit {
     }
 
     doLogin() {
-        this.router.navigate(['/home']);
+        this.loginService.doUserLogin(this.loginForm.controls['un'].value, this.loginForm.controls['pw'].value).subscribe((res)=> {
+            if (res) {
+                this.router.navigate(['/home']);
+            } else {
+                this.router.navigate(['/login']);
+            }
+        })
+
     }
 }

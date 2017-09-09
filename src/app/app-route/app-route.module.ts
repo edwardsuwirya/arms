@@ -16,13 +16,14 @@ import {BOX_MAINTENANCE_PATH} from "../box-maintenance/box-maintenance.module";
 import {BOX_RETURN_PATH} from "../box-return/box-return.module";
 import {DOCUMENT_RETURN_PATH} from "../document-return/document-return.module";
 import {REMINDER_PATH} from "../reminder/reminder.module";
+import {RouterGuardService} from "../shared/service/router-guard.service";
 
 
-export const routes: Routes = [
+export const routes:Routes = [
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {
-        path: 'home', component: HomePageComponent,
+        path: 'home', component: HomePageComponent, canActivate: [RouterGuardService],
         children: [
             {
                 path: '',
