@@ -18,7 +18,7 @@
                  aria-labelledby="headingOne">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-sm-12" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}"
+                        <div class="col-sm-6" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}"
                              *ngFor="let menuItem of menu.menuItem">
                             <arms-menu-item [id]="menuItem.id" [icon]="menuItem.icon" [title]="menuItem.title"
                                             [direction]="menuItem.direction" [activeMenu]="activeMenu"></arms-menu-item>
