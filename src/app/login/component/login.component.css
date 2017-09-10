@@ -49,10 +49,10 @@ and (max-device-width: 568px) {
     }
 
     .container {
-        margin-top: -35px;
+        margin-top: -38px;
     }
 
     .button-login {
-        margin-top: 10px
+        margin-top: 5px
     }
 }

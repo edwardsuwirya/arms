@@ -1,5 +1,12 @@
-@media screen and (max-width: 768px) {
+.bottom-spacing{
+    margin-bottom: 50px;
+}
 
-
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px) {
+    .bottom-spacing{
+        margin-bottom: 75px;
+    }
 }
 
