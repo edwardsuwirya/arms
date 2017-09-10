@@ -49,3 +49,11 @@ html, body {
 .navbar-brand {
     padding: 8px 10px !important;
 }
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) {
+    html, body {
+        padding-top: 30px !important;
+    }
+}
