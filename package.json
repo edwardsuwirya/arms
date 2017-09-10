@@ -35,6 +35,7 @@
     "moment": "^2.18.1",
     "numeral": "2.0.6",
     "pikaday": "^1.6.1",
+    "randomstring": "^1.1.5",
     "rxjs": "5.0.1",
     "zone.js": "^0.8.4"
   },

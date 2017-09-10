@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit,AfterViewInit {
     @ViewChild('userNameInput')
     userNameInput:ElementRef;
 
+    loading:boolean = false;
+    error:boolean = false;
+
     constructor(private router:Router, private formBuilder:FormBuilder,
                 private loginService:LoginService) {
     }
@@ -40,12 +43,16 @@ export class LoginComponent implements OnInit,AfterViewInit {
     }
 
     doLogin() {
+        this.loading = true;
         this.loginService.doUserLogin(this.loginForm.controls['un'].value, this.loginForm.controls['pw'].value).subscribe((res)=> {
             if (res) {
                 this.router.navigate(['/home']);
             } else {
-                this.router.navigate(['/login']);
+                this.error = true;
             }
+            this.loading = false;
+        }, (err)=> {
+            this.loading = false;
         })
 
     }

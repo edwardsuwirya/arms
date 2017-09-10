@@ -69,7 +69,8 @@ module.exports = {
             _: 'lodash',
             moment: 'moment',
             Pikaday: 'pikaday',
-            jwt: 'jwt-simple'
+            jwt: 'jwt-simple',
+            randomstring:'randomstring'
         })
     ]
 };

@@ -4,19 +4,30 @@ import {APP_CONFIG} from "../model/application-properties";
 /**
  * Created by 15050978 on 5/9/2017.
  */
+declare let randomstring:any;
+
 @Injectable()
 export class SecKeyService {
-    seckey: string = '';
+    seckey:string = '';
 
-    constructor(@Inject(APP_CONFIG) private appConfig, private localStorageService: LocalStorageService) {
+    constructor(@Inject(APP_CONFIG) private appConfig, private localStorageService:LocalStorageService) {
     }
 
-    getSecKey(): string {
+    generateSecKey():string {
+        return randomstring.generate();
+    }
+
+    getSecKey():string {
         this.seckey = this.localStorageService.getItem(this.appConfig.tokenKey);
         return this.seckey;
     }
 
-    setSeckey(key:string) {
-        this.localStorageService.setItem(this.appConfig.tokenKey, key);
+    setSeckey(key?:string) {
+        if (key) {
+            this.localStorageService.setItem(this.appConfig.tokenKey, key);
+        } else {
+            this.localStorageService.setItem(this.appConfig.tokenKey, this.generateSecKey());
+        }
+
     }
 }

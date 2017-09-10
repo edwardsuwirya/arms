@@ -5,7 +5,7 @@ import {InjectionToken} from "@angular/core";
 
 export const APP_CONFIG = new InjectionToken("app.config");
 
-const SERVICE_BASE_URL: string = process.env.API_URL;
+const SERVICE_BASE_URL:string = process.env.API_URL;
 
 const LANG_US = {
     'reminderDocReturnList': 'Overdue Document Borrow List',
@@ -93,7 +93,11 @@ const LANG_US = {
     'more3': 'More Than 3 Days',
     'between13': '1-3 Days',
     'dueDate': 'Due Date',
-    'today': 'Today'
+    'today': 'Today',
+    'login': 'Login',
+    'userName': 'User Name',
+    'password': 'Password',
+    'invalidLogin':'Invalid User & Password'
 };
 
 const LANG_ID = {
@@ -182,7 +186,11 @@ const LANG_ID = {
     'more3': 'Lebih dari 3 Hari',
     'between13': '1-3 Hari',
     'dueDate': 'Jatuh Tempo',
-    'today': 'Hari Ini'
+    'today': 'Hari Ini',
+    'login': 'Masuk',
+    'userName': 'ID Pengguna',
+    'password': 'Kata Kunci',
+    'invalidLogin':'Kesalahan ID Pengguna'
 };
 
 const ERROR_DICT = {

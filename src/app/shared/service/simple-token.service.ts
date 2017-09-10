@@ -15,7 +15,7 @@ export class SimpleTokenService {
                 private secKeyService: SecKeyService) {
     }
 
-    encodeToken(payload: Object): string {
+    encodeToken(payload: any): string {
         return jwt.encode(payload, this.secKeyService.getSecKey());
     }
 

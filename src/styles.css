@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     width: 100%;
     color: #5e5e5e !important;
-    padding-top: 50px;
+    padding-top: 35px;
 }
 
 .navbar {
@@ -44,4 +44,8 @@ html, body {
 
 .pagination {
     margin-top: 0px !important;
+}
+
+.navbar-brand {
+    padding: 8px 10px !important;
 }

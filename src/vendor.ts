@@ -22,3 +22,5 @@ import 'moment/moment.js';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'jwt-simple';
 import 'pikaday/pikaday.js';
+
+import 'randomstring';

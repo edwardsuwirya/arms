@@ -21,6 +21,7 @@ import {SecKeyService} from "./service/seckey.service";
 import {SimpleTokenService} from "./service/simple-token.service";
 import {PaginationComponent} from "./component/pagination/pagination.component";
 import {RouterGuardService} from "./service/router-guard.service";
+import {AlertNotificationComponent} from "./component/alert-notification/alert-notification.component";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -33,6 +34,7 @@ import {RouterGuardService} from "./service/router-guard.service";
         AlertComponent,
         ViewModalComponent,
         PaginationComponent,
+        AlertNotificationComponent,
         TranslatePipe,
         TimestampToDatePipe,
         DateFormatPipe
@@ -55,6 +57,7 @@ import {RouterGuardService} from "./service/router-guard.service";
         DatePickerComponent,
         PaginationComponent,
         AlertComponent,
+        AlertNotificationComponent,
         ViewModalComponent,
         TranslatePipe,
         TimestampToDatePipe,
