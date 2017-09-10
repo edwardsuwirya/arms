@@ -16,10 +16,27 @@
     letter-spacing: 2pt;
 }
 
+.login-panel{
+    padding: 60px;
+}
 .panel {
     background-color: rgba(245, 245, 245, 0.4) !important;
 }
 
 .panel-default {
     border-color: transparent !important;
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) {
+    .arms-title {
+        font-size: 24px;
+    }
+    .arms-subtitle {
+        font-size: 12px;
+    }
+    .login-panel{
+        padding: 20px;
+    }
 }

@@ -5,6 +5,7 @@ import {Component, OnInit, AfterViewInit, Inject} from "@angular/core";
 import {Router} from "@angular/router";
 import {LocalStorageService} from "../../shared/service/local-storage.service";
 import {APP_CONFIG} from "../../shared/model/application-properties";
+import {Menu} from "../../arms-menu/model/menu";
 
 declare let $:any;
 declare let _:any;

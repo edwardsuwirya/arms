@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, Input} from "@angular/core";
+import {Component, OnInit, AfterViewInit, Input, Output, EventEmitter} from "@angular/core";
 import {ArmsMenuService} from "../../service/arms-menu.service";
 import {Menu} from "../../model/menu";
 /**
