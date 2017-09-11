@@ -20,44 +20,44 @@ import {Observable} from "rxjs";
 })
 export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
-    viewModal: ViewModalComponent;
+    viewModal:ViewModalComponent;
 
     @ViewChild('alertError')
-    alertError: AlertComponent;
+    alertError:AlertComponent;
 
     @ViewChild('startValidDate')
-    startValidDate: DatePickerComponent;
+    startValidDate:DatePickerComponent;
 
     @ViewChild('endValidDate')
-    endValidDate: DatePickerComponent;
+    endValidDate:DatePickerComponent;
 
     @ViewChild('file')
-    fileInput: ElementRef;
+    fileInput:ElementRef;
 
     @Input()
-    forMaintenance: boolean = false;
+    forMaintenance:boolean = false;
 
-    documentRegistrationFormGroup: FormGroup;
+    documentRegistrationFormGroup:FormGroup;
 
-    listDocumentRegistrations: DocumentRegistration[];
+    listDocumentRegistrations:DocumentRegistration[];
 
-    loading: boolean = false;
+    loading:boolean = false;
 
-    errorInfo: MessageInfo[] = [];
+    errorInfo:MessageInfo[] = [];
 
-    isDailyTransaction: boolean = false;
-    isUpdatingForm: boolean = false;
-    armsDocument: DocumentRegistration;
+    isDailyTransaction:boolean = false;
+    isUpdatingForm:boolean = false;
+    armsDocument:DocumentRegistration;
 
-    fileInfo: any;
+    fileInfo:any;
 
-    constructor(private formBuilder: FormBuilder,
-                private documentRegistrationService: DocumentRegistrationService,
-                private formErrorsService: FormErrorsService,
-                private dateUtilService: DateUtilService) {
+    constructor(private formBuilder:FormBuilder,
+                private documentRegistrationService:DocumentRegistrationService,
+                private formErrorsService:FormErrorsService,
+                private dateUtilService:DateUtilService) {
     }
 
-    ngOnInit(): void {
+    ngOnInit():void {
         this.documentRegistrationFormGroup = this.formBuilder.group({
             idBox: [''],
             idDocument: [''],
@@ -74,8 +74,8 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
             workingUnit: ['7012']
         });
 
-        this.documentRegistrationFormGroup.valueChanges.subscribe((res) => {
-            if (res.documentType == 'th') {
+        this.documentRegistrationFormGroup.controls['documentType'].valueChanges.subscribe((res) => {
+            if (res === 'th') {
                 this.isDailyTransaction = true;
                 this.documentRegistrationFormGroup.controls['sheetNo'].setValidators(Validators.required);
                 this.documentRegistrationFormGroup.controls['startValidDate'].setValidators(Validators.required);
@@ -92,10 +92,13 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
                 this.documentRegistrationFormGroup.controls['startValidDate'].clearValidators();
                 this.documentRegistrationFormGroup.controls['endValidDate'].clearValidators();
             }
+            this.documentRegistrationFormGroup.controls['sheetNo'].updateValueAndValidity();
+            this.documentRegistrationFormGroup.controls['startValidDate'].updateValueAndValidity();
+            this.documentRegistrationFormGroup.controls['endValidDate'].updateValueAndValidity();
         })
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit():void {
 
     }
 
@@ -123,7 +126,7 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
         let formVal = this.documentRegistrationFormGroup.getRawValue();
         console.log(formVal);
 
-        let newBox: DocumentRegistration = new DocumentRegistration(formVal.idBox,
+        let newBox:DocumentRegistration = new DocumentRegistration(formVal.idBox,
             formVal.idDocument,
             formVal.documentType,
             formVal.sheetNo,
@@ -186,12 +189,12 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
         this.isUpdatingForm = false;
     }
 
-    doView(armsDocument: DocumentRegistration) {
+    doView(armsDocument:DocumentRegistration) {
         this.armsDocument = armsDocument;
         this.viewModal.doShowModal();
     }
 
-    doUpdate(armsDocument: DocumentRegistration) {
+    doUpdate(armsDocument:DocumentRegistration) {
         this.armsDocument = armsDocument;
         this.isUpdatingForm = true;
         this.documentRegistrationFormGroup.controls['idBox'].setValue(armsDocument.idBox);
@@ -207,12 +210,12 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
         this.documentRegistrationFormGroup.controls['workingUnit'].setValue(armsDocument.workingUnit);
     }
 
-    doSpliceBox(armsDocument: DocumentRegistration) {
+    doSpliceBox(armsDocument:DocumentRegistration) {
         let boxIndex = this.listDocumentRegistrations.indexOf(armsDocument);
         this.listDocumentRegistrations.splice(boxIndex, 1);
     }
 
-    doDelete(box: DocumentRegistration) {
+    doDelete(box:DocumentRegistration) {
         this.loading = true;
         this.documentRegistrationService.deleteDocument(box).subscribe((b) => {
             this.doSpliceBox(b);
