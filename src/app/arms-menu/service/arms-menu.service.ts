@@ -38,13 +38,13 @@ export class ArmsMenuService {
                 [
                     new MenuItem('pengembalianArsip', 'fa-level-down', 'Pengembalian Arsip', '/documentReturn'),
                     new MenuItem('persetujuanPengembalianArsip', 'fa-thumbs-o-up', 'Persetujuan Pengembalian Arsip', '/documentReturn/approval'),
-                    new MenuItem('pengembalianBox', 'fa-arrow-down', 'Pengembalian Box', '/documentReturn'),
-                    new MenuItem('persetujuanPengembalianBox', 'fa-thumbs-o-up', 'Persetujuan Pengembalian Box', '/documentReturn/approval'),
+                    new MenuItem('pengembalianBox', 'fa-arrow-down', 'Pengembalian Box', '/boxReturn'),
+                    new MenuItem('persetujuanPengembalianBox', 'fa-thumbs-o-up', 'Persetujuan Pengembalian Box', '/boxReturn/approval'),
                     new MenuItem('peringatanPengembalianDoc', 'fa-clock-o', 'Peringatan Pengembalian Arsip', '/reminder'),
                 ]),
             new Menu('pengkinianDataBox', 'Pengkinian Data Box', 6,
                 [
-                    new MenuItem('pengajuanPengkinianDataBox', 'fa-list-alt', 'Pengajuan Pengkinian Data Box', '/documentReturn'),
+                    new MenuItem('pengajuanPengkinianDataBox', 'fa-list-alt', 'Pengajuan Pengkinian Data Box', '/boxMaintenance/request'),
                     new MenuItem('persetujuanPengajuanPengkinianDataBox', 'fa-check-square-o', 'Persetujuan Pengajuan Pengkinian Data Box', '/boxMaintenance/requestApproval'),
                     new MenuItem('pengkinianDataBox', 'fa-edit', 'Pengkinian Data Box', '/boxMaintenance'),
                     new MenuItem('persetujuanPengkinianDataBox', 'fa-thumbs-o-up', 'Persetujuan Pengkinian Data Box', '/boxMaintenance/approval'),

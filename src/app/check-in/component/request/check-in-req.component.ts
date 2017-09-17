@@ -13,7 +13,7 @@ export class CheckInRequestComponent implements OnInit,AfterViewInit {
     @ViewChild('pickupDate')
     pickupDate:DatePickerComponent;
 
-    loading: boolean = false;
+    loading:boolean = false;
 
     listBox:string[] = ['514-01', '514-02', '514-03', '514-04', '514-05'];
     listBoxToBeSend:string[] = [];
@@ -42,5 +42,9 @@ export class CheckInRequestComponent implements OnInit,AfterViewInit {
         this.listBox.push(item);
         let selectedItemIdx = this.listBoxToBeSend.indexOf(item);
         this.listBoxToBeSend.splice(selectedItemIdx, 1);
+    }
+
+    doSubmitApproval() {
+
     }
 }

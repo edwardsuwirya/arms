@@ -11,33 +11,37 @@ import {DatePickerComponent} from "../../../shared/component/date-picker/date-pi
 })
 export class CheckOutRequestComponent implements OnInit,AfterViewInit {
     @ViewChild('borrowDate')
-    borrowDate: DatePickerComponent;
+    borrowDate:DatePickerComponent;
 
-    loading: boolean = false;
+    loading:boolean = false;
 
-    listBox: string[] = ['701217072017001', '701217072017002', '701217072017003', '701217072017004', '701217072017005',
+    listBox:string[] = ['701217072017001', '701217072017002', '701217072017003', '701217072017004', '701217072017005',
         '701217072017006', '701217072017007'];
-    listBoxToBeBorrow: string[] = [];
+    listBoxToBeBorrow:string[] = [];
 
-    constructor(private router: Router) {
+    constructor(private router:Router) {
     }
 
-    ngOnInit(): void {
+    ngOnInit():void {
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit():void {
         this.borrowDate.setPickerDate();
     }
 
-    doSend(item: string) {
+    doSend(item:string) {
         this.listBoxToBeBorrow.push(item);
         let selectedItemIdx = this.listBox.indexOf(item);
         this.listBox.splice(selectedItemIdx, 1);
     }
 
-    doCancelSend(item: string) {
+    doCancelSend(item:string) {
         this.listBox.push(item);
         let selectedItemIdx = this.listBoxToBeBorrow.indexOf(item);
         this.listBoxToBeBorrow.splice(selectedItemIdx, 1);
+    }
+
+    doSubmitApproval() {
+
     }
 }

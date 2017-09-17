@@ -25,6 +25,8 @@ const LANG_US = {
     'boxMaintenanceApproval': 'Box Maintenance Approval',
     'boxLendingApproval': 'Approval Lending Box',
     'boxReceiving': 'Receiving Box',
+    'boxReturn': 'Box Return',
+    'boxReturnApproval': 'Approval Box Return',
     'documentSearch': 'Document Search',
     'borrowRegistration': 'Borrow Document Registration',
     'checkInApproval': 'Approval Pickup Box',
@@ -43,6 +45,8 @@ const LANG_US = {
     'overlimitSize': 'File size is overlimit',
     'spvSend': 'Send To Supervisor',
     'noDataFound': 'No Data Found',
+    'submitApproval': 'Submit Approval',
+    'noRecord':'No Record Found',
     'view': 'View',
     'add': 'Add',
     'update': 'Update',
@@ -97,7 +101,7 @@ const LANG_US = {
     'login': 'Login',
     'userName': 'User Name',
     'password': 'Password',
-    'invalidLogin':'Invalid User & Password'
+    'invalidLogin': 'Invalid User & Password'
 };
 
 const LANG_ID = {
@@ -118,6 +122,8 @@ const LANG_ID = {
     'boxMaintenanceApproval': 'Persetujuan Pengkinian Data Box',
     'boxLendingApproval': 'Persetujuan Peminjaman Box',
     'boxReceiving': 'Penerimaan Box',
+    'boxReturn': 'Pengembalian Box',
+    'boxReturnApproval': 'Persetujuan Pengembalian Box',
     'documentSearch': 'Pencarian Arsip',
     'borrowRegistration': 'Peminjaman Arsip',
     'checkInApproval': 'Persetujuan Pickup Box',
@@ -136,6 +142,8 @@ const LANG_ID = {
     'overlimitSize': 'Ukuran file terlalu besar',
     'spvSend': 'Kirim Ke Supervisor',
     'noDataFound': 'Data tidak ditemukan',
+    'submitApproval': 'Kirim Untuk Persetujuan',
+    'noRecord':'Tidak ada data yang ditemukan',
     'view': 'Lihat',
     'add': 'Tambah',
     'update': 'Ubah',
@@ -190,7 +198,7 @@ const LANG_ID = {
     'login': 'Masuk',
     'userName': 'ID Pengguna',
     'password': 'Kata Kunci',
-    'invalidLogin':'Kesalahan ID Pengguna'
+    'invalidLogin': 'Kesalahan ID Pengguna'
 };
 
 const ERROR_DICT = {

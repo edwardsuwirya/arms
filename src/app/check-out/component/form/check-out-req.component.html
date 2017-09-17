@@ -73,7 +73,7 @@
                     <h5>Box Yang Akan Dipinjam</h5>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <ul class="list-group">
+                            <ul class="list-group" *ngIf="listBoxToBeBorrow.length>0">
                                 <li *ngFor="let item of listBoxToBeBorrow" class="list-group-item">
                                     <span class="pull-right" style="margin-top: -5px">
                                         <a class="btn btn-link" (click)="doCancelSend(item)">Batal</a>
@@ -81,16 +81,21 @@
                                     {{item}}
                                 </li>
                             </ul>
+                            <ul class="list-group" *ngIf="listBoxToBeBorrow.length==0">
+                                <li class="list-group-item">
+                                    {{'noRecord' | translate}}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12" style="text-align: right;">
-                    <button type="button" class="btn btn-danger large-button" (click)="onAddDocumentRegistration()">
-                        Submit
-                    </button>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align: right;">
+                <button type="button" class="btn btn-danger large-button" (click)="doSubmitApproval()">
+                    {{'submitApproval'|translate}}
+                </button>
             </div>
         </div>
     </div>
