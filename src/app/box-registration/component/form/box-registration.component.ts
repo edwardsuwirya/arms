@@ -8,6 +8,7 @@ import {FormErrorsService} from "../../../shared/service/form-errors.service";
 import {MessageInfo} from "../../../shared/model/message-info";
 import {DateUtilService} from "../../../shared/service/date-util.service";
 import {ViewModalComponent} from "../../../shared/component/view-modal/view-modal.component";
+import {ActivatedRoute} from "@angular/router";
 /**
  * Created by 15050978 on 8/23/2017.
  */
@@ -41,7 +42,12 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
     isUpdatingForm: boolean = false;
     box: BoxRegistration;
 
-    constructor(private formBuilder: FormBuilder,
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
+
+    constructor(private route: ActivatedRoute,
+                private formBuilder: FormBuilder,
                 private boxRegistrationService: BoxRegistrationService,
                 private formErrorsService: FormErrorsService,
                 private dateUtilService: DateUtilService) {
@@ -75,6 +81,11 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
     ngAfterViewInit(): void {
         this.startValidDate.setPickerDate();
         this.endValidDate.setPickerDate();
+        this.route.queryParams.subscribe(params => {
+            this.icon = params['icon'];
+            this.menuId = params['menuId'];
+            this.menuTab = Number(params['menuTab']);
+        });
     }
 
     doGetStartDate(event) {

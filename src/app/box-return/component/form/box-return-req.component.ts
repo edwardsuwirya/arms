@@ -1,5 +1,5 @@
 import {AfterViewInit, OnInit, Component, ViewChild} from "@angular/core";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
 /**
  * Created by 15050978 on 8/16/2017.
@@ -19,7 +19,11 @@ export class BoxReturnRequestComponent implements OnInit,AfterViewInit {
         '701217072017006', '701217072017007'];
     listBoxToBeReturn: string[] = [];
 
-    constructor(private router: Router) {
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
+
+    constructor(private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -27,6 +31,11 @@ export class BoxReturnRequestComponent implements OnInit,AfterViewInit {
 
     ngAfterViewInit(): void {
         this.returnDate.setPickerDate();
+        this.route.queryParams.subscribe(params => {
+            this.icon = params['icon'];
+            this.menuId = params['menuId'];
+            this.menuTab = Number(params['menuTab']);
+        });
     }
 
     doSend(item: string) {
@@ -41,7 +50,7 @@ export class BoxReturnRequestComponent implements OnInit,AfterViewInit {
         this.listBoxToBeReturn.splice(selectedItemIdx, 1);
     }
 
-    doSubmitApproval(){
+    doSubmitApproval() {
 
     }
 }

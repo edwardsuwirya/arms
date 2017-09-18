@@ -1,4 +1,4 @@
-import {OnInit, Component, AfterViewInit, Input, EventEmitter, Output} from "@angular/core";
+import {OnInit, Component, AfterViewInit, Input} from "@angular/core";
 import {Router} from "@angular/router";
 /**
  * Created by 15050978 on 8/16/2017.
@@ -24,6 +24,9 @@ export class ArmsMenuItemComponent implements OnInit,AfterViewInit {
     @Input()
     activeMenu: string = '';
 
+    @Input()
+    tabNo: number;
+
     constructor(private router: Router) {
     }
 
@@ -34,6 +37,12 @@ export class ArmsMenuItemComponent implements OnInit,AfterViewInit {
     }
 
     doClick() {
-        this.router.navigateByUrl('/home' + this.direction);
+        this.router.navigate(['/home' + this.direction], {
+            queryParams: {
+                menuId: this.id,
+                menuTab: this.tabNo,
+                icon: this.icon
+            }
+        });
     }
 }

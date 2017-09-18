@@ -5,13 +5,15 @@ import {InjectionToken} from "@angular/core";
 
 export const APP_CONFIG = new InjectionToken("app.config");
 
-const SERVICE_BASE_URL:string = process.env.API_URL;
+const SERVICE_BASE_URL: string = process.env.API_URL;
 
 const LANG_US = {
     'reminderDocReturnList': 'Overdue Document Borrow List',
     'documentRegistration': 'Document Registration',
+    'boxRegistration': 'Box Registration',
     'lending': 'Lending',
     'viewLendingHistory': 'Lending History',
+    'informationAndDocLending':'Information / Document Lending',
     'boxSending': 'Box Sending ',
     'boxLending': 'Box Lending ',
     'boxMaintenance': 'Box Maintenance',
@@ -28,8 +30,10 @@ const LANG_US = {
     'boxReturn': 'Box Return',
     'boxReturnApproval': 'Approval Box Return',
     'documentSearch': 'Document Search',
+    'registration': 'Registration',
     'borrowRegistration': 'Borrow Document Registration',
     'checkInApproval': 'Approval Pickup Box',
+    'pickupBox': 'Pickup Box Request',
     'depositDocumentRegistrationApproval': 'Approval Document Registration',
     'browse': 'browse',
     'document': 'Document',
@@ -46,7 +50,7 @@ const LANG_US = {
     'spvSend': 'Send To Supervisor',
     'noDataFound': 'No Data Found',
     'submitApproval': 'Submit Approval',
-    'noRecord':'No Record Found',
+    'noRecord': 'No Record Found',
     'view': 'View',
     'add': 'Add',
     'update': 'Update',
@@ -65,6 +69,7 @@ const LANG_US = {
     'required': 'Required',
     'receive': 'Receive',
     'return': 'Return',
+    'returning':'Returning',
     'idBox': 'Box ID',
     'fileUpload': 'File Attachment',
     'idDoc': 'Document ID',
@@ -107,8 +112,10 @@ const LANG_US = {
 const LANG_ID = {
     'reminderDocReturnList': 'Daftar Pengembalian Arsip Habis Batas Waktu',
     'documentRegistration': 'Pendaftaran Arsip',
+    'boxRegistration': 'Pendaftaran Box',
     'lending': 'Peminjaman',
     'viewLendingHistory': 'Histori Peminjaman',
+    'informationAndDocLending':'Informasi / Peminjaman Arsip',
     'boxSending': 'Pengiriman Box',
     'boxLending': 'Peminjaman Box',
     'boxMaintenance': 'Pengkinian Data Box',
@@ -125,8 +132,10 @@ const LANG_ID = {
     'boxReturn': 'Pengembalian Box',
     'boxReturnApproval': 'Persetujuan Pengembalian Box',
     'documentSearch': 'Pencarian Arsip',
+    'registration': 'Pendaftaran',
     'borrowRegistration': 'Peminjaman Arsip',
     'checkInApproval': 'Persetujuan Pickup Box',
+    'pickupBox': 'Pengajuan Pickup Box',
     'depositDocumentRegistrationApproval': 'Persetujuan Registrasi Arsip',
     'browse': 'Jelajah File',
     'document': 'Arsip',
@@ -143,7 +152,7 @@ const LANG_ID = {
     'spvSend': 'Kirim Ke Supervisor',
     'noDataFound': 'Data tidak ditemukan',
     'submitApproval': 'Kirim Untuk Persetujuan',
-    'noRecord':'Tidak ada data yang ditemukan',
+    'noRecord': 'Tidak ada data yang ditemukan',
     'view': 'Lihat',
     'add': 'Tambah',
     'update': 'Ubah',
@@ -162,6 +171,7 @@ const LANG_ID = {
     'required': 'Dibutuhkan',
     'receive': 'Diterima',
     'return': 'Dikembalikan',
+    'returning':'Pengembalian',
     'idBox': 'ID Box',
     'idDoc': 'ID Arsip',
     'fileUpload': 'File Lampiran',

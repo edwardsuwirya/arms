@@ -3,11 +3,11 @@
 </div>
 <arms-module-container>
     <div sidebar>
-        <arms-menu [isTabOpen]="3" [activeMenu]="'penerimaanPeminjamanArsip'"></arms-menu>
+        <arms-menu [isTabOpen]="menuTab" [activeMenu]="menuId"></arms-menu>
     </div>
     <div content>
         <div class="page-header">
-            <h3>{{'documentLendingReceive'|translate}}</h3>
+            <h3><i class="fa fa-1x {{icon}}"></i> <span>{{menuId|translate}}</span></h3>
         </div>
         <div class="well">
             <div class="panel panel-default">

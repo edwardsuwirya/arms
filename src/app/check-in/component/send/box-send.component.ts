@@ -3,6 +3,7 @@ import {ViewModalComponent} from "../../../shared/component/view-modal/view-moda
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
 import {CheckInService} from "../../service/check-in.service";
 import {BoxSend} from "../../model/box-send";
+import {ActivatedRoute} from "@angular/router";
 /**
  * Created by edo on 26/08/2017.
  */
@@ -22,7 +23,12 @@ export class BoxSendComponent implements OnInit,AfterViewInit {
 
     listBoxSend: BoxSend[] = [];
 
-    constructor(private checkInService: CheckInService) {
+    icon: string = '';
+    title: string = '';
+    menuId: string = '';
+    menuTab: number;
+
+    constructor(private route: ActivatedRoute, private checkInService: CheckInService) {
     }
 
     ngOnInit(): void {
@@ -34,6 +40,12 @@ export class BoxSendComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.icon = params['icon'];
+            this.title = params['title'];
+            this.menuId = params['menuId'];
+            this.menuTab = Number(params['menuTab']);
+        });
     }
 
     doSend(box) {

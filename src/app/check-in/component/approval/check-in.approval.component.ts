@@ -1,6 +1,7 @@
 import {OnInit, Component, AfterViewInit} from "@angular/core";
 import {BoxSend} from "../../model/box-send";
 import {CheckInService} from "../../service/check-in.service";
+import {ActivatedRoute} from "@angular/router";
 /**
  * Created by edo on 26/08/2017.
  */
@@ -14,7 +15,11 @@ export class CheckInApprovalComponent implements OnInit,AfterViewInit {
 
     listBoxSendForApprove: BoxSend[] = [];
 
-    constructor(private checkInService: CheckInService) {
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
+
+    constructor(private route: ActivatedRoute, private checkInService: CheckInService) {
 
     }
 
@@ -27,6 +32,11 @@ export class CheckInApprovalComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.icon = params['icon'];
+            this.menuId = params['menuId'];
+            this.menuTab = Number(params['menuTab']);
+        });
     }
 
 }

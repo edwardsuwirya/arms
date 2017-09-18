@@ -3,6 +3,7 @@ import {ViewModalComponent} from "../../../shared/component/view-modal/view-moda
 import {DocumentLend} from "../../model/document-lend";
 import {DocumentSearchLendService} from "../../service/document-search-lend.service";
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
+import {ActivatedRoute} from "@angular/router";
 /**
  * Created by edo on 28/08/2017.
  */
@@ -22,7 +23,11 @@ export class DocumentLendReceiveComponent implements OnInit,AfterViewInit {
     listDocumentForLendReceive: DocumentLend[];
     doc: DocumentLend;
 
-    constructor(private documentSearchLendService: DocumentSearchLendService) {
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
+
+    constructor(private route: ActivatedRoute, private documentSearchLendService: DocumentSearchLendService) {
     }
 
     ngOnInit(): void {
@@ -34,6 +39,11 @@ export class DocumentLendReceiveComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.icon = params['icon'];
+            this.menuId = params['menuId'];
+            this.menuTab = Number(params['menuTab']);
+        });
     }
 
     doSearch() {

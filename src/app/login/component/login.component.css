@@ -1,24 +1,47 @@
 .arms-title {
     font-weight: normal;
-    color: #5e5e5e;
+    color: #fb632e;
     letter-spacing: 3pt;
     word-spacing: 0pt;
     font-size: 48px;
     text-align: left;
     font-family: arial black, sans-serif;
+    line-height: 68px;
+    margin-top: -18px;
 }
-
+.sqr-dare-ver{
+    font-weight: normal;
+    color: #fff;
+    letter-spacing: 3pt;
+    word-spacing: 0pt;
+    font-size: 20px;
+    text-align: left;
+    font-family: arial black, sans-serif;
+}
+.input-group .form-control{
+    opacity: 0.7;
+}
 .arms-subtitle {
     font-weight: normal;
-    color: #5e5e5e;
+    color: #fff;
     font-size: 14px;
     font-family: arial, sans-serif;
     letter-spacing: 2pt;
 }
 
+.logo_btpn_login{
+    display: block;
+    text-align: center;
+    height: 80px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
 .login-panel {
     padding: 60px;
 }
+.col-md-6{
+    margin-top: 8%}
 
 .panel {
     background-color: rgba(245, 245, 245, 0.4) !important;
@@ -30,7 +53,15 @@
 
 .button-login {
     width: 100%;
-    margin-top: 20px
+    margin-top: 20px;
+    background-color: #fb632e;
+    border: #fb632e;
+    color: #fff;
+}
+.button-login:hover{
+    background-color: #574f44;
+    border: #574f44;
+    color: #fff;
 }
 
 @media only screen

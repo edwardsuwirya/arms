@@ -9,7 +9,7 @@
                 <h4 class="panel-title">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="{{'#'+menu.id}}"
                        aria-expanded="true" aria-controls="collapseOne">
-                        {{menu.title}}
+                        {{menu.id | translate}}
                     </a>
                 </h4>
             </div>
@@ -21,7 +21,8 @@
                         <div class="col-xs-6 col-sm-6" [ngClass]="{'col-md-2': isWelcome,'col-md-6':!isWelcome}"
                              *ngFor="let menuItem of menu.menuItem">
                             <arms-menu-item [id]="menuItem.id" [icon]="menuItem.icon" [title]="menuItem.title"
-                                            [direction]="menuItem.direction" [activeMenu]="activeMenu"></arms-menu-item>
+                                            [direction]="menuItem.direction" [activeMenu]="activeMenu"
+                                            [tabNo]="menu.tabNo"></arms-menu-item>
                         </div>
                     </div>
                 </div>

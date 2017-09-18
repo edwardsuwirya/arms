@@ -3,11 +3,11 @@
 </div>
 <arms-module-container>
     <div sidebar>
-        <arms-menu [isTabOpen]="2" [activeMenu]="'pickupBox'"></arms-menu>
+        <arms-menu [isTabOpen]="menuTab" [activeMenu]="menuId"></arms-menu>
     </div>
     <div content>
         <div class="page-header">
-            <h3>Permintaan Pickup Box</h3>
+            <h3><i class="fa fa-1x {{icon}}"></i> <span>{{menuId|translate}}</span></h3>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -78,8 +78,8 @@
             </div>
         </div>
         <div class="pull-right">
-            <button type="button" class="btn btn-danger large-button" style="margin-bottom: 30px"
-                    (click)="doSubmitApproval()">
+            <button type="button" class="btn btn-warning large-button" style="margin-bottom: 30px"
+                    (click)="doSubmitApproval()"><i class="fa fa-check"></i>
                 {{'submitApproval' | translate}}
             </button>
         </div>

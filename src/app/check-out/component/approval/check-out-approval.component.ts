@@ -1,6 +1,7 @@
 import {OnInit, Component, AfterViewInit} from "@angular/core";
 import {BoxLendService} from "../../service/box-lend.service";
 import {BoxLend} from "../../model/box-lend";
+import {ActivatedRoute} from "@angular/router";
 /**
  * Created by edo on 26/08/2017.
  */
@@ -10,15 +11,19 @@ import {BoxLend} from "../../model/box-lend";
     styleUrls: ['check-out-approval.component.css']
 })
 export class CheckOutApprovalComponent implements OnInit,AfterViewInit {
-    loading:boolean = false;
+    loading: boolean = false;
 
-    listBoxLendForApprove:BoxLend[] = [];
+    listBoxLendForApprove: BoxLend[] = [];
 
-    constructor(private boxLendService:BoxLendService) {
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
+
+    constructor(private route: ActivatedRoute, private boxLendService: BoxLendService) {
 
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
         this.loading = true;
         this.boxLendService.getListBoxForLendApproval().subscribe((res) => {
             this.listBoxLendForApprove = res;
@@ -26,10 +31,15 @@ export class CheckOutApprovalComponent implements OnInit,AfterViewInit {
         })
     }
 
-    ngAfterViewInit():void {
+    ngAfterViewInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.icon = params['icon'];
+            this.menuId = params['menuId'];
+            this.menuTab = Number(params['menuTab']);
+        });
     }
 
-    doSelectForApproval(box:BoxLend) {
+    doSelectForApproval(box: BoxLend) {
 
     }
 

@@ -3,6 +3,7 @@ import {ViewModalComponent} from "../../../shared/component/view-modal/view-moda
 import {DocumentReturn} from "../../model/document-return";
 import {DocumentReturnService} from "../../service/document-return.service";
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
+import {ActivatedRoute} from "@angular/router";
 /**
  * Created by edo on 06/09/2017.
  */
@@ -13,19 +14,22 @@ import {DatePickerComponent} from "../../../shared/component/date-picker/date-pi
 })
 export class DocumentReturnComponent implements OnInit,AfterViewInit {
     @ViewChild('lendingInfoModal')
-    lendingInfoModal:ViewModalComponent;
+    lendingInfoModal: ViewModalComponent;
     @ViewChild('docReturnDate')
-    docReturnDate:DatePickerComponent;
+    docReturnDate: DatePickerComponent;
 
-    loading:boolean = false;
-    listDocumentForReturn:DocumentReturn[];
+    loading: boolean = false;
+    listDocumentForReturn: DocumentReturn[];
 
-    doc:DocumentReturn;
+    doc: DocumentReturn;
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
 
-    constructor(private documentReturnService:DocumentReturnService) {
+    constructor(private route: ActivatedRoute, private documentReturnService: DocumentReturnService) {
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
         this.loading = true;
         this.documentReturnService.getListDocumentForReturn().subscribe((res) => {
             this.listDocumentForReturn = res;
@@ -33,7 +37,12 @@ export class DocumentReturnComponent implements OnInit,AfterViewInit {
         })
     }
 
-    ngAfterViewInit():void {
+    ngAfterViewInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.icon = params['icon'];
+            this.menuId = params['menuId'];
+            this.menuTab = Number(params['menuTab']);
+        });
     }
 
     doSearch() {
@@ -42,7 +51,7 @@ export class DocumentReturnComponent implements OnInit,AfterViewInit {
     doReset() {
     }
 
-    doReturn(doc:DocumentReturn) {
+    doReturn(doc: DocumentReturn) {
         this.doc = doc;
         this.docReturnDate.setPickerDate();
         this.lendingInfoModal.doShowModal();

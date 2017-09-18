@@ -3,11 +3,11 @@
 </div>
 <arms-module-container>
     <div sidebar>
-        <arms-menu [isTabOpen]="5" [activeMenu]="'peminjamanBox'"></arms-menu>
+        <arms-menu [isTabOpen]="menuTab" [activeMenu]="menuId"></arms-menu>
     </div>
     <div content>
         <div class="page-header">
-            <h3>{{'boxLending'|translate}}</h3>
+            <h3><i class="fa fa-1x {{icon}}"></i> <span>{{menuId|translate}}</span></h3>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -93,7 +93,8 @@
         </div>
         <div class="row">
             <div class="col-md-12" style="text-align: right;">
-                <button type="button" class="btn btn-danger large-button" (click)="doSubmitApproval()">
+                <button type="button" class="btn btn-warning large-button" (click)="doSubmitApproval()">
+                    <i class="fa fa-check"></i>
                     {{'submitApproval'|translate}}
                 </button>
             </div>

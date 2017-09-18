@@ -4,11 +4,11 @@
 <arms-alert #alertError [title]="'invalidRegistration' | translate" [contentInfos]="errorInfo"></arms-alert>
 <arms-module-container>
     <div sidebar>
-        <arms-menu [isTabOpen]="1" [activeMenu]="'registrasiBox'"></arms-menu>
+        <arms-menu [isTabOpen]="menuTab" [activeMenu]="menuId"></arms-menu>
     </div>
     <div content>
         <div class="page-header">
-            <h3>{{'depositBoxRegistration'|translate}}</h3>
+            <h3><i class="fa fa-1x {{icon}}"></i> <span>{{menuId|translate}}</span></h3>
         </div>
         <div style="margin-bottom: 250px">
             <form [formGroup]="boxRegistrationFormGroup" style="margin-bottom: 20px;">
@@ -102,11 +102,11 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <button type="button" class="btn btn-primary small-button btn-sm" (click)="doSave()">
-                            {{'save'|translate}}
+                        <button type="button" class="btn btn-warning small-button btn-sm" (click)="doSave()">
+                            <i class="fa fa-save"></i> {{'save'|translate}}
                         </button>
                         <button type="button" class="btn btn-default small-button btn-sm" (click)="doReset()">
-                            {{'reset'|translate}}
+                            <i class="fa fa-close"></i> {{'reset'|translate}}
                         </button>
                     </div>
                 </div>

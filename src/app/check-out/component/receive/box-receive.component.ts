@@ -3,6 +3,7 @@ import {ViewModalComponent} from "../../../shared/component/view-modal/view-moda
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
 import {BoxLend} from "../../model/box-lend";
 import {BoxLendService} from "../../service/box-lend.service";
+import {ActivatedRoute} from "@angular/router";
 /**
  * Created by edo on 26/08/2017.
  */
@@ -13,19 +14,22 @@ import {BoxLendService} from "../../service/box-lend.service";
 })
 export class BoxReceiveComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
-    viewModal:ViewModalComponent;
+    viewModal: ViewModalComponent;
 
     @ViewChild('boxReceiveDate')
-    boxReceiveDate:DatePickerComponent;
+    boxReceiveDate: DatePickerComponent;
 
-    loading:boolean = false;
-    listBoxLendReceive:BoxLend[] = [];
+    loading: boolean = false;
+    listBoxLendReceive: BoxLend[] = [];
 
-    constructor(private boxLendService:BoxLendService) {
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
 
+    constructor(private route: ActivatedRoute, private boxLendService: BoxLendService) {
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
         this.loading = true;
         this.boxLendService.getListBoxForLendReceive().subscribe((res) => {
             this.listBoxLendReceive = res;
@@ -33,7 +37,12 @@ export class BoxReceiveComponent implements OnInit,AfterViewInit {
         })
     }
 
-    ngAfterViewInit():void {
+    ngAfterViewInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.icon = params['icon'];
+            this.menuId = params['menuId'];
+            this.menuTab = Number(params['menuTab']);
+        });
     }
 
     doReceive(box) {
