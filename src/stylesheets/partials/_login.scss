@@ -1,0 +1,91 @@
+%font-title {
+  font-family: $font-family-base;
+  font-weight: normal;
+}
+
+$font-base-width: 12;
+
+.arms {
+  &-bg {
+    background: url('../public/images/bg.jpg') center no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &-title {
+    @extend %font-title;
+    color: $btpn-orange-color;
+    letter-spacing: 3pt;
+    word-spacing: 0pt;
+    font-size: $font-base-width*4px;
+    text-align: left;
+
+    line-height: 68px;
+    margin-top: -18px;
+  }
+  &-subtitle {
+    @extend %font-title;
+    color: $white;
+    font-size: $font-base-width*1px;
+    letter-spacing: 2pt;
+  }
+  &-version {
+    @extend %font-title;
+    color: $white;
+    letter-spacing: 3pt;
+    word-spacing: 0pt;
+    font-size: $font-base-width*2px;
+    text-align: left;
+  }
+}
+
+.img-lock {
+  display: block;
+  margin: 20px auto -55px;
+  height: 60px;
+  width: auto;
+}
+
+.input-group .form-control {
+  opacity: 0.7;
+}
+
+.logo_btpn_login {
+  display: block;
+  text-align: center;
+  height: 80px;
+  width: auto;
+  margin-bottom: 20px;
+}
+
+#footerLogin {
+  color: $white;
+}
+
+.col-md-6 {
+  margin-top: 8%;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  .arms-title {
+    font-size: 24px;
+  }
+
+  .arms-subtitle {
+    font-size: 12px;
+  }
+
+  .login-panel {
+    padding: 20px;
+  }
+
+  .container {
+    margin-top: -38px;
+  }
+
+  .button-login {
+    margin-top: 5px
+  }
+}

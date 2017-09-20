@@ -6,13 +6,13 @@ import {DocumentSearchLendService} from "../../service/document-search-lend.serv
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
 import {DocumentLend} from "../../model/document-lend";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by edo on 28/08/2017.
  */
 @Component({
     selector: 'arms-document-search',
-    templateUrl: 'document-search.component.html',
-    styleUrls: ['document-search.component.css']
+    templateUrl: 'document-search.component.html'
 })
 export class DocumentSearchComponent implements OnInit,AfterViewInit {
     @ViewChild('historyModal')
@@ -52,11 +52,13 @@ export class DocumentSearchComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doChooseWorkingUnit() {

@@ -102,10 +102,10 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <button type="button" class="btn btn-warning small-button btn-sm" (click)="doSave()">
+                        <button type="button" class="btn btn-warning btn-width-small btn-sm" (click)="doSave()">
                             <i class="fa fa-save"></i> {{'save'|translate}}
                         </button>
-                        <button type="button" class="btn btn-default small-button btn-sm" (click)="doReset()">
+                        <button type="button" class="btn btn-default btn-width-small btn-sm" (click)="doReset()">
                             <i class="fa fa-close"></i> {{'reset'|translate}}
                         </button>
                     </div>
@@ -135,15 +135,15 @@
                                 <tbody>
                                 <tr *ngFor="let box of listBoxRegistrations;let i =index;">
                                     <td></td>
-                                    <td>{{box.idBox}}</td>
+                                    <td>{{box.boxId}}</td>
                                     <!--<td>{{box.workingUnit}}</td>-->
                                     <td>{{box.boxDescription}}</td>
                                     <!--<td>{{box.boxSize}}</td>-->
-                                    <td>{{box.depositType}}</td>
-                                    <td>{{box.depositLocation}}</td>
+                                    <td>{{box.storageType}}</td>
+                                    <td>{{box.storageLocation}}</td>
                                     <!--<td>{{box.depositRoom}}</td>-->
                                     <!--<td>{{box.depositShelf}}</td>-->
-                                    <td>{{box.startValidDate | dateFormat}}-{{box.endValidDate | dateFormat}}</td>
+                                    <td>{{box.startPeriod | dateFormat}}-{{box.endPeriod | dateFormat}}</td>
                                     <td>
                                         <button type="button" class="btn btn-link" data-toggle="tooltip"
                                                 data-placement="top"

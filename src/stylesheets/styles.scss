@@ -1,0 +1,25 @@
+@import "modules/base";
+@import "modules/color";
+@import "components/html";
+@import "components/panel";
+@import "components/navbar";
+@import "components/button";
+@import "components/pagination";
+@import "components/menu_item";
+@import "partials/login";
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  vertical-align: middle !important;
+}
+
+.input-group-addon {
+  color: $white !important;
+  background-color: $btpn-orange-color !important;
+  border: $btpn-orange-color !important;
+}
+
+.content:hover {
+  background-color: $btpn-orange-color !important;
+  color: $white !important;
+}
+

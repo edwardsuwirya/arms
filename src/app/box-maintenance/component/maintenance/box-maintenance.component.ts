@@ -3,13 +3,14 @@ import {AfterViewInit, OnInit, Component, ViewChild} from "@angular/core";
 import {BoxMaintenanceService} from "../../service/box-maintenance.service";
 import {BoxDetailMaintenance} from "../../model/box-detail-maintenance";
 import {ViewModalComponent} from "../../../shared/component/view-modal/view-modal.component";
+import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by 15050978 on 9/7/2017.
  */
 @Component({
     selector: 'arms-box-maintenance',
-    templateUrl: './box-maintenance.component.html',
-    styleUrls: ['./box-maintenance.component.css']
+    templateUrl: './box-maintenance.component.html'
 })
 export class BoxMaintenanceComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
@@ -22,8 +23,11 @@ export class BoxMaintenanceComponent implements OnInit,AfterViewInit {
     box: BoxMaintenanceRequest;
 
     idBoxSelected: string;
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
 
-    constructor(private boxMaintenanceService: BoxMaintenanceService) {
+    constructor(private route: ActivatedRoute, private boxMaintenanceService: BoxMaintenanceService) {
     }
 
     ngOnInit(): void {
@@ -35,6 +39,13 @@ export class BoxMaintenanceComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doMaintenance(box: BoxMaintenanceRequest) {

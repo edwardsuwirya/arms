@@ -4,8 +4,7 @@ import {Component, Input, OnInit, Output, EventEmitter} from "@angular/core";
  */
 @Component({
     selector: 'arms-pagination',
-    templateUrl: './pagination.component.html',
-    styleUrls: ['./pagination.component.css']
+    templateUrl: './pagination.component.html'
 })
 export class PaginationComponent implements OnInit {
     @Input()

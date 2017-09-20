@@ -1,0 +1,17 @@
+.panel-default > .panel-heading {
+  background-color: $btpn-daya-brown !important;
+  color: $white !important;
+}
+
+.well {
+  margin-bottom: 10px !important;
+}
+
+.panel-login{
+  background-color: rgba(245, 245, 245, 0.4);
+  border-color: transparent;
+
+  &-body{
+    padding: 60px;
+  }
+}

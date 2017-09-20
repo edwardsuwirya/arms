@@ -4,8 +4,7 @@ import {Component, OnInit, AfterViewInit, Input} from "@angular/core";
  */
 @Component({
     selector: 'arms-alert-notification',
-    templateUrl: './alert-notification.component.html',
-    styleUrls: ['./alert-notification.component.css']
+    templateUrl: './alert-notification.component.html'
 })
 export class AlertNotificationComponent implements OnInit,AfterViewInit {
     @Input()

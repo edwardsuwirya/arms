@@ -3,13 +3,13 @@ import {ViewModalComponent} from "../../../shared/component/view-modal/view-moda
 import {DocumentReturn} from "../../model/document-return";
 import {DocumentReturnService} from "../../service/document-return.service";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by edo on 06/09/2017.
  */
 @Component({
     selector: 'arms-document-return-approval',
-    templateUrl: 'document-return-approval.component.html',
-    styleUrls: ['document-return-approval.component.css']
+    templateUrl: 'document-return-approval.component.html'
 })
 export class DocumentReturnApprovalComponent implements OnInit,AfterViewInit {
     @ViewChild('lendingInfoModal')
@@ -36,11 +36,13 @@ export class DocumentReturnApprovalComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doSearch() {

@@ -9,17 +9,28 @@ import {SimpleTokenService} from "../../shared/service/simple-token.service";
  */
 @Injectable()
 export class LoginService {
+    serviceList: [{}] = [
+        {
+            "sc": "ADD_BOX_REGISTRATION",
+            "ph": "boxRegistration/addBoxRegistration"
+        },
+        {
+            "sc": "GET_LIST_BOX_REGISTRATION_PAGING",
+            "ph": "boxRegistration/getListBoxRegistrationPaging"
+        }
+    ];
+
     constructor(@Inject(APP_CONFIG) private appConfig,
-                private localStorageService:LocalStorageService,
-                private seckeyService:SecKeyService,
-                private simpleTokenService:SimpleTokenService) {
+                private localStorageService: LocalStorageService,
+                private seckeyService: SecKeyService,
+                private simpleTokenService: SimpleTokenService) {
     }
 
-    doUserLogin(userName:string, userPwd:string):Observable<boolean> {
-        return Observable.create((obs)=> {
+    doUserLogin(userName: string, userPwd: string): Observable<boolean> {
+        return Observable.create((obs) => {
             if (userName === 'arms01' && userPwd === 'P@ssw0rd') {
                 this.seckeyService.setSeckey();
-                let token = this.simpleTokenService.encodeToken({'username': userName,'role':'Custody'});
+                let token = this.simpleTokenService.encodeToken({'username': userName, 'role': 'Custody','service':this.serviceList});
                 this.localStorageService.setItem(this.appConfig.lsAuthKey, token);
                 this.localStorageService.setItem(this.appConfig.prefLang, 'ID');
                 // this.localStorageService.setItem(this.appConfig.tokenAppName, res[this.appConfig.tokenAppName]);
@@ -30,7 +41,7 @@ export class LoginService {
                 obs.next(false);
             }
 
-        }).delay(3000);
+        }).delay(1500);
 
     }
 }

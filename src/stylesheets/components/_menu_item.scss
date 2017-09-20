@@ -1,0 +1,44 @@
+.circle-base {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.content {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 90px;
+  background: white;
+  border: 1px solid gainsboro;
+
+  &:hover {
+    border: 1px solid gray;
+    background: whitesmoke;
+
+    & ~ .title-wrapper {
+      font-weight: bolder;
+    }
+  }
+}
+
+.active {
+  border: 1px solid #e5e1dd;
+  background: whitesmoke;
+}
+
+.wrapper {
+  &-base {
+    text-align: center;
+    width: 80px;
+    margin-bottom: 20px;
+  }
+
+  &-title {
+    margin-top: 7px;
+    font-size: 1.2rem;
+
+    &-active {
+      font-weight: bolder;
+    }
+  }
+}

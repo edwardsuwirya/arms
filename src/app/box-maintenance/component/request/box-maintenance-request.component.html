@@ -3,11 +3,11 @@
 </div>
 <arms-module-container>
     <div sidebar>
-        <arms-menu [isTabOpen]="6" [activeMenu]="'pengajuanPengkinianDataBox'"></arms-menu>
+        <arms-menu [isTabOpen]="menuTab" [activeMenu]="menuId"></arms-menu>
     </div>
     <div content>
         <div class="page-header">
-            <h3>{{'boxMaintenanceRequest'|translate}}</h3>
+            <h3><i class="fa fa-1x {{icon}}"></i> <span>{{menuId|translate}}</span></h3>
         </div>
         <div style="margin-bottom: 250px">
             <form [formGroup]="boxMaintenanceRequestFormGroup" style="margin-bottom: 20px;">
@@ -34,10 +34,10 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <button type="button" class="btn btn-primary small-button btn-sm" (click)="doSearch()">
+                        <button type="button" class="btn btn-warning btn-width-small btn-sm" (click)="doSearch()">
                             {{'search'|translate}}
                         </button>
-                        <button type="button" class="btn btn-default small-button btn-sm" (click)="doReset()">
+                        <button type="button" class="btn btn-default btn-width-small btn-sm" (click)="doReset()">
                             {{'reset'|translate}}
                         </button>
                     </div>

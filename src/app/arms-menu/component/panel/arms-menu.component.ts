@@ -6,8 +6,7 @@ import {Menu} from "../../model/menu";
  */
 @Component({
     selector: 'arms-menu',
-    templateUrl: 'arms-menu.component.html',
-    styleUrls: ['arms-menu.component.css']
+    templateUrl: 'arms-menu.component.html'
 })
 export class ArmsMenuComponent implements OnInit,AfterViewInit {
     @Input()

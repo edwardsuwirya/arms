@@ -1,13 +1,13 @@
 import {Component, OnInit, AfterViewInit, ViewChild} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
+import {Observable} from "rxjs";
 /**
  * Created by 15050978 on 8/16/2017.
  */
 @Component({
     selector: 'arms-check-in-req',
-    templateUrl: 'check-in-req.component.html',
-    styleUrls: ['check-in-req.component.css']
+    templateUrl: 'check-in-req.component.html'
 })
 export class CheckInRequestComponent implements OnInit,AfterViewInit {
     @ViewChild('pickupDate')
@@ -19,7 +19,6 @@ export class CheckInRequestComponent implements OnInit,AfterViewInit {
     listBoxToBeSend: string[] = [];
 
     icon: string = '';
-    title: string = '';
     menuId: string = '';
     menuTab: number;
 
@@ -31,12 +30,13 @@ export class CheckInRequestComponent implements OnInit,AfterViewInit {
 
     ngAfterViewInit(): void {
         this.pickupDate.setPickerDate();
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.title = params['title'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doGetPickupDate(event) {

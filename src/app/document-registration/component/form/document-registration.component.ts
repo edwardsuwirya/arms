@@ -16,8 +16,7 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'arms-document-registration',
-    templateUrl: './document-registration.component.html',
-    styleUrls: ['./document-registration.component.css']
+    templateUrl: './document-registration.component.html'
 })
 export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
@@ -105,12 +104,13 @@ export class DocumentRegistrationComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(params => {
-            console.log(params);
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     onFileChange(event) {

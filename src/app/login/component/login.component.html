@@ -4,15 +4,15 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6">
             <img class="logo_btpn_login" src="../../../public/images/logo_btpn_login.png">
-            <div class="arms-title">SQUARE DARE <span class="sqr-dare-ver">v1.0.0</span></div>
+            <div class="arms-title">SQUARE DARE <span class="arms-version">v1.0.0</span></div>
             <p class="arms-subtitle">Square Dare is an appplication for maintaining box of documents,
                 monitoring document transaction,and searching document in BTPN Branch</p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6">
             <form [formGroup]="loginForm">
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-login">
                     <img class="img-lock" src="../../../public/images/img-lock.png">
-                    <div class="panel-body login-panel">
+                    <div class="panel-body panel-login-body">
                         <arms-alert-notification [message]="'invalidLogin' | translate"
                                                  *ngIf="error"></arms-alert-notification>
                         <div class="form-group">
@@ -32,8 +32,8 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button (click)="doLogin()"
-                                        class="btn btn-default button-login">
+                                <button (click)="doLogin()" [disabled]="loading"
+                                        class="btn btn-default btn-login">
                                     <i class="fa fa-sign-in" *ngIf="!loading"></i>
                                     <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
                                     {{'login'|translate}}
@@ -46,6 +46,5 @@
         </div>
     </div>
 </div>
-<div style="position: fixed; bottom: 5px; right: 20px; font-size: 10px;margin-top: 20px;">
-    All Rights Reserved. <i class="fa fa-copyright"></i>2017 By <strong>Square Techno Indonesia</strong>
-</div>
+<arms-footer [appName]="appName" [appVersion]="appVersion" [companyProduction]="companyProduction"
+             [yearProduction]="yearProduction"></arms-footer>

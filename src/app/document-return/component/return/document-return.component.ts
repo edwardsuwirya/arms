@@ -4,13 +4,13 @@ import {DocumentReturn} from "../../model/document-return";
 import {DocumentReturnService} from "../../service/document-return.service";
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by edo on 06/09/2017.
  */
 @Component({
     selector: 'arms-document-return',
-    templateUrl: 'document-return.component.html',
-    styleUrls: ['document-return.component.css']
+    templateUrl: 'document-return.component.html'
 })
 export class DocumentReturnComponent implements OnInit,AfterViewInit {
     @ViewChild('lendingInfoModal')
@@ -38,11 +38,13 @@ export class DocumentReturnComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doSearch() {

@@ -13,7 +13,7 @@ const LANG_US = {
     'boxRegistration': 'Box Registration',
     'lending': 'Lending',
     'viewLendingHistory': 'Lending History',
-    'informationAndDocLending':'Information / Document Lending',
+    'informationAndDocLending': 'Information / Document Lending',
     'boxSending': 'Box Sending ',
     'boxLending': 'Box Lending ',
     'boxMaintenance': 'Box Maintenance',
@@ -69,7 +69,7 @@ const LANG_US = {
     'required': 'Required',
     'receive': 'Receive',
     'return': 'Return',
-    'returning':'Returning',
+    'returning': 'Returning',
     'idBox': 'Box ID',
     'fileUpload': 'File Attachment',
     'idDoc': 'Document ID',
@@ -115,7 +115,7 @@ const LANG_ID = {
     'boxRegistration': 'Pendaftaran Box',
     'lending': 'Peminjaman',
     'viewLendingHistory': 'Histori Peminjaman',
-    'informationAndDocLending':'Informasi / Peminjaman Arsip',
+    'informationAndDocLending': 'Informasi / Peminjaman Arsip',
     'boxSending': 'Pengiriman Box',
     'boxLending': 'Peminjaman Box',
     'boxMaintenance': 'Pengkinian Data Box',
@@ -171,7 +171,7 @@ const LANG_ID = {
     'required': 'Dibutuhkan',
     'receive': 'Diterima',
     'return': 'Dikembalikan',
-    'returning':'Pengembalian',
+    'returning': 'Pengembalian',
     'idBox': 'ID Box',
     'idDoc': 'ID Arsip',
     'fileUpload': 'File Lampiran',
@@ -222,14 +222,24 @@ const ERROR_DICT = {
 
 const MENU_CODE = {}
 
+const SERVICE_LIST = {
+    'addBoxRegistration': 'ADD_BOX_REGISTRATION',
+    'getListBoxRegistrationPaging': 'GET_LIST_BOX_REGISTRATION_PAGING',
+}
+
 export const appConfig = {
+    'appName': 'Square Dare',
+    'appVersion': '1.0.0',
+    'year': '2017',
+    'company': 'Square Techno Indonesia',
     'serviceBaseUrl': SERVICE_BASE_URL,
+    'serviceList': SERVICE_LIST,
     'lsAuthKey': 'av',
     'tokenUserName': 'un',
     'tokenMenuUser': 'mn',
     'tokenUserRole': 'rl',
     'tokenKey': 'sk',
-    'tokenService': 'sv',
+    'tokenService': 'service',
     'tokenBranchCode': 'bc',
     'tokenAppName': 'ap',
     'tokenAppVersion': 'vr',

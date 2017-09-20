@@ -2,28 +2,31 @@
  * Created by 15050978 on 8/23/2017.
  */
 export class BoxRegistration {
-    idBox: string;
-    workingUnit: string;
+    id: string;
+    boxId: string;
+    unitId: string;
     boxDescription: string;
     boxSize: string;
-    depositType: string;
-    depositLocation: string;
-    depositRoom: string;
-    depositShelf: string;
-    startValidDate: string;
-    endValidDate: string;
+    storageType: string;
+    storageLocation: string;
+    storageSpace: string;
+    storageShelf: string;
+    startPeriod: string;
+    endPeriod: string;
+    status: number;
 
-    constructor(idBox: string, workingUnit: string, boxDescription: string, boxSize: string, depositType: string, depositLocation: string,
-                depositRoom: string, depositShelf: string, startValidDate: string, endValidDate: string) {
-        this.idBox = idBox;
-        this.workingUnit = workingUnit;
+    constructor(boxId: string, unitId: string, boxDescription: string, boxSize: string, storageType: string, storageLocation: string,
+                storageSpace: string, storageShelf: string, startPeriod: string, endPeriod: string, status: number) {
+        this.boxId = boxId;
+        this.unitId = unitId;
         this.boxDescription = boxDescription;
         this.boxSize = boxSize;
-        this.depositType = depositType;
-        this.depositLocation = depositLocation;
-        this.depositRoom = depositRoom;
-        this.depositShelf = depositShelf;
-        this.startValidDate = startValidDate;
-        this.endValidDate = endValidDate;
+        this.storageType = storageType;
+        this.storageLocation = storageLocation;
+        this.storageSpace = storageSpace;
+        this.storageShelf = storageShelf;
+        this.startPeriod = startPeriod;
+        this.endPeriod = endPeriod;
+        this.status = status;
     }
 }

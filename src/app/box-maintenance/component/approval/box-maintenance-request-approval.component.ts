@@ -1,13 +1,14 @@
 import {Component, OnInit, AfterViewInit} from "@angular/core";
 import {BoxMaintenanceRequest} from "../../model/box-maintenance-request";
 import {BoxMaintenanceService} from "../../service/box-maintenance.service";
+import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by 15050978 on 9/7/2017.
  */
 @Component({
     selector: 'arms-box-maintenance-request-approval',
-    templateUrl: './box-maintenance-request-approval.component.html',
-    styleUrls: ['./box-maintenance-request-approval.component.css']
+    templateUrl: './box-maintenance-request-approval.component.html'
 })
 export class BoxMaintenanceRequestApprovalComponent implements OnInit,AfterViewInit {
 
@@ -17,7 +18,11 @@ export class BoxMaintenanceRequestApprovalComponent implements OnInit,AfterViewI
 
     box: BoxMaintenanceRequest;
 
-    constructor(private boxMaintenanceService: BoxMaintenanceService) {
+    icon: string = '';
+    menuId: string = '';
+    menuTab: number;
+
+    constructor(private route: ActivatedRoute, private boxMaintenanceService: BoxMaintenanceService) {
     }
 
     ngOnInit(): void {
@@ -29,5 +34,12 @@ export class BoxMaintenanceRequestApprovalComponent implements OnInit,AfterViewI
     }
 
     ngAfterViewInit(): void {
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 }

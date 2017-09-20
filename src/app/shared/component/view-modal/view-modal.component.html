@@ -10,13 +10,13 @@
                 <ng-content></ng-content>
             </div>
             <div class="modal-footer" *ngIf="showFooter">
-                <button type="button" class="btn btn-default medium-button" (click)="doSave()" *ngIf="showButton.save">
+                <button type="button" class="btn btn-default btn-width-medium" (click)="doSave()" *ngIf="showButton.save">
                     {{'save'|translate}}
                 </button>
-                <button type="button" class="btn btn-default medium-button" data-dismiss="modal"
+                <button type="button" class="btn btn-default btn-width-medium" data-dismiss="modal"
                         *ngIf="showButton.cancel">{{'reset'|translate}}
                 </button>
-                <button type="button" class="btn btn-default medium-button" data-dismiss="modal"
+                <button type="button" class="btn btn-default btn-width-medium" data-dismiss="modal"
                         *ngIf="showButton.close">{{'close'|translate}}
                 </button>
             </div>

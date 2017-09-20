@@ -4,13 +4,13 @@ import {DatePickerComponent} from "../../../shared/component/date-picker/date-pi
 import {CheckInService} from "../../service/check-in.service";
 import {BoxSend} from "../../model/box-send";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by edo on 26/08/2017.
  */
 @Component({
     selector: 'arms-box-send',
-    templateUrl: 'box-send.component.html',
-    styleUrls: ['box-send.component.css']
+    templateUrl: 'box-send.component.html'
 })
 export class BoxSendComponent implements OnInit,AfterViewInit {
     loading: boolean = false;
@@ -24,7 +24,6 @@ export class BoxSendComponent implements OnInit,AfterViewInit {
     listBoxSend: BoxSend[] = [];
 
     icon: string = '';
-    title: string = '';
     menuId: string = '';
     menuTab: number;
 
@@ -40,12 +39,13 @@ export class BoxSendComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.title = params['title'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doSend(box) {

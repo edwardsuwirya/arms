@@ -1,19 +1,19 @@
-<nav class="navbar navbar-default navbar-fixed-top" style="height: 30px;">
+<nav class="navbar navbar-default navbar-fixed-top navbar-height-default">
     <div class="container-fluid header-frontend">
         <div class="navbar-header">
-            <span style="line-height: 50px">
+            <span>
                 <a class="navbar-brand" routerLink="/home">
-                    <img src="../../../public/images/logo_btpn_frontend.png" class="logo">
+                    <img src="../../../../public/images/logo_btpn_frontend.png" class="logo">
                 </a>
-                <span class="app-name">Square Dare</span> <span class="app-version">1.0.0</span>
+                <span class="app-name">{{appName}}</span> <span class="app-version">{{appVersion}}</span>
             </span>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm" style="margin-right: 10px;margin-top: 5px;">
+            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
                 <li>
-                    <i class="fa fa-user-circle-o i-user"></i>
+                    <i class="fa fa-user-circle-o"></i>
                     <div class="btn-group" style="margin-top: -10px">
-                        <span type="button" class="user-login dropdown-toggle" data-toggle="dropdown"
+                        <span type="button" class="dropdown-toggle btn-user-active" data-toggle="dropdown"
                               aria-haspopup="true" aria-expanded="false">
                             {{activeUser}}
                             ({{activeRole}}) <span class="caret"></span>
@@ -42,7 +42,5 @@
     </div>
 </div>
 <router-outlet></router-outlet>
-<div style="position: fixed; bottom: 5px; right: 20px; font-size: 10px;margin-top: 10px">
-    {{appName}} {{appVersion}} &nbsp;&nbsp;<i class="fa fa-circle" style="font-size: 8px;"></i>&nbsp;&nbsp; All Rights
-    Reserved. <i class="fa fa-copyright"></i>2017 By <strong>Square Techno Indonesia</strong>
-</div>
+<arms-footer [appName]="appName" [appVersion]="appVersion" [companyProduction]="companyProduction"
+             [yearProduction]="yearProduction"></arms-footer>

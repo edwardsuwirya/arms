@@ -34,6 +34,11 @@ module.exports = {
                 loader: 'file-loader?name=assets/[name].[hash].[ext]'
             },
             {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                loaders: ['style-loader','css-loader', 'sass-loader']
+            },
+            {
                 test: /\.css$/,
                 exclude: helpers.root('src', 'app'),
                 loader: ExtractTextPlugin.extract({fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap'})
@@ -53,7 +58,7 @@ module.exports = {
             {}
         ),
         new CopyWebpackPlugin([
-            {from:'src/public/images',to:'assets'}
+            {from: 'src/public/images', to: 'assets'}
         ]),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
@@ -70,7 +75,7 @@ module.exports = {
             moment: 'moment',
             Pikaday: 'pikaday',
             jwt: 'jwt-simple',
-            randomstring:'randomstring'
+            randomstring: 'randomstring'
         })
     ]
 };

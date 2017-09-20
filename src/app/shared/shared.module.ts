@@ -22,6 +22,7 @@ import {SimpleTokenService} from "./service/simple-token.service";
 import {PaginationComponent} from "./component/pagination/pagination.component";
 import {RouterGuardService} from "./service/router-guard.service";
 import {AlertNotificationComponent} from "./component/alert-notification/alert-notification.component";
+import {FooterComponent} from "./component/footer/footer.component";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -35,6 +36,7 @@ import {AlertNotificationComponent} from "./component/alert-notification/alert-n
         ViewModalComponent,
         PaginationComponent,
         AlertNotificationComponent,
+        FooterComponent,
         TranslatePipe,
         TimestampToDatePipe,
         DateFormatPipe
@@ -58,6 +60,7 @@ import {AlertNotificationComponent} from "./component/alert-notification/alert-n
         PaginationComponent,
         AlertComponent,
         AlertNotificationComponent,
+        FooterComponent,
         ViewModalComponent,
         TranslatePipe,
         TimestampToDatePipe,

@@ -1,0 +1,48 @@
+.btn {
+  &-width {
+    &-small {
+      width: $btn-base-width*1px;
+    }
+
+    &-medium {
+      width: $btn-base-width*1.5px;
+    }
+
+    &-large {
+      width: $btn-base-width*2px;
+    }
+  }
+
+  &-login {
+    width: $full-width;
+    margin-top: 20px;
+    background-color: $btpn-orange-color;
+    border: $btpn-orange-color;
+    color: $white;
+
+    &:hover {
+      background-color: $btpn-daya-brown;
+      border: $btpn-daya-brown;
+      color: $white;
+    }
+    &:hover:disabled {
+      background-color: $btpn-orange-color;
+      border: $btpn-orange-color;
+      color: $white;
+    }
+  }
+
+  &-user-active {
+    cursor: pointer;
+    color: $white;
+    font-size: 1.2em;
+    font-weight: normal;
+  }
+
+  &-group.open .dropdown-toggle {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+}
+
+

@@ -1,13 +1,13 @@
 import {AfterViewInit, OnInit, Component, ViewChild} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
+import {Observable} from "rxjs";
 /**
  * Created by 15050978 on 8/16/2017.
  */
 @Component({
     selector: 'arms-check-out-req',
-    templateUrl: 'check-out-req.component.html',
-    styleUrls: ['check-out-req.component.css']
+    templateUrl: 'check-out-req.component.html'
 })
 export class CheckOutRequestComponent implements OnInit,AfterViewInit {
     @ViewChild('borrowDate')
@@ -31,11 +31,13 @@ export class CheckOutRequestComponent implements OnInit,AfterViewInit {
 
     ngAfterViewInit(): void {
         this.borrowDate.setPickerDate();
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doSend(item: string) {

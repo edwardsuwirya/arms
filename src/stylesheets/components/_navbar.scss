@@ -1,0 +1,65 @@
+.page-header {
+  margin: 25px 0 20px !important;
+}
+
+.navbar {
+  & > .header-frontend {
+    background-color: $btpn-orange-color;
+    border-bottom: 2px solid $dare-black;
+  }
+  &-height-default {
+    height: 30px;
+  }
+
+  &-brand {
+    padding: 8px 10px !important;
+
+    & > .logo {
+      display: block;
+      height: 35px;
+    }
+  }
+
+  &-header {
+    margin-left: 10px !important;
+
+    & > span {
+      line-height: 50px;
+    }
+  }
+  &-right {
+    margin-right: 10px;
+    margin-top: 5px;
+
+    & > li > .fa-user-circle-o {
+      font-size: 1.8em;
+      font-weight: normal;
+      margin-top: 8px;
+      color: $white;
+    }
+    & .dropdown-menu {
+      right: -3px;
+      padding-top: 0px;
+      margin-top: 15px;
+      height: 43px;
+      border-radius: 0;
+    }
+  }
+}
+
+%app-font {
+  font-size: 1.3em;
+  color: $white;
+}
+
+.app {
+  &-name {
+    @extend %app-font;
+    font-weight: bold;
+  }
+
+  &-version {
+    @extend %app-font;
+    font-weight: normal;
+  }
+}

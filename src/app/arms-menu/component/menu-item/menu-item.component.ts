@@ -5,8 +5,7 @@ import {Router} from "@angular/router";
  */
 @Component({
     selector: 'arms-menu-item',
-    templateUrl: 'menu-item.component.html',
-    styleUrls: ['menu-item.component.css']
+    templateUrl: 'menu-item.component.html'
 })
 export class ArmsMenuItemComponent implements OnInit,AfterViewInit {
     @Input()

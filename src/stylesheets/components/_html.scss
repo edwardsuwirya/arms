@@ -1,0 +1,14 @@
+html, body {
+  height: $full-height;
+  width: $full-width;
+  color: $dare-black !important;
+  padding-top: 35px;
+  margin: 0;
+  border: 0;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  html, body {
+    padding-top: 30px !important;
+  }
+}

@@ -9,13 +9,13 @@ import {MessageInfo} from "../../../shared/model/message-info";
 import {DateUtilService} from "../../../shared/service/date-util.service";
 import {ViewModalComponent} from "../../../shared/component/view-modal/view-modal.component";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by 15050978 on 8/23/2017.
  */
 @Component({
     selector: 'arms-box-registration',
-    templateUrl: './box-registration.component.html',
-    styleUrls: ['./box-registration.component.css']
+    templateUrl: './box-registration.component.html'
 })
 export class BoxRegistrationComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
@@ -76,16 +76,29 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
                 this.boxRegistrationFormGroup.controls['depositLocation'].clearValidators();
             }
         })
+        this.loading = true;
+        this.boxRegistrationService.getListBoxRegistrationPaging().subscribe((res) => {
+            if (res && res.paging) {
+                this.listBoxRegistrations = res.paging.data;
+            }
+            this.loading = false;
+        }, (err) => {
+            console.log(err);
+            this.loading = false;
+        })
     }
 
     ngAfterViewInit(): void {
         this.startValidDate.setPickerDate();
         this.endValidDate.setPickerDate();
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
+
     }
 
     doGetStartDate(event) {
@@ -109,7 +122,7 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
             formVal.depositLocation,
             formVal.depositRoom,
             formVal.depositShelf,
-            formVal.startValidDate, formVal.endValidDate);
+            formVal.startValidDate, formVal.endValidDate, 0);
 
         if (this.boxRegistrationFormGroup.invalid) {
             this.loading = false;
@@ -119,11 +132,6 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
             if (this.dateUtilService.compareBetweenDates(formVal.startValidDate, formVal.endValidDate) == false) {
                 if (this.isUpdatingForm) {
                     this.boxRegistrationService.updateBox(newBox).subscribe((b) => {
-                        this.doSpliceBox(this.box);
-                        if (!this.listBoxRegistrations) {
-                            this.listBoxRegistrations = [];
-                        }
-                        this.listBoxRegistrations.push(b);
                         this.doReset();
                         this.loading = false;
                     }, (err) => {
@@ -131,10 +139,6 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
                     });
                 } else {
                     this.boxRegistrationService.addNewBox(newBox).subscribe((b) => {
-                        if (!this.listBoxRegistrations) {
-                            this.listBoxRegistrations = [];
-                        }
-                        this.listBoxRegistrations.push(b);
                         this.doReset();
                         this.loading = false;
                     }, (err) => {
@@ -152,7 +156,7 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
     doReset() {
         this.boxRegistrationFormGroup.reset();
         this.boxRegistrationFormGroup.controls['boxSize'].setValue('S');
-        this.boxRegistrationFormGroup.controls['depositType'].setValue('I');
+        this.boxRegistrationFormGroup.controls['depositType'].setValue('Internal');
         this.startValidDate.clear();
         this.endValidDate.clear();
         this.isUpdatingForm = false;
@@ -166,29 +170,23 @@ export class BoxRegistrationComponent implements OnInit,AfterViewInit {
     doUpdate(box: BoxRegistration) {
         this.box = box;
         this.isUpdatingForm = true;
-        this.boxRegistrationFormGroup.controls['idBox'].setValue(box.idBox);
-        this.boxRegistrationFormGroup.controls['workingUnit'].setValue(box.workingUnit);
+        this.boxRegistrationFormGroup.controls['idBox'].setValue(box.boxId);
+        this.boxRegistrationFormGroup.controls['workingUnit'].setValue(box.unitId);
         this.boxRegistrationFormGroup.controls['boxDescription'].setValue(box.boxDescription);
         this.boxRegistrationFormGroup.controls['boxSize'].setValue(box.boxSize);
-        this.boxRegistrationFormGroup.controls['depositType'].setValue(box.depositType);
-        this.boxRegistrationFormGroup.controls['depositLocation'].setValue(box.depositLocation);
-        this.boxRegistrationFormGroup.controls['depositRoom'].setValue(box.depositRoom);
-        this.boxRegistrationFormGroup.controls['depositShelf'].setValue(box.depositShelf);
-        this.boxRegistrationFormGroup.controls['startValidDate'].setValue(box.startValidDate);
-        this.boxRegistrationFormGroup.controls['endValidDate'].setValue(box.endValidDate);
-        this.startValidDate.setPickerDate(box.startValidDate);
-        this.endValidDate.setPickerDate(box.endValidDate);
-    }
-
-    doSpliceBox(box: BoxRegistration) {
-        let boxIndex = this.listBoxRegistrations.indexOf(box);
-        this.listBoxRegistrations.splice(boxIndex, 1);
+        this.boxRegistrationFormGroup.controls['depositType'].setValue(box.storageType);
+        this.boxRegistrationFormGroup.controls['depositLocation'].setValue(box.storageLocation);
+        this.boxRegistrationFormGroup.controls['depositRoom'].setValue(box.storageSpace);
+        this.boxRegistrationFormGroup.controls['depositShelf'].setValue(box.storageShelf);
+        this.boxRegistrationFormGroup.controls['startValidDate'].setValue(box.startPeriod);
+        this.boxRegistrationFormGroup.controls['endValidDate'].setValue(box.endPeriod);
+        this.startValidDate.setPickerDate(box.startPeriod);
+        this.endValidDate.setPickerDate(box.endPeriod);
     }
 
     doDelete(box: BoxRegistration) {
         this.loading = true;
         this.boxRegistrationService.deleteBox(box).subscribe((b) => {
-            this.doSpliceBox(b);
             this.loading = false;
         }, (err) => {
             this.loading = false;

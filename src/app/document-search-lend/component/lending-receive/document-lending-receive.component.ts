@@ -4,13 +4,13 @@ import {DocumentLend} from "../../model/document-lend";
 import {DocumentSearchLendService} from "../../service/document-search-lend.service";
 import {DatePickerComponent} from "../../../shared/component/date-picker/date-picker.component";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by edo on 28/08/2017.
  */
 @Component({
     selector: 'arms-document-lending-receive',
-    templateUrl: 'document-lending-receive.component.html',
-    styleUrls: ['document-lending-receive.component.css']
+    templateUrl: 'document-lending-receive.component.html'
 })
 export class DocumentLendReceiveComponent implements OnInit,AfterViewInit {
     @ViewChild('docViewModal')
@@ -39,11 +39,13 @@ export class DocumentLendReceiveComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doSearch() {

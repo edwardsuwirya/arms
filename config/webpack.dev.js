@@ -43,37 +43,9 @@ module.exports = webpackMerge(commonConfig, {
                 pathRewrite: {'^/nodeLogin': ''},
                 secure: false
             },
-            '/bankRelation': {
-                target: 'http://localhost:8081/',
-                pathRewrite: {'^/bankRelation': ''},
-                secure: false
-            },
-            '/interestRate': {
-                target: 'http://localhost:8082/',
-                pathRewrite: {'^/interestRate': ''},
-                secure: false
-            },
-            '/debtorCategory': {
-                target: 'http://localhost:8083/',
-                pathRewrite: {'^/debtorCategory': ''},
-                secure: false
-            },
-            '/collateralCharacteristic': {
-                target: 'http://localhost:8084/',
-                pathRewrite: {'^/collateralCharacteristic': ''},
-                secure: false
-            },
-            '/creditRating': {
-                target: 'http://localhost:8085/',
-                pathRewrite: {'^/creditRating': ''},
-                secure: false
-            }, '/universalLoan': {
-                target: 'http://localhost:8900/',
-                pathRewrite: {'^/universalLoan': ''},
-                secure: false
-            },
-            '/**': {
+            '/boxRegistration': {
                 target: 'http://localhost:8080/',
+                pathRewrite: {'^/boxRegistration': ''},
                 secure: false
             }
         },

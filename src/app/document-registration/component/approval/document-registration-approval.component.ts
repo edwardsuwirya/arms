@@ -3,13 +3,13 @@ import {ViewModalComponent} from "../../../shared/component/view-modal/view-moda
 import {DocumentRegistrationService} from "../../service/document-registration.service";
 import {DocumentApproval} from "../../model/document-approval";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by edo on 26/08/2017.
  */
 @Component({
     selector: 'arms-document-registration-approval',
-    templateUrl: './document-registration-approval.component.html',
-    styleUrls: ['./document-registration-approval.component.css']
+    templateUrl: './document-registration-approval.component.html'
 })
 export class DocumentRegistrationApprovalComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
@@ -37,11 +37,13 @@ export class DocumentRegistrationApprovalComponent implements OnInit,AfterViewIn
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doApprove(doc: DocumentApproval) {

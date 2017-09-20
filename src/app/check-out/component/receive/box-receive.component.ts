@@ -4,13 +4,13 @@ import {DatePickerComponent} from "../../../shared/component/date-picker/date-pi
 import {BoxLend} from "../../model/box-lend";
 import {BoxLendService} from "../../service/box-lend.service";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by edo on 26/08/2017.
  */
 @Component({
     selector: 'arms-box-receive',
-    templateUrl: 'box-receive.component.html',
-    styleUrls: ['box-receive.component.css']
+    templateUrl: 'box-receive.component.html'
 })
 export class BoxReceiveComponent implements OnInit,AfterViewInit {
     @ViewChild('viewModal')
@@ -38,11 +38,13 @@ export class BoxReceiveComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(params => {
-            this.icon = params['icon'];
-            this.menuId = params['menuId'];
-            this.menuTab = Number(params['menuTab']);
-        });
+        Observable.timer(300).do(() => {
+            this.route.queryParams.subscribe(params => {
+                this.icon = params['icon'];
+                this.menuId = params['menuId'];
+                this.menuTab = Number(params['menuTab']);
+            });
+        }).subscribe();
     }
 
     doReceive(box) {
